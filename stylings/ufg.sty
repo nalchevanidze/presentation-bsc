@@ -1,4 +1,4 @@
-\ProvidesPackage{beamerthemeUfg}[2019/10/15]
+\ProvidesPackage{stylings/ufg}[2019/10/15]
 \usepackage[sfdefault]{roboto}  
 \usepackage{tikz}
 \usepackage[T1]{fontenc}
@@ -10,7 +10,9 @@
 \mode<presentation>
 \usefonttheme[onlymath]{serif}
 
-\definecolor{UHHBackground}{RGB}{78, 40, 34}
+\definecolor{UHHBackground}{RGB}{237, 68, 79}
+\definecolor{BGDarkRed}{RGB}{188, 33, 44}
+
 
 \definecolor{INFBlue}{RGB}{0, 92, 161}
 \definecolor{UFGBlue}{RGB}{0, 114, 185}
@@ -37,7 +39,7 @@
     \pgfdeclareimage[width=13mm]{logo2_medium}{#2}
     
     % set UFG logo
-    \pgfdeclareimage[height=15mm]{logo3}{assets/img/logo.pdf}
+    \pgfdeclareimage[height=15mm]{logo3}{assets/img/uhh-gray.png}
 }
 
 \newcommand{\setDefaultConfig}{
