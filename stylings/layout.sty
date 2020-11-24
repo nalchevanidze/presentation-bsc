@@ -87,3 +87,10 @@
   
 }
 \titleLayout
+
+\newcommand{\setLayout}[1]{
+    \ifthenelse{\equal{#1}{titlepage}}{\titleLayout}{}
+    \ifthenelse{\equal{#1}{vertical}}{\vertical}{}
+    \ifthenelse{\equal{#1}{mainpoint}}{\mainpoint}{}
+    \ifthenelse{\equal{#1}{blank}}{\blank}{}
+}
