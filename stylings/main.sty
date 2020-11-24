@@ -1,6 +1,6 @@
 %!TEX root = ../main.tex
 
-\ProvidesPackage{stylings/ufg}[2019/10/15]
+\ProvidesPackage{stylings/main}[2019/10/15]
 \usepackage[sfdefault]{roboto}  
 \usepackage{tikz}
 \usepackage[T1]{fontenc}
@@ -158,7 +158,6 @@
 
 % ----------------------------------Define layouts backgrounds
 \pgfdeclareimage[width=\paperwidth]{vertical}{assets/layouts/vertical.pdf}
-\pgfdeclareimage[width=\paperwidth]{horizontal}{assets/layouts/horizontal_bg.pdf}
 \pgfdeclareimage[width=\paperwidth]{titlepage}{assets/layouts/intro.pdf}
 
 % ----------------------------------Defining the layouts
@@ -186,19 +185,6 @@
     \setbeamerfont{date}{size=\scriptsize,series=\bfseries,parent=structure}
     
     
-}
-
-\newcommand{\horizontal}{
-    \usebackgroundtemplate{
-        \begin{picture}(100,256)(0,0)
-            \put(0,0){
-                \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}\end{beamercolorbox}
-             }
-            \put(0,0){\pgfuseimage{horizontal}}
-            \put(10,5){\pgfuseimage{logo2_small}}
-        \end{picture}
-    }
-    \setDefaultConfig
 }
 
 \newcommand{\vertical}{
