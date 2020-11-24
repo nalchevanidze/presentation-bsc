@@ -5,8 +5,7 @@
 % ---------------------------------- Define layouts backgrounds
 \pgfdeclareimage[width=\paperwidth]{vertical}{assets/layouts/vertical.pdf}
 \pgfdeclareimage[width=\paperwidth]{titlepage}{assets/layouts/intro.pdf}
-
-
+\pgfdeclareimage[width=\paperwidth]{mainpoint}{assets/layouts/mainpoint.pdf}
 
 % ----------------------------------Defining the layouts
 \newcommand{\titleLayout}{
@@ -54,39 +53,34 @@
         \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}
         \end{beamercolorbox}
     \end{picture}
-  }
-    \setWhiteConfig
-    
-    
+  }    
 }
 
 \newcommand{\mainpoint}{
+  \setbeamertemplate{frametitle}{}
+
   \usebackgroundtemplate{
     \begin{picture}(100,256)(0,0)
         \put(0,0){
             \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}
             \end{beamercolorbox}    
         }
+        \put(0,0){\pgfuseimage{mainpoint}}
+
         % Put the frame title in the middle of page
-        \put(160,115){
+        \put(70,115){
             \begin{tabular}{m{0.7\textwidth}}
                 \begin{flushleft}
-                   \selectfont \Huge \bfseries \insertframetitle
+                   \selectfont 
+                   \Huge 
+                   \bfseries 
+                   \insertframetitle
                 \end{flushleft}
             \end{tabular}
-        }
-        \put(150,80){
-            \begin{tikzpicture}
-                \fill[white] (0,0) rectangle (0.2,3);
-            \end{tikzpicture}
         }
     \end{picture}
   
   }
- 
-  \setWhiteConfig
-  \setbeamertemplate{frametitle}{  }
-  
 }
 \titleLayout
 
