@@ -1,32 +1,11 @@
 %!TEX root = ./main.tex
 
 \documentclass[aspectratio=169,t,xcolor=table]{beamer}
-\usepackage[utf8]{inputenc}
-\usepackage{booktabs} 
-\usepackage{subcaption}
-\usepackage{stylings/ufg}
 \input{src/ext/preamble.tex}
 
-%-------------------------------------theorems--------------
-\newtheorem{conj}{Conjetura}
-\newtheorem{defi}{Definition}
-\newtheorem{teo}{Teorema}
-\newtheorem{lema}{Lema}
-\newtheorem{prop}{Proposição}
-\newtheorem{cor}{Corolário}
-\newtheorem{ex}{Example}
-\newtheorem{exer}{Exercício}
-
-\setbeamertemplate{theorems}[numbered]
-\setbeamertemplate{caption}[numbered]
-
 %----------------------- Primary Definitions -----------------%
-
-% This command set the default Color, is also possible to choose a custom color
 \setPrimaryColor{DarkGray} 
 \setBGColor{BGDarkRed}
-
-% First one is  logo in title slide (we recommend use a horizontal image), and second one is the logo used in the remaining slides (we recommend use a square image)
 \setLogos
     {assets/img/logo-white-outline.pdf}
     {assets/img/logo.pdf} 
@@ -34,46 +13,28 @@
 % -------------------------------------- Title Slide Information
 \begin{document}
 \title[Inf UFG]{Abbildung von GraphQL \\ auf das Haskell-Typensystem}
-% \subtitle{Daviti Nalchevanidze}
+\subtitle{Morpheus GraphQL}
 
 \author{Daviti Nalchevanidze}
 
-\institute[UFG] % (optional)
+\institute[UHH] 
 {
   Universität Hamburg\\ 
   MIN-Fakultät\\ 
   Fachbereich Informatik
 }
 \date{2020}
-%-----------------------The next statement creates the title page.
 \frame[noframenumbering]{\titlepage}
 
-
-%------------------------------------------------Slide 1
-\setLayout{vertical} % This command define the layout. 'vertical' can be replace with 'horizontal', 'blank, 'mainpoint', 'titlepage'
-
-\begin{frame}
-    \frametitle{Table of Contents}
-    \tableofcontents
-\end{frame}
 %---------------------------------------------------------
-
+\input{src/ext/table-of-content}
 \input{src/sections}
 \input{src/example}
 \input{src/ext/thanks}
 
-\nocite{*}
-\begin{frame}[plain, noframenumbering,allowframebreaks]{References}
-    \printbibliography
-\end{frame}
-
-\appendix
-\input{src/ext/appendix.tex}
-
 \setLayout{titlepage}
 \setBGColor{BGDarkRed}
 \titlepage
-%-------------------------------------
 
-
+\input{src/ext/ending}
 \end{document}
