@@ -8,18 +8,24 @@
     \begin{adjustbox}{max width=0.98\textwidth, trim=0 2ex 0 0,clip}
     \begin{tabular}{!{\color{#1}{\vrule width 2pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}
 
+        % Title
+        \vspace{2px}
         \begin{beamercolorbox}{block title} 
         \usebeamerfont*{block title} 
         \vbox{}
         \vskip 0.2ex 
         \insertblocktitle 
+
+        % Content
+        \vspace{2px}
         \end{beamercolorbox}
         \usebeamerfont*{block text}
+        
  }
 
 \newcommand\closeBlock
  {
-     \end{tabular}\end{adjustbox}
+    \end{tabular}\end{adjustbox}
  }
 
 % WORKING ON BLOCKS
