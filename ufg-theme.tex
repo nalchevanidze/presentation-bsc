@@ -3,6 +3,8 @@
 \usepackage{booktabs} 
 \usepackage{subcaption}
 \usepackage{stylings/ufg}
+\input{src/preamble.tex}
+
 
 %-------------------------------------theorems--------------
 \newtheorem{conj}{Conjetura}
@@ -59,7 +61,7 @@
 
 \input{src/index}
 \input{src/ufg.tex}
-\input{src/appendix.tex}
+
 
 % Thanks Page
 \section{Thanks}
@@ -91,9 +93,18 @@
 
 %--------------------------------------------------------- end Slide 
 
+\nocite{*}
+\begin{frame}[plain, noframenumbering,allowframebreaks]{References}
+    \printbibliography
+\end{frame}
+
+\appendix
+\input{src/appendix.tex}
+
 \setLayout{titlepage}
 \setBGColor{BGDarkRed}
 \titlepage
 %-------------------------------------
+
 
 \end{document}
