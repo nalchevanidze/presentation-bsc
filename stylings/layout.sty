@@ -1,0 +1,83 @@
+\ProvidesPackage{stylings/layout}[2019/10/15]
+
+% ----------------------------------Defining the layouts
+\newcommand{\titleLayout}{
+
+    \usebackgroundtemplate{
+   
+        \begin{picture}(100,256)(0,0)
+
+             \put(0,0){
+                \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}\end{beamercolorbox}
+             }
+            \put(0,0){\pgfuseimage{titlepage}}
+            \put(12,10){\pgfuseimage{logo1_title}}
+            \put(345,25){\pgfuseimage{logo3}}
+        \end{picture}
+
+    }
+   
+
+    \setbeamerfont{title}{series=\bfseries,parent=structure}
+    \setbeamerfont{subtitle}{size=\scriptsize,series=\bfseries,parent=structure}
+    \setbeamerfont{author}{size=\small,series=\bfseries,parent=structure}
+    \setbeamerfont{institute}{size=\scriptsize,series=\mdseries,parent=structure}
+    \setbeamerfont{date}{size=\scriptsize,series=\bfseries,parent=structure}
+    
+    
+}
+
+\newcommand{\vertical}{
+    \usebackgroundtemplate{
+        \begin{picture}(100,256)(0,0)
+            \put(0,0){
+                \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}\end{beamercolorbox}
+             }
+            \put(0,0){\pgfuseimage{vertical}}
+            \put(410,205){\pgfuseimage{logo2_medium}}
+        \end{picture}
+    }
+
+   \setDefaultConfig
+}
+\newcommand{\blank}{
+  \usebackgroundtemplate{
+    \begin{picture}(100,256)(0,0)
+        \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}
+        \end{beamercolorbox}
+    \end{picture}
+  }
+    \setWhiteConfig
+    
+    
+}
+
+\newcommand{\mainpoint}{
+  \usebackgroundtemplate{
+    \begin{picture}(100,256)(0,0)
+        \put(0,0){
+            \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}
+            \end{beamercolorbox}    
+        }
+        % Put the frame title in the middle of page
+        \put(160,115){
+            \begin{tabular}{m{0.7\textwidth}}
+                \begin{flushleft}
+                   \selectfont \Huge \bfseries \insertframetitle
+                \end{flushleft}
+            \end{tabular}
+        }
+        \put(150,80){
+            \begin{tikzpicture}
+                \fill[white] (0,0) rectangle (0.2,3);
+            \end{tikzpicture}
+        }
+    \end{picture}
+  
+  }
+ 
+  \setWhiteConfig
+  \setbeamertemplate{frametitle}{  }
+  
+}
+\titleLayout
