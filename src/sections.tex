@@ -5,7 +5,19 @@
 \begin{frame}{}
     \frametitle{Motivation}
 
-    Heute werden riesige Mengen an Informationen über das Web ausgetauscht. Dies erhöht die Komplexität der Anwendungen. Morpheus GraphQL versucht, diese Komplexität mit der Funktionssprache Haskell und GraphQL zu reduzieren, indem es Flexibilität und Typsicherheit bietet, indem es eine direkte api-Beschreibungsmethode mit regulären Haskell-Typen bereitstellt. 
+    \footnotesize
+
+    \begin{alertblock}{Aktuelle Herausforderungen}
+        Heute werden riesige Mengen an Informationen über das Web ausgetauscht. Dies erhöht die \alert{Wartezeit} und die \alert{Komplexität} der Anwendungen. 
+    \end{alertblock}
+
+    \begin{alertblock}{Haskell und  GraphQL}
+        Die Funktionssprache Haskell und GraphQL können diese Probleme verringern.
+    \end{alertblock}
+
+    \begin{block}{Fehlende Bibliothek}
+        Es gibt einige Bibliotheken, die GraphQL in Haskell implementieren, aber entweder bieten sie keine ausreichende Typsicherheit oder sie bilden GraphQL in Haskell auf sehr komplizierte Weise ab. 
+    \end{block}
 
 \end{frame}
 
@@ -13,8 +25,9 @@
 \begin{frame}
     \frametitle{Zielsetzung}
 
-    % Für die Arbeit werden die folgenden Ziele gesetzt.
-    %  some important text will be \alert{highlighted} because it's important.
+    In dieser arbeit versuchen wir, eine Bibliothek bereitzustellen,
+    die \alert{typensicherheit bietet} und dennoch \alert{einfach zu schreiben} ist. 
+    dabei sollen folgende ziele verfolgt werden
 
         \footnotesize
         \begin{alertblock}{Sicherheit und Ausdrucksstärke}
