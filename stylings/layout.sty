@@ -3,10 +3,6 @@
 \ProvidesPackage{stylings/layout}
 \usepackage{tikz}
 
-
-% ---------------------------------- Define layouts backgrounds
-\pgfdeclareimage[width=\paperwidth]{mainpoint}{assets/layouts/mainpoint.pdf}
-
 % ----------------------------------Defining the layouts
 \newcommand{\titleLayout}{
     \usebackgroundtemplate{
@@ -51,28 +47,24 @@
 
 \newcommand{\mainpoint}{
   \setbeamertemplate{frametitle}{}
-
   \usebackgroundtemplate{
-    \begin{picture}(100,256)(0,0)
-        \put(0,0){
-            \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}
-            \end{beamercolorbox}    
-        }
-        \put(0,0){\pgfuseimage{mainpoint}}
-
-        % Put the frame title in the middle of page
+    \begin{picture}(100,256)
         \put(70,115){
             \begin{tabular}{m{0.7\textwidth}}
                 \begin{flushleft}
-                   \selectfont 
-                   \Huge 
-                   \bfseries 
-                   \insertframetitle
+                \selectfont 
+                \Huge 
+                \bfseries 
+                \insertframetitle
                 \end{flushleft}
             \end{tabular}
         }
-    \end{picture}
-  
+        \begin{tikzpicture}
+            \filldraw (0,0);
+            \filldraw [color=UHHRed]   (5, 9) -- (16, 9) -- (16, 1.5) -- (14.5, 0) -- (11, 0) ;
+            \filldraw  [color=gray, opacity=0.15]  (5, 9) -- (11, 0) -- (11.2,0) ;
+        \end{tikzpicture}
+    \end{picture}  
   }
 }
 \titleLayout
