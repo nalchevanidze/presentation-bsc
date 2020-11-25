@@ -13,9 +13,7 @@
         \begin{picture}(100,256)(0,0)
             \begin{tikzpicture}
                 \filldraw [color=UHHRed] (0,0) -- (10.4,0) -- (10.75,0.8) -- (0,2) -- (0,0);
-                
                 \filldraw [color=gray, opacity=0.15] (10.4,0) -- (10.75,0.8) -- (14.7,8.9) -- (10.7,0.8);
-
                 \put(5,5){\pgfuseimage{logo1_title}}
                 \put(345,25){\pgfuseimage{logo3}}
             \end{tikzpicture}
@@ -30,29 +28,14 @@
 
 \newcommand{\vertical}{
     \usebackgroundtemplate{
-
         \begin{picture}(100,256)(0,0)
-
             \begin{tikzpicture}
                 \filldraw [color=UHHRed] (0, 0) -- (0, 0);
-
                 \filldraw [color=gray, opacity=0.15] (13.7,8.9) -- (15.4,1.4) -- (15.24,2);
-
                 \filldraw [color=UHHRed]   (14.5, 0) -- (16, 1.8) -- (16, 2) ;
-                
-
                 \put(410,205){\pgfuseimage{logo2_medium}}
             \end{tikzpicture}
-     
         \end{picture}
-
-        % \begin{picture}(100,256)(0,0)
-        %     \put(0,0){
-        %         \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}\end{beamercolorbox}
-        %      }
-        %     \put(0,0){\pgfuseimage{vertical}}
-        %     \put(410,205){\pgfuseimage{logo2_medium}}
-        % \end{picture}
     }
 
    \setDefaultConfig
