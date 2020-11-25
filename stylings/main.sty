@@ -1,0 +1,104 @@
+%!TEX root = ../main.tex
+
+\ProvidesPackage{stylings/main}[2019/10/15]
+\usepackage[sfdefault]{roboto}  
+\usepackage{tikz}
+\usepackage[T1]{fontenc}
+\usepackage{array}
+\usepackage{ifthen}
+\usepackage{colortbl}
+\usepackage{adjustbox}
+
+\mode<presentation>
+\usefonttheme[onlymath]{serif}
+
+\usepackage{stylings/color}
+
+\newcommand{\setLogos}[2]{
+    \pgfdeclareimage[height=12mm]{logo1_title}{#1}
+    \pgfdeclareimage[height=10mm]{logo2_small}{#2}
+    \pgfdeclareimage[width=13mm]{logo2_medium}{#2}
+    \pgfdeclareimage[height=15mm]{logo3}{assets/img/uhh-gray.png}
+}
+
+\newcommand{\setDefaultConfig}{
+    \color{DarkGray} %Primary 
+    \setbeamercolor{bgcolor}{fg=PrimaryColor}
+    \setbeamercolor{normal}{fg=DarkGray}
+    \setbeamercolor{title}{fg=DarkGray}
+    \setbeamercolor{frametitle}{fg=DarkGray}
+    \setbeamercolor{structure}{fg=PrimaryColor}
+    \setbeamercolor{normal text}{fg=DarkGray,bg=white}
+    \setbeamercolor{section number projected}{bg=PrimaryColor,fg=white}
+    \setbeamercolor{itemize item}{fg=DarkGray}
+    \setbeamercolor{itemize subitem}{fg=DarkGray}
+    \setbeamercolor{itemize subsubitem}{fg=DarkGray}
+    \setbeamercolor{itemize subbody}{fg=DarkGray}
+    \setbeamercolor{itemize/enumerate body}{fg=DarkGray}
+    \setbeamercolor{itemize/enumerate subbody}{fg=DarkGray}
+    \setbeamercolor{itemize/enumerate subsubbody}{fg=DarkGray}
+    \setbeamercolor{alerted text}{fg=DarkOrange}
+    \setbeamercolor{example text}{fg=DarkGreen}
+    \setbeamercolor{block title}{fg=PrimaryColor}
+    \setbeamertemplate{frametitle}{ \vbox{}\hskip -0.5ex \vskip -3ex   \strut\insertframetitle\strut }
+}
+
+\newcommand{\setWhiteConfig}{
+    \color{white}
+    \setbeamercolor{normal}{fg=white}
+    \setbeamercolor{frametitle}{fg=white}
+    \setbeamercolor{structure}{fg=white}
+    \setbeamercolor{normal text}{fg=white,bg=white}
+    \setbeamercolor{section number projected}{bg=white,fg=white}
+    \setbeamercolor{frametitle}{fg=white}
+    \setbeamercolor{itemize item}{fg=white}
+    \setbeamercolor{itemize subitem}{fg=white}
+    \setbeamercolor{itemize subsubitem}{fg=white}
+    \setbeamercolor{itemize/enumerate body}{fg=white}
+    \setbeamercolor{itemize/enumerate subbody}{fg=white}
+    \setbeamercolor{itemize/enumerate subsubbody}{fg=white}
+    \setbeamertemplate{frametitle}{ \vbox{}\hskip -0.5ex \vskip -3ex   \strut\insertframetitle\strut }
+}
+
+\setDefaultConfig
+
+%----------------------------------------Formatting beamer elements
+\setbeamerfont{alerted text}{series=\bfseries}
+\setbeamerfont{block title}{series=\bfseries}
+
+\setbeamertemplate{section in toc}{%
+  {\inserttocsectionnumber.}~\inserttocsection
+}
+\setbeamertemplate{subsection in toc}[square]
+
+
+\setbeamertemplate{itemize item}{\scriptsize\raise1.25pt\hbox{\large\donotcoloroutermaths$\bullet$}}
+\setbeamertemplate{itemize subitem}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths$\circ$}}
+\setbeamertemplate{itemize subsubitem}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths$\blacksquare$}}
+
+\setbeamertemplate{frametitle}{ 
+    \vbox{}\hskip -0.5ex \vskip -3ex   \strut\insertframetitle\strut 
+}
+\setbeamerfont{frametitle}{size=\LARGE, series=\bfseries}
+
+\setbeamertemplate{footline}{
+    \ifnum \insertpagenumber > 1
+        \raisebox{7pt}[0pt][0pt]{
+            \makebox[\paperwidth]{\hfill\makebox[30pt]{\bfseries\scriptsize\insertframenumber/\inserttotalframenumber }}
+        }
+    \fi
+}
+\defbeamertemplate{footline}{ftln}{
+
+}
+
+\setbeamersize{text margin left=0.05\textwidth}
+\setbeamersize{text margin right=0.15\textwidth}
+\setbeamercolor{bgcolor}{bg=PrimaryColor}
+
+\usepackage{stylings/block}
+\usepackage{stylings/layout}
+
+
+
+

@@ -1,0 +1,94 @@
+%!TEX root = ../main.tex
+
+\ProvidesPackage{stylings/layout}
+
+% ---------------------------------- Define layouts backgrounds
+\pgfdeclareimage[width=\paperwidth]{vertical}{assets/layouts/vertical.pdf}
+\pgfdeclareimage[width=\paperwidth]{titlepage}{assets/layouts/intro.pdf}
+\pgfdeclareimage[width=\paperwidth]{mainpoint}{assets/layouts/mainpoint.pdf}
+
+% ----------------------------------Defining the layouts
+\newcommand{\titleLayout}{
+
+    \usebackgroundtemplate{
+   
+        \begin{picture}(100,256)(0,0)
+
+             \put(0,0){
+                \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}\end{beamercolorbox}
+             }
+            \put(0,0){\pgfuseimage{titlepage}}
+            \put(12,10){\pgfuseimage{logo1_title}}
+            \put(345,25){\pgfuseimage{logo3}}
+        \end{picture}
+
+    }
+   
+
+    \setbeamerfont{title}{series=\bfseries,parent=structure}
+    \setbeamerfont{subtitle}{size=\scriptsize,series=\bfseries,parent=structure}
+    \setbeamerfont{author}{size=\small,series=\bfseries,parent=structure}
+    \setbeamerfont{institute}{size=\scriptsize,series=\mdseries,parent=structure}
+    \setbeamerfont{date}{size=\scriptsize,series=\bfseries,parent=structure}
+    
+    
+}
+
+\newcommand{\vertical}{
+    \usebackgroundtemplate{
+        \begin{picture}(100,256)(0,0)
+            \put(0,0){
+                \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}\end{beamercolorbox}
+             }
+            \put(0,0){\pgfuseimage{vertical}}
+            \put(410,205){\pgfuseimage{logo2_medium}}
+        \end{picture}
+    }
+
+   \setDefaultConfig
+}
+\newcommand{\blank}{
+  \usebackgroundtemplate{
+    \begin{picture}(100,256)(0,0)
+        \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}
+        \end{beamercolorbox}
+    \end{picture}
+  }    
+}
+
+\newcommand{\mainpoint}{
+  \setbeamertemplate{frametitle}{}
+
+  \usebackgroundtemplate{
+    \begin{picture}(100,256)(0,0)
+        \put(0,0){
+            \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}
+            \end{beamercolorbox}    
+        }
+        \put(0,0){\pgfuseimage{mainpoint}}
+
+        % Put the frame title in the middle of page
+        \put(70,115){
+            \begin{tabular}{m{0.7\textwidth}}
+                \begin{flushleft}
+                   \selectfont 
+                   \Huge 
+                   \bfseries 
+                   \insertframetitle
+                \end{flushleft}
+            \end{tabular}
+        }
+    \end{picture}
+  
+  }
+}
+\titleLayout
+
+% Defining controls
+% --------------------------------------------
+\newcommand{\setLayout}[1]{
+    \ifthenelse{\equal{#1}{titlepage}}{\titleLayout}{}
+    \ifthenelse{\equal{#1}{vertical}}{\vertical}{}
+    \ifthenelse{\equal{#1}{mainpoint}}{\mainpoint}{}
+    \ifthenelse{\equal{#1}{blank}}{\blank}{}
+}

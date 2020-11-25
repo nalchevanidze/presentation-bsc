@@ -1,0 +1,39 @@
+%!TEX root = ./main.tex
+
+\documentclass[aspectratio=169,t,xcolor=table]{beamer}
+\input{src/ext/preamble.tex}
+
+%----------------------- Primary Definitions -----------------%
+\setPrimaryColor{DarkGray} 
+\setBGColor{UHHRed}
+\setLogos
+    {assets/logo/white-outline.pdf}
+    {assets/logo/red.pdf} 
+
+% -------------------------------------- Title Slide Information
+\begin{document}
+\title[Inf UFG]{Abbildung von GraphQL \\ auf das Haskell-Typensystem}
+\subtitle{Morpheus GraphQL}
+
+\author{Daviti Nalchevanidze}
+
+\institute[UHH] 
+{
+  Universität Hamburg\\ 
+  MIN-Fakultät\\ 
+  Fachbereich Informatik
+}
+\date{2020}
+\frame[noframenumbering]{\titlepage}
+
+%---------------------------------------------------------
+\input{src/ext/table-of-content}
+\input{src/sections}
+\input{src/ext/thanks}
+
+\setLayout{titlepage}
+\setBGColor{UHHRed}
+\titlepage
+
+\input{src/ext/ending}
+\end{document}

@@ -1,0 +1,46 @@
+%!TEX root = ../main.tex
+
+\ProvidesPackage{stylings/block}
+
+\newcommand\openBlock[1]
+ {
+    \vspace{\fill}
+    \begin{adjustbox}{max width=0.98\textwidth, trim=0 2ex 0 0,clip}
+    \begin{tabular}{!{
+        \color{#1}{\vrule width 2pt}}>{
+        \columncolor[gray]{1}
+        }
+        m{\textwidth}
+    }
+
+        % Title
+        \vspace{2px}
+        \begin{beamercolorbox}{block title} 
+        \usebeamerfont*{block title} 
+        \vbox{}
+        \vskip 0.2ex 
+        \insertblocktitle 
+
+        % Content
+        \vspace{4px}
+        \end{beamercolorbox}
+        \usebeamerfont*{block text}
+        
+ }
+
+\newcommand\closeBlock
+ {
+    \end{tabular}\end{adjustbox}
+ }
+
+% WORKING ON BLOCKS
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{block begin}{\openBlock{UHHRed}}
+\setbeamertemplate{block end}{\closeBlock}
+
+\setbeamertemplate{block alerted begin}{\openBlock{DarkOrange}}
+\setbeamertemplate{block alerted end}{\closeBlock}
+
+\setbeamertemplate{block example begin}{\openBlock{DarkGreen}}
+\setbeamertemplate{block example end}{\closeBlock}

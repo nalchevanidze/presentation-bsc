@@ -1,0 +1,53 @@
+%!TEX root = ../../main.tex
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs} 
+\usepackage{subcaption}
+\usepackage{stylings/main}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{hyperref}
+\usepackage{csquotes}
+\usepackage[
+	backend=biber,
+	style=numeric,
+	citestyle=numeric,
+	sorting=none,
+	url=false]{biblatex}
+
+\setbeamertemplate{bibliography item}[text]
+\renewcommand*{\bibfont}{\scriptsize}
+\addbibresource{ref.bib}
+
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{lipsum}
+
+
+\setcounter{tocdepth}{3}
+
+\usepackage{bbold}
+\usepackage{scalerel}[2016/12/29]
+
+\newcolumntype{M}[1]{>{$\displaystyle\qquad}p{#1}<{$}}
+
+\usepackage{appendixnumberbeamer}
+
+\usepackage{graphicx}
+\graphicspath{{assets/}}
+
+% -------------------------------------theorems--------------
+\newtheorem{conj}{Conjetura}
+\newtheorem{defi}{Definition}
+\newtheorem{teo}{Teorema}
+\newtheorem{lema}{Lema}
+\newtheorem{prop}{Proposição}
+\newtheorem{cor}{Corolário}
+\newtheorem{ex}{Example}
+\newtheorem{exer}{Exercício}
+
+\setbeamertemplate{theorems}[numbered]
+\setbeamertemplate{caption}[numbered]
