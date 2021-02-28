@@ -18,9 +18,8 @@ live:
 	latexmk -pdf --pvc
 
 clean:
-	git clean -xdf
-	# remove build folder 
-	rm -rf build
+	# git clean -xdf
+	rm -rf .build
 
 	# remove latex helpers
 	find . -name "__latexindent_temp.*" -exec rm -rf {} \;
