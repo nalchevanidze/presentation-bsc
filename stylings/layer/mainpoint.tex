@@ -1,0 +1,22 @@
+\newcommand{\mainpoint}{
+  \setbeamertemplate{frametitle}{}
+  \usebackgroundtemplate{
+    \begin{picture}(100,256)
+        \put(70,115){
+            \begin{tabular}{m{0.7\textwidth}}
+                \begin{flushleft}
+                \selectfont 
+                \Huge 
+                \bfseries 
+                \insertframetitle
+                \end{flushleft}
+            \end{tabular}
+        }
+        \begin{tikzpicture}
+            \filldraw (0,0);
+            \filldraw [color=UHHRed]   (5, 9) -- (16, 9) -- (16, 1.5) -- (14.5, 0) -- (11, 0) ;
+            \filldraw  [color=gray, opacity=0.15]  (5, 9) -- (11, 0) -- (11.2,0) ;
+        \end{tikzpicture}
+    \end{picture}  
+  }
+}
