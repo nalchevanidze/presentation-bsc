@@ -1,3 +1,5 @@
+%!TEX root = ./uhh.tex
+
 \documentclass[compress]{beamer}
 
 \usetheme{Hamburg}
@@ -66,15 +68,8 @@ sorting=ynt
 \input{src/sections/motivation}
 \input{src/sections/background}
 \input{src/sections/example}
-\input{src/ext/thanks}
+% \input{src/ext/thanks}
 
 \printbibliography
-
-\appendix
-\newcounter{finalframe}
-\setcounter{finalframe}{\value{framenumber}}
-
-%for correct counter
-\setcounter{framenumber}{\value{finalframe}}
 
 \end{document}
