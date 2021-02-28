@@ -4,25 +4,22 @@
 \input{src/ext/preamble.tex}
 \usepackage{listings}
 
-%----------------------- Primary Definitions -----------------%
+\begin{document}
+
 \setPrimaryColor{DarkGray} 
 \setBGColor{UHHRed}
-\setLogos
-    {assets/logo/uhh.pdf}
-    {assets/logo/uhh-compact.pdf} 
 
-% ---------------------- Title Slide Information
-\begin{document}
-\title[Inf UFG]{Abbildung von GraphQL \\ auf das Haskell-Typensystem}
-\subtitle{Bachelorthesis}
-
+\setLogos{assets/logo/uhh.pdf}{assets/logo/uhh-compact.pdf} 
+\title{Mapping GraphQL to the Haskell Type System}
+\subtitle{Bachelor Thesis}
 \author{Daviti Nalchevanidze}
 
 \institute[UHH] 
 {
-  Universität Hamburg\\ 
-  MIN-Fakultät\\ 
-  Fachbereich Informatik
+  University of Hamburg \\ 
+  Faculty of Mathematics, Informatics and Natural Sciences (MIN) \\
+  B.Sc. Human‐Computer Interaction (HCI)
+
 }
 \date{2020}
 \frame[noframenumbering]{\titlepage}
