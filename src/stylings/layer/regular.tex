@@ -1,0 +1,13 @@
+\newcommand{\regular}{
+    \usebackgroundtemplate{
+        \begin{picture}(100,256)(0,0)
+            \begin{tikzpicture}[x=1cm,y=1cm]
+                \filldraw [color=UHHRed] (0, 0) -- (0, 0);
+                \filldraw [color=gray, opacity=0.15] (13.7,8.9) -- (15.4,1.4) -- (15.24,2);
+                \filldraw [color=UHHRed]   (14.5, 0) -- (16, 1.8) -- (16, 2) ;
+                \put(495,400){\pgfuseimage{logo_small}}
+            \end{tikzpicture}
+        \end{picture}
+    }
+   \setDefaultConfig
+}

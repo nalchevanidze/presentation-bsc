@@ -1,0 +1,16 @@
+\newcommand{\titleLayout}{
+    \usebackgroundtemplate{
+        \begin{picture}(100,256)(0,0)
+            \begin{tikzpicture}
+                \filldraw [color=UHHRed] (0,0) -- (10.4,0) -- (10.75,0.8) -- (0,2) -- (0,0);
+                \filldraw [color=gray, opacity=0.15] (10.4,0) -- (10.75,0.8) -- (14.7,8.9) -- (10.7,0.8);
+                \put(390,150){\pgfuseimage{logo_title}}
+            \end{tikzpicture}
+        \end{picture}
+    }
+    \setbeamerfont{title}{series=\bfseries,parent=structure}
+    \setbeamerfont{subtitle}{size=\scriptsize,series=\bfseries,parent=structure}
+    \setbeamerfont{author}{size=\small,series=\bfseries,parent=structure}
+    \setbeamerfont{institute}{size=\scriptsize,series=\mdseries,parent=structure}
+    \setbeamerfont{date}{size=\scriptsize,series=\bfseries,parent=structure}
+}

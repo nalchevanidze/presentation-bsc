@@ -2,39 +2,20 @@
 
 \documentclass[aspectratio=169,t,xcolor=table]{beamer}
 \input{src/ext/preamble.tex}
-\usepackage{listings}
-
-%----------------------- Primary Definitions -----------------%
-\setPrimaryColor{DarkGray} 
-\setBGColor{UHHRed}
-\setLogos
-    {assets/logo/red.pdf}
-    {assets/logo/red.pdf} 
-
-% ---------------------- Title Slide Information
+\input{src/ext/info}
 \begin{document}
-\title[Inf UFG]{Abbildung von GraphQL \\ auf das Haskell-Typensystem}
-\subtitle{Bachelorthesis}
-
-\author{Daviti Nalchevanidze}
-
-\institute[UHH] 
-{
-  Universität Hamburg\\ 
-  MIN-Fakultät\\ 
-  Fachbereich Informatik
-}
-\date{2020}
-\frame[noframenumbering]{\titlepage}
-
-%---------------------------------------------------------
-\input{src/ext/table-of-content}
-\input{src/sections}
-\input{src/ext/thanks}
-
+\setLogos{assets/logo/uhh.pdf}{assets/logo/uhh-compact.pdf} 
 \setLayout{titlepage}
-\setBGColor{UHHRed}
+\frame[noframenumbering]{\titlepage}
+\setLayout{regular} 
+\input{src/ext/intro}
+\input{src/sections/motivation}
+\input{src/sections/background}
+\input{src/sections/example}
+\setLayout{blank}
+\input{src/ext/thanks}
+\setLayout{titlepage}
 \titlepage
-
+\setLayout{regular} 
 \input{src/ext/ending}
 \end{document}

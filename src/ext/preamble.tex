@@ -4,7 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{booktabs} 
 \usepackage{subcaption}
-\usepackage{stylings/main}
+\usepackage{src/stylings/main}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -20,7 +20,8 @@
 
 \setbeamertemplate{bibliography item}[text]
 \renewcommand*{\bibfont}{\scriptsize}
-\addbibresource{ref.bib}
+\addbibresource{bib/cite.bib}
+\addbibresource{bib/web.bib}
 
 \usepackage{array}
 \usepackage{tabularx}
@@ -35,19 +36,6 @@
 \newcolumntype{M}[1]{>{$\displaystyle\qquad}p{#1}<{$}}
 
 \usepackage{appendixnumberbeamer}
-
+\usepackage{listings}
 \usepackage{graphicx}
 \graphicspath{{assets/}}
-
-% -------------------------------------theorems--------------
-\newtheorem{conj}{Conjetura}
-\newtheorem{defi}{Definition}
-\newtheorem{teo}{Teorema}
-\newtheorem{lema}{Lema}
-\newtheorem{prop}{Proposição}
-\newtheorem{cor}{Corolário}
-\newtheorem{ex}{Example}
-\newtheorem{exer}{Exercício}
-
-\setbeamertemplate{theorems}[numbered]
-\setbeamertemplate{caption}[numbered]

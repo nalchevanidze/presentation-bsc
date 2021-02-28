@@ -1,6 +1,6 @@
-%!TEX root = ../main.tex
+%!TEX root = ../../main.tex
 
-\ProvidesPackage{stylings/block}
+\ProvidesPackage{scr/stylings/block}
 
 \newcommand\openBlock[1]
  {
@@ -14,18 +14,15 @@
     }
 
         % Title
-        \vspace{2px}
+        \vspace{2pt}
         \begin{beamercolorbox}{block title} 
-        \usebeamerfont*{block title} 
         \vbox{}
-        \vskip 0.2ex 
+        \vskip 0.2pt 
         \insertblocktitle 
 
         % Content
-        \vspace{4px}
+        \vspace{4pt}
         \end{beamercolorbox}
-        \usebeamerfont*{block text}
-        
  }
 
 \newcommand\closeBlock

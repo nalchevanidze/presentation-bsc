@@ -1,6 +1,6 @@
-%!TEX root = ../main.tex
+%!TEX root = ../../main.tex
 
-\ProvidesPackage{stylings/main}[2019/10/15]
+\ProvidesPackage{src/stylings/main}[2019/10/15]
 \usepackage[sfdefault]{roboto}  
 \usepackage{tikz}
 \usepackage[T1]{fontenc}
@@ -12,13 +12,11 @@
 \mode<presentation>
 \usefonttheme[onlymath]{serif}
 
-\usepackage{stylings/color}
+\usepackage{src/stylings/color}
 
 \newcommand{\setLogos}[2]{
-    \pgfdeclareimage[height=12mm]{logo1_title}{#1}
-    \pgfdeclareimage[height=10mm]{logo2_small}{#2}
-    \pgfdeclareimage[width=13mm]{logo2_medium}{#2}
-    \pgfdeclareimage[height=15mm]{logo3}{assets/logo/red.pdf}
+    \pgfdeclareimage[height=12mm]{logo_title}{#1}
+    \pgfdeclareimage[height=10mm]{logo_small}{#2}
 }
 
 \newcommand{\setDefaultConfig}{
@@ -40,23 +38,6 @@
     \setbeamercolor{alerted text}{fg=DarkOrange}
     \setbeamercolor{example text}{fg=DarkGreen}
     \setbeamercolor{block title}{fg=PrimaryColor}
-    \setbeamertemplate{frametitle}{ \vbox{}\hskip -0.5ex \vskip -3ex   \strut\insertframetitle\strut }
-}
-
-\newcommand{\setWhiteConfig}{
-    \color{white}
-    \setbeamercolor{normal}{fg=white}
-    \setbeamercolor{frametitle}{fg=white}
-    \setbeamercolor{structure}{fg=white}
-    \setbeamercolor{normal text}{fg=white,bg=white}
-    \setbeamercolor{section number projected}{bg=white,fg=white}
-    \setbeamercolor{frametitle}{fg=white}
-    \setbeamercolor{itemize item}{fg=white}
-    \setbeamercolor{itemize subitem}{fg=white}
-    \setbeamercolor{itemize subsubitem}{fg=white}
-    \setbeamercolor{itemize/enumerate body}{fg=white}
-    \setbeamercolor{itemize/enumerate subbody}{fg=white}
-    \setbeamercolor{itemize/enumerate subsubbody}{fg=white}
     \setbeamertemplate{frametitle}{ \vbox{}\hskip -0.5ex \vskip -3ex   \strut\insertframetitle\strut }
 }
 
@@ -96,8 +77,8 @@
 \setbeamersize{text margin right=0.15\textwidth}
 \setbeamercolor{bgcolor}{bg=PrimaryColor}
 
-\usepackage{stylings/block}
-\usepackage{stylings/layout}
+\usepackage{src/stylings/block}
+\usepackage{src/stylings/layout}
 
 
 

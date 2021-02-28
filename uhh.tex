@@ -1,0 +1,71 @@
+%!TEX root = ./uhh.tex
+
+\documentclass[compress]{beamer}
+
+\usetheme{Hamburg}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{lmodern}
+
+%\usepackage[english]{babel}
+\usepackage[ngerman]{babel}
+
+\usepackage{eurosym}
+\usepackage{listings}
+\usepackage{lstautogobble}
+\usepackage{microtype}
+\usepackage{textcomp}
+\usepackage{units}
+
+% bibliography settings
+\usepackage[
+backend=biber,
+style=alphabetic,
+citestyle=authoryear,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib/cite.bib}
+\addbibresource{bib/web.bib}
+
+\usepackage{todonotes}
+\usepackage{silence}
+
+\WarningFilter{latex}{Marginpar} 
+\WarningFilter{latexfont}{Font shape}
+\WarningFilter{latexfont}{Some font}
+\usepackage{changes}
+
+\lstset{
+	basicstyle=\ttfamily\footnotesize,
+	frame=single,
+	numbers=left,
+	language=C,
+	breaklines=true,
+	breakatwhitespace=true,
+	postbreak=\hbox{$\hookrightarrow$ },
+	showstringspaces=false,
+	autogobble=true,
+	upquote=true,
+	tabsize=4,
+	captionpos=b,
+	morekeywords={int8_t,uint8_t,int16_t,uint16_t,int32_t,uint32_t,int64_t,uint64_t,size_t,ssize_t,off_t,intptr_t,uintptr_t,mode_t}
+}
+
+\input{src/ext/info}
+
+\titlegraphic{\includegraphics[width=0.3\textwidth]{assets/logo/uhh.pdf}}
+
+\begin{document}
+
+\input{src/ext/intro}
+\input{src/sections/motivation}
+\input{src/sections/background}
+\input{src/sections/example}
+\input{src/ext/thanks}
+
+\printbibliography
+
+\end{document}
