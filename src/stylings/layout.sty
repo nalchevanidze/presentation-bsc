@@ -5,7 +5,7 @@
 
 % ----------------------------------Defining the layouts
 \input{src/stylings/layer/title}
-\input{src/stylings/layer/vertical}
+\input{src/stylings/layer/regular}
 \input{src/stylings/layer/mainpoint}
 \input{src/stylings/layer/blank}
 
@@ -15,7 +15,7 @@
 % --------------------------------------------
 \newcommand{\setLayout}[1]{
     \ifthenelse{\equal{#1}{titlepage}}{\titleLayout}{}
-    \ifthenelse{\equal{#1}{vertical}}{\vertical}{}
+    \ifthenelse{\equal{#1}{regular}}{\regular}{}
     \ifthenelse{\equal{#1}{mainpoint}}{\mainpoint}{}
     \ifthenelse{\equal{#1}{blank}}{\blank}{}
 }
