@@ -1,11 +1,48 @@
 \section{Conclusions}
 
-\begin{frame}
-
-\frametitle{Conclusions}
+\begin{frame}\frametitle{Conclusions}
 
 In this work, we presented Morpheus GraphQL, an EDSL for building GraphQL APIs in Haskell. The presented approach provides an easy-to-use interface based on a datatype-generic programming technique and successfully implements the requirements. We chose intuitive design (like Aeson) over extensibility provided by the type-level encoding. 
 This gives beginners the ability to quickly learn and implement GraphQL APIs in Haskell while preserving type safety.
 The library automatically derives APis from data types, which guarantees type-safe resolver values. We also provide two Template Haskell tools, one of which guarantees schema validity at compile time. The second one imports schemas from GraphQL SDL to facilitate quick start and migration from other languages.
 The data resolvers are regular monadic Haskell functions. These resolvers can be extended by arbitrary monads to solve specific problems.  The architecture is divided into small independent packages. Besides, one of the packages, the Morpheus GraphQL client, enables type-safe queries by rejecting invalid queries at compile-time and automatically generating the request and response types.
+\end{frame}
+
+
+\subsection{Outlook}
+\begin{frame}\frametitle{Outlook}
+
+\begin{block}{Support Interfaces}
+
+Our approach only provides a workaround for GraphQL interfaces that simulates it but does not provide the specified behavior. 
+A promising alternative is the representation of interfaces with "type guards" on unions. This approach proposes that we take a union type and guard its fields with an interface, where the interface is a Haskell record. The compiler will fail if a variant of union type does not provide all the fields required for the interface.
+
+\end{block}
+
+\begin{block}{Type-Level Curried Arguments}
+
+This technique provides more straightforward argument definitions for a small number of arguments than our current approach since the user does not have to define a new data type (representing arguments) for each field. Therefore, we think that a future version of Morpheus GraphQL should provide a similar feature. 
+
+\end{block}
+
+\begin{block}{Custom Collections}
+
+the problem of custom collections. Since GraphQL has only one type (List) for collections, we cannot represent collections with certain constraints. For example, if we take the type Set, which guarantees the elements' uniqueness, or NonEmpty, the list with at least one element. They can be represented just with ordinary lists.  However, suppose we could communicate their behavior to the client. In that case, client applications could eliminate invalid queries before they are sent and would not need to validate response types. For example, the client would not need to check if elements are unique or if a list is not empty.  As an alternative, we could communicate constraints with GraphQL descriptions, but that poses the risk that client applications will break whenever the constraints change. For example, when the client assumes that the list is not empty. However, the server replaces it with a regular list after some time. The client is not informed about this and learns about it only at runtime.
+
+\end{block}
+
+\begin{block}{Support Directives} 
+
+The GraphQL language introduces concept directives, which can be defined by the schema and are used to annotate different parts of a GraphQL document to indicate that they should be evaluated differently~\cite{gql-spec}. Since the GraphQL specification does not specify a particular implementation strategy for directives, it is up to each server library to provide a suitable API~\cite{schema-directives}.
+
+Our current approach does not provide a solution for this feature (neither do other Haskell libraries), but we would like to provide it in a type-safe form. We have already tried programming at the type level, but this has not been successful yet and requires further investigation. An alternative could be to use Template Haskell. 
+
+\end{block}
+
+\begin{block}{Support Input Unions} 
+
+Since we aim to provide a schema-first API based on datatype-generic programming, we have to map all possible data types into GraphQL. This requires the representation of Haskell data types with multiple variants used as input values into GraphQL input unions. Currently, GraphQL does not support input unions. While this function's value is essentially understood, its implementation is not cleared and has been debated by the GraphQL community for many years, leading to several proposals~\cite{gql-spec-input-unions}. Our current library preliminarily represents it as an input object with excluding fields (so-called "One Of (Tagged Union)" proposal). However, GraphQL clients cannot recognize them and validate input values based on them. 
+
+\end{block}
+
 \end{frame}
