@@ -85,6 +85,56 @@ This missing feature gave rise to many discussions and proposals to support poly
 
 \end{frame}
 
+\begin{frame}\frametitle{Monads}
+
+Besides the type classes, the monads are among the most characteristic features in Haskell. Haskell represents monads with the help of type classes. The class monad allows every type constructor, which has accordingly typed unit and binding operators, to be a monad. 
+This states that we can write useful monadic combinators, which work for every monad. 
+This combination of monads and type classes made each other much more attractive and gave rise to entire Haskell libraries with monadic functions that work for any monad~\cite{history-of-haskell}. 
+
+\importHS{monad}{Monad in Haskell~\cite{history-of-haskell}}
+
+Pure languages facilitate changes by making the data visible on which each operation depends. However, a seemingly small change may require more extensive restructuring than impure functions.  Programming with monads solves this inflexibility and brings properties that are characteristic only of impure functions~\cite{essence-of-fp}.
+
+The concept of monads comes from category theory but has come to represent a kind of programming pattern~\cite{essence-of-fp,history-of-haskell}. It  is formed by a type constructor \expr{M} and a pair of functions, \expr{unitM} (also \expr{return}) and \expr{bindM} (also \expr{>>=})~\cite{history-of-haskell,essence-of-fp}. Listing \ref{ls:hs:monad} represents these types:
+
+The type \expr{M a} is a computation that returns a value of type \expr{a} and possibly performs some side effects~\cite{history-of-haskell}. The purpose of \expr{unitM} and \expr{bindM} is to push a value into computation and to evaluate a computation, yielding a value~\cite{essence-of-fp}.
+
+Say that \expr{comp1} is an expression of type \expr{M a} and \expr{comp2} is an expression of type \expr{M b}. Then with a free variable \expr{x} of type \expr{a} the expression \expr{bindM comp1 (x -> comp2)} has type \expr{M b}, where expression performs the computation indicated by \expr{comp1}, binds the value returned to \expr{x}, and performs the computation indicated by \expr{comp2}~\cite{history-of-haskell}.
+
+In some languages, types do not indicate the presence of the side effects: there, \expr{comp1} is of type \expr{a} instead of \expr{M a} and \expr{comp2} is of type \expr{b} instead of \expr{M b}. Therefore it is impossible to determine from the signature if the function has side effects. Consequently, language uses a single built-in notion of computation and sequencing. In contrast, the monads leave quite a lot of freedom to define the operations and their order of execution~\cite{history-of-haskell}.
+
+There are several different instances of monads handling side effects. For example, a state transformer enables the sharing of a state in a program. It accepts a state that can be read or modified by the computations. A simplified version of a state transformer is a state reader. It accepts a state, but the computations never change it. One of the well-known variants of the monad is a list that stores values of a specific type ~\cite{history-of-haskell}.
+
+
+\end{frame}
+
+\begin{frame}\frametitle{Datatype-Generic Programming}
+    
+ For some domains, such as encoding and decoding, most of the procedures are the same. However, the data types differ, requiring the complete functionalities to be rewritten. Datatype-generic programming is a technique for tackling this issue by automatically generating programs depending on these data types~\cite{comparing-generic-approaches, datatype-generic-programming}. 
+    It enables writing single (called generic or polytypic) functions that address various cases and types. The standard examples are parsing,  serialization, or comparing of data types~\cite{derivable-type-classes}.
+    
+    The term "generic" is an overused adjective in computer science. 
+    Various programming languages provide generic packages 
+    representing different ideas. 
+    Usually, it indicates that a concept allows abstractions over a larger class of entities. 
+    However, most often, "generic" refers to parametric polymorphism, 
+    ad hoc polymorphism, inheritance, or meta-programming~\cite{optimizing-generics,datatype-generic-programming}.  
+    For this work, the term "generic programming" means a form of programming in which a function takes a type as an argument and performs appropriate behavior depending on its structure. 
+    This kind of generic programming is also called datatype-generic programming~\cite{comparing-generic-approaches, datatype-generic-programming}.
+    It increases the reliability of programs by reducing code duplication and improving reusability and modularity~\cite{optimizing-generics}.
+    The core concept is that it makes programming languages flexible while still guaranteeing safety~\cite{datatype-generic-programming}.
+    There are many datatype-generic programming approaches that vary in sophistication and target audience~\cite{comparing-generic-approaches, optimizing-generics}.
+    In this section, we will discuss the standard Haskell approach.
+    
+    Let us examine the data type  \expr{Computation} in \refHS{deriving-node}. 
+    To define the equality instance for this data type, we must first check whether both values have the same constructor. In the second step, we must check whether each field of the constructors is equal, which requires an equality instance for its type variable \expr{a}. Since the equality check is programmable, Haskell provides a so-called "deriving" clause that instructs the compiler to generate the "boilerplate" for equality~\cite{derivable-type-classes, meta-hs}. 
+    
+    \importHS{generics}{Generic Deriving}
+    
+    However, if we want to define our derivable programs like encoders or decoders for arbitrary types, we can use the Haskell package GHC.Generics~\cite{ghc-generics}. The basic idea behind it is to represent all types and values by a small set of data types, which are also called generic representation types. They are the building blocks of the structural representation of all other types~\cite{optimizing-generics}.
+    Using the \expr{from} and \expr{to} functions, the user can convert arbitrary types to their generic representation, operate on them, and convert them back to their original types~\cite{optimizing-generics,history-of-haskell, ghc-generics}.
+
+\end{frame}
 
 \begin{frame}{GraphQL}
 
