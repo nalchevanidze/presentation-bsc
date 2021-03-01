@@ -1,30 +1,58 @@
 %!TEX root = ../../main.tex
 
+\newcommand{\importGQL}[2]{
+    \lstinputlisting[
+        caption={#2},
+        label={ls:gql:#1}
+    ]{src/code/#1.gql}   
+}
+
+\newcommand{\importHS}[2]{
+    \lstinputlisting[
+        language={haskell},
+        caption={#2},
+        label={ls:hs:#1}
+    ]{src/code/#1.hs}   
+}
+
+\newcommand{\expr}[1]{\hspace{0.2mm}\mbox{\textcolor{green!35!blue!55!black}{\texttt{#1}}}}
+
+
 \section{Background}
 
 \begin{frame}\frametitle{Haskell}
 
     \footnotesize
     \begin{block}{Haskell}
-        Eine \alert{nicht strenge}, \alert{rein funktionale} Sprache mit statischer 
-        Typisierung und algebraischen Datentypen \cite{history-of-haskell}.
+        Haskell is a non-strict, purely functional language with static typing and algebraic data types. It is a rich language that offers useful features such as currying, infix-prefix operations, anonymous functions, list comprehensions, and monads. In order to easily distinguish constructors, it allows only capitalized constructors and disallows them for variables. Besides, the language contains type system extensions like polymorphic recursion, higher-rank types, lexically scoped type variables, generic programming, template meta-programming,  and much more. Many developers think that Haskell programs look nice~\cite{history-of-haskell}.
     \end{block}
 
-    \begin{block}{Merkmale}
-        eine reichhaltige Sprache, die nützliche Funktionen wie 
-        Currying, Infix-Präfix-Operationen, anonyme Funktionen und
-        Listenverständnis, Monaden, 
-        generische Programmierung, 
-        Template-Meta-Programmierung 
-        ..usw. bietet \cite{history-of-haskell}.
-    \end{block}
+    \begin{block}{The following topics outline Haskell's main goals and principles}
+    
+        \begin{itemize}
+            \item Haskell is lazy: 
+            Laziness was indeed the primary concern in Haskell's design. Technically, Haskell is a non-strict semantic language; lazy evaluation is merely an implementation technique for a non-strict language.  However, since laziness has its price 
+            , the language also offers some strict features~\cite{history-of-haskell}.
+    
+            \item Haskell is pure: Due to laziness, the evaluation sequence is demand-oriented, a function call can no longer guarantee reliable performance of side effects. Consequently, the pure design is inevitable. Since input and output operations can be painfully complicated without side effects, the Haskell developers have developed a new approach called monadic IO, which is one of Haskell's most important contributions to the world~\cite{history-of-haskell}.
+        \end{itemize}
 
-    \begin{block}{Haskell ist schön}
-        Viele Entwickler behaupten, dass Haskell-Programme schön aussehen. 
-        \cite{history-of-haskell} 
     \end{block}
 
 \end{frame}
+
+\begin{frame}\frametitle{Algebraic Data Types}
+
+Algebraic data types and pattern matching are fundamental to most modern functional languages~\cite{trees-that-grow}. Using pattern matching against algebraic data types improves readability significantly. Although algebraic data types are very modern, the concept already appeared in 1977 in works by Burstall~\cite{history-of-haskell}.
+    
+An algebraic data type is the sum of one or more alternatives, where each alternative is a product of zero or more fields (Haskell also allows a sum of zero alternatives, the so-called empty type)~\cite{history-of-haskell}. 
+
+Listing  declares \expr{Maybe} as data type, with two data constructors, \expr{Nothing} and \expr{Just}. The values of type \expr{Maybe} take one of two forms: either \expr{Nothing} or \expr{Just x}. Constructors can be used in pattern matching to decompose both a value of type and an expression~\cite{history-of-haskell}. As useful as algebraic data types may be, they also have their limitations. Once a data type is defined and compiled, its definition cannot be extended by adding new data constructors (or new fields)~\cite{trees-that-grow}.
+    
+\importHS{maybe}{Algebraic Data Types in Haskell~\cite{history-of-haskell}}
+
+\end{frame}
+
 
 \begin{frame}{GraphQL}
 
@@ -44,6 +72,10 @@
     \end{block}
 
 \end{frame}
+
+
+
+
 
 
 % \section{Morpheus GraphQL}
