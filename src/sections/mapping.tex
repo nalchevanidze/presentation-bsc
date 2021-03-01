@@ -124,10 +124,10 @@ This technique allows types to be defined independently of the resolver operatio
 
 \subsection{Unions}
 \begin{frame}\frametitle{Unions}
-GraphQL unions represent an object, one of the possible alternative object types, but do not provide guaranteed fields between them~\cite{gql-spec}.
-This definition is very similar to the definition of algebraic data types, but Haskell presents it in different ways. While in GraphQL, we only refer to the object type in the list of possible types, in Haskell, we put each of them into a specific constructor. Furthermore, in Haskell, we can create alternative objects only with constructors without defining their types.
 
-we can generate GraphQL object types \expr{Cat} and \expr{Dog} for the two constructors of the data type \expr{Animal} and build a GraphQL union type from them. However, it raises difficulties if some member type is already defined.
+GraphQL unions represent an object, one of the possible alternative object types, but do not provide guaranteed fields between them~\cite{gql-spec}. This definition is very similar to the definition of algebraic data types, but Haskell presents it in different ways. While in GraphQL, we only refer to the object type in the list of possible types, in Haskell, we put each of them into a specific constructor. Furthermore, in Haskell, we can create alternative objects only with constructors without defining their types.
+
+% we can generate GraphQL object types \expr{Cat} and \expr{Dog} for the two constructors of the data type \expr{Animal} and build a GraphQL union type from them. However, it raises difficulties if some member type is already defined.
 
 % \importHS{morpheus/code}{union}{Mapping GraphQL Union}
 
@@ -137,15 +137,14 @@ we can generate GraphQL object types \expr{Cat} and \expr{Dog} for the two const
 
 % \importHS{morpheus/code}{union-mixed}{Mapping GraphQL Union}
 
+\importHS{union-unpack}{Union Types}
+\importGQL{union-unpack}{Union Types}
+
 % On the one hand, we could unpack single field constructors where a field type is an object, but that does not work because the constructor \expr{Cat} also has a single field \expr{name} with the object type \expr{Name}.  On the other hand, we could unpack single-field constructors with a name prefixed with "Unpack," but that would allow multiple unpacking of the same type in a single union. Therefore, we unpack constructors, where the name is the concatenation of the type constructor name and the referencing type name. That way, the compiler in \refHS{union-unpack} unpacks the type \expr{Dog} but generates a new object type \expr{Cat}.
 
-% \importHS{morpheus/code}{union-unpack}{
-% Unpacking Union Types from Data Type Constructors
-% }
 
-% \importGQL{morpheus/code}{union-unpack}{
-%   GraphQL Schema Representing \refHS{union-unpack}
-% }
+
+
 
 % So far, we have only covered alternatives 
 % with at least one field, but we also have 
