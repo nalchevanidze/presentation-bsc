@@ -1,53 +1,64 @@
 \section{Evaluation}
-\begin{frame}
-    \frametitle{Evaluation}
 
+\begin{frame}\frametitle{Evaluation}
+
+\begin{block}{Maintainability}
+
+  \begin{itemize}
+  
+    \li{Low Boilerplate} The library follows a code-first approach and provides EDSL based on data-type-generic programming. As we know, this approach reduces boilerplate and improves maintainability. % redundancy
+    The user has to specify a manual encoder-decoder definition only for the wrapper and scalar types. For the remaining types, encoder, decoder, and type definitions are derived automatically.
+    Schema types are automatically collected by 
+    the graph search algorithm. As a result, API building does not require boilerplate codes.
+
+    \li{Familiarity} The APIs are derived from native Haskell types, which is already well known to Haskell developers and satisfies the familiarity requirement.  
+
+    \li{Modularity}
+      The library architecture divides functionalities into separate, coherent packages. 
     
+      The modularity of the API definition is achieved by introducing parameterized resolver types. They decouple the types from the accessible operations, and thus one can use one data type for different operations.
 
-\subsection{Maintainability}
+  \end{itemize}
 
-The Maintainability requirement includes the following aspects: low boilerplate, familiarity, and modularity \seeSection{requirements}.  
-
-\paragraph{Low Boilerplate} The library follows a code-first approach and provides \gls{edsl} based on data\-type-generic programming. As we know, this approach reduces boilerplate and improves maintainability \seeSection{design}. % redundancy
-The user has to specify a manual encoder-decoder definition only for the wrapper and scalar types. For the remaining types, encoder, decoder, and type definitions are derived automatically.
-Schema types are automatically collected by 
-the graph search algorithm \seeSection{schema-deriving}. 
-As a result, \gls{api} building does not require boilerplate codes.
-
-\paragraph{Familiarity} The \gls{apis} are derived from native Haskell types, which is already well known to Haskell developers and satisfies the familiarity requirement \seeSection{design}.  
-
-\paragraph{Modularity}
-As we know from the requirements, we discuss modularity in two contexts, the library architecture and the \gls{api} definition approach.
-The library architecture divides functionalities into separate, coherent packages \seeSection{arc}. Third-party applications can use these packages independently. Moreover, a developer can implement a new server package with custom derivation and still combine it with the subscription package. The modularity of the \gls{api} definition is achieved by introducing parameterized resolver types \seeSection{design}. They decouple the types from the accessible operations, and thus one can use one data type for different operations.
+\end{block}
 
 
-\subsection{Reliability}
+\begin{block}{Reliability}
 
 The reliability requirement considers the following two factors: type safety and GraphQL specification compliance.
 
-\paragraph{Type Safety} To ensure type safety, we have formulated several criteria with specific questions \seeSection{requirements}. The following statements show how our library meets these.
-  
-  \begin{enumerate}
+\begin{itemize}
 
-    \li{Deterministic deriving} The mapping rules cover all Haskell algebraic data types and assign them specific types, encoder, and decoder, depending on the case. Unsupported cases are reported at compile time. Therefore, the same Haskell code will always derive the same GraphQL \gls{api}. 
-
-    \li{Resolver validity} Since we define schema based on native data types, the Haskell compiler reports any value mismatch at compile time. In this way, the Haskell compiler guarantees the validity of the resolver types.
+  \li{Type Safety} To ensure type safety, we have formulated several criteria with specific questions. The following statements show how our library meets these.
     
-    \li{Schema validity} Haskell and GraphQL adopt different types of type systems. That why the Haskell compiler cannot check the validity of all GraphQL-specific rules. Therefore, to ensure schema validity, we provide the function \expr{compileTimeSchemaValidation}, which takes the \expr{RootResolver} type signature and fails if the schema is invalid.
-  
-    \li{Type-safe subscriptions} As We know \seeSection{resolver-monad}, the communication between subscription and mutation is based on the resolver monad, which uses the type parameter \expr{event} to ensure that the user subscription receives the same event type that the mutation publishes.   As a result, type-safe subscriptions are achieved.
+    \begin{enumerate}
 
-  \end{enumerate}
+      \li{Deterministic deriving} The mapping rules cover all Haskell algebraic data types and assign them specific types, encoder, and decoder, depending on the case. Unsupported cases are reported at compile time. Therefore, the same Haskell code will always derive the same GraphQL API. 
 
-\paragraph{Complience with GraphQL Specifications} 
-The library meets all the critical parts of the specifications. However, there are also small deviations in favor of flexibility, e.g., the use of \expr{Int} instead of \expr{Int32}. Moreover, interfaces and directives are still not fully implemented. Since Haskell does not have a similar concept to GraphQL interfaces, the library does not fully implement the interfaces but provides a workaround. The library implements standard directives but does not support custom directives because we have not found a type-safe solution for them.
+      \li{Resolver validity} Since we define schema based on native data types, the Haskell compiler reports any value mismatch at compile time. In this way, the Haskell compiler guarantees the validity of the resolver types.
+      
+      \li{Schema validity} Haskell and GraphQL adopt different types of type systems. That why the Haskell compiler cannot check the validity of all GraphQL-specific rules. Therefore, to ensure schema validity, we provide the function \expr{compileTimeSchemaValidation}, which takes the \expr{RootResolver} type signature and fails if the schema is invalid.
+    
+      \li{Type-safe subscriptions} As We know, the communication between subscription and mutation is based on the resolver monad, which uses the type parameter \expr{event} to ensure that the user subscription receives the same event type that the mutation publishes.   As a result, type-safe subscriptions are achieved.
 
-\subsection{Efficiency} We avoid bad patterns that could reduce performance, e.g., we used the type \expr{Text} instead of \expr{String}. 
-With the help of parameterized object types, the resolver monad, and the lazy nature of Haskell, the library only executes the resolvers necessary for the query. The library is extensible with \HAXL{}, which allows efficient reuse of resolvers without running into the n+1 selects problem.
+    \end{enumerate}
 
-\subsection*{General Overview}
+  \li{Complience with GraphQL Specifications} The library meets all the critical parts of the specifications. However, there are also small deviations in favor of flexibility, e.g., the use of \expr{Int} instead of \expr{Int32}. Moreover, interfaces and directives are still not fully implemented. Since Haskell does not have a similar concept to GraphQL interfaces, the library does not fully implement the interfaces but provides a workaround. The library implements standard directives but does not support custom directives because we have not found a type-safe solution for them.
 
-Our prototype meets our predefined requirements, with an acceptable tradeoff between flexibility and compliance. We provide a straightforward approach to GraphQL \gls{api} definitions while still guaranteeing type safety. Besides, users can achieve efficiency in the combination of \Morpheus{} and \HAXL{}, as GraphQL solves over-fetching and under-fetching problems for a client and  \HAXL{} for the backend.
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Efficiency} We avoid bad patterns that could reduce performance, e.g., we used the type \expr{Text} instead of \expr{String}. 
+With the help of parameterized object types, the resolver monad, and the lazy nature of Haskell, the library only executes the resolvers necessary for the query. The library is extensible with Haxl, which allows efficient reuse of resolvers without running into the n+1 selects problem.
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}\frametitle{General Overview}
+
+Our prototype meets our predefined requirements, with an acceptable tradeoff between flexibility and compliance. We provide a straightforward approach to GraphQL API definitions while still guaranteeing type safety. Besides, users can achieve efficiency in the combination of Morpheus GraphQL and Haxl, as GraphQL solves over-fetching and under-fetching problems for a client and  Haxl for the backend.
 
 Nevertheless, we run into some limitations: First, Haskell permits different naming of values and types than GraphQL. Second, sets and non-empty collections cannot be modeled in GraphQL because it provides only list types for collections. Therefore, sets and non-empty collections are represented to GraphQL clients with regular lists, and the client cannot check the validity of input values at compile time. Third, since Haskell makes no distinction between input and output types, mapping Haskell types requires support for input unions, which is not supported by GraphQL. Fourth, Haskell does not provide interfaces, so we do not yet have a satisfying way to support them. 
 \end{frame}
