@@ -88,7 +88,7 @@ Besides scalar types, enum types are leaf values too, but in contrast, they desc
 
 \end{frame}
 
-\begin{frame}\frametitle{Objects}
+\begin{frame}\frametitle{Objects, Input Object, Interfaces}
 
 \subsection{Input Objects}
 
@@ -106,6 +106,13 @@ Therefore we will use them for representation.  Note that only the types with a 
 \end{frame}
 
 \begin{frame}\frametitle{Objects}
+
+% \subsection{Interfaces}
+% \label{sec:mapping:interfaces}
+
+% As in object, interfaces represent a list of named fields and their arguments. Therefore the same rules apply to their fields as to object fields. Apart from their similarities, there are two main differences. First, an object can implement interfaces, which requires that the object type defines all fields defined by these interfaces. Second, an interface cannot implement another interface~\cite{gql-spec}.
+
+% Haskell has no features like GraphQL interfaces. We can consider type classes as GraphQL interfaces, but they cannot be derived with generics, and we cannot cast them for additional fields in the GraphQL query. Accordingly, our current approach only simulates them and derives them like objects.
 
 GraphQL objects are a set of named fields, where fields themselves consist of argument and return type~\cite{gql-spec}. Hence before we try to define an object, we will define its components.
 
@@ -158,14 +165,6 @@ GraphQL unions represent an object, one of the possible alternative object types
 % the field does not contain any information 
 % and reduces confusion . 
 % As a result, \refHS{union-empty-cons} generates the schema defined in \refGQL{union-empty-cons}. As we can see, the GraphQL object \expr{Cat} represents the constructor \expr{Cat}, and the GraphQL object \expr{Unidentified} with only the field \expr{\_} represents the empty constructor \expr{Unidentified}. 
-
-
-% \subsection{Interfaces}
-% \label{sec:mapping:interfaces}
-
-% As in object, interfaces represent a list of named fields and their arguments. Therefore the same rules apply to their fields as to object fields. Apart from their similarities, there are two main differences. First, an object can implement interfaces, which requires that the object type defines all fields defined by these interfaces. Second, an interface cannot implement another interface~\cite{gql-spec}.
-
-% Haskell has no features like GraphQL interfaces. We can consider type classes as GraphQL interfaces, but they cannot be derived with generics, and we cannot cast them for additional fields in the GraphQL query. Accordingly, our current approach only simulates them and derives them like objects.
 
 \end{frame}
 
