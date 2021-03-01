@@ -17,6 +17,8 @@
 
 \newcommand{\expr}[1]{\hspace{0.2mm}\mbox{\textcolor{green!35!blue!55!black}{\texttt{#1}}}}
 
+\newcommand{\refGQL}[1]{Listing \ref{ls:gql:#1}}
+\newcommand{\refHS}[1]{Listing \ref{ls:hs:#1}}
 
 \section{Background}
 
@@ -43,13 +45,43 @@
 
 \begin{frame}\frametitle{Algebraic Data Types}
 
-Algebraic data types and pattern matching are fundamental to most modern functional languages~\cite{trees-that-grow}. Using pattern matching against algebraic data types improves readability significantly. Although algebraic data types are very modern, the concept already appeared in 1977 in works by Burstall~\cite{history-of-haskell}.
-    
 An algebraic data type is the sum of one or more alternatives, where each alternative is a product of zero or more fields (Haskell also allows a sum of zero alternatives, the so-called empty type)~\cite{history-of-haskell}. 
 
-Listing  declares \expr{Maybe} as data type, with two data constructors, \expr{Nothing} and \expr{Just}. The values of type \expr{Maybe} take one of two forms: either \expr{Nothing} or \expr{Just x}. Constructors can be used in pattern matching to decompose both a value of type and an expression~\cite{history-of-haskell}. As useful as algebraic data types may be, they also have their limitations. Once a data type is defined and compiled, its definition cannot be extended by adding new data constructors (or new fields)~\cite{trees-that-grow}.
+Algebraic data types and pattern matching are fundamental to most modern functional languages~\cite{trees-that-grow}. Using pattern matching against algebraic data types improves readability significantly~\cite{history-of-haskell}.
     
-\importHS{maybe}{Algebraic Data Types in Haskell~\cite{history-of-haskell}}
+
+Listing  declares \expr{Maybe} as data type, with two data constructors, \expr{Nothing} and \expr{Just}. The values of type \expr{Maybe} take one of two forms: either \expr{Nothing} or \expr{Just x}. Constructors can be used in pattern matching to decompose both a value of type and an expression~\cite{history-of-haskell}. 
+    
+\importHS{maybe}{Algebraic Data Types~\cite{history-of-haskell}}
+
+algebraic data types also have their limitations. Once a data type is defined and compiled, its definition cannot be extended by adding new data constructors (or new fields)~\cite{trees-that-grow}.
+
+\end{frame}
+
+\begin{frame}\frametitle{Records}
+    
+    Early versions of Haskell provided only positional notation and pattern matching to build and decompose user-defined data types. This positional notation is cumbersome and error-prone for handling data types with many components, which is quite common in real-world applications. Therefore, later versions of Haskell introduced minimalistic record syntax as a labeled field~\cite{lw-ext-records, history-of-haskell}.
+The record system provides syntactic sugar for what might 
+otherwise be written using ordinary, positional, 
+algebraic data type declarations~\cite{lw-ext-records}. For example, 
+the data type \expr{Deity} \seeHS{records-def} declares a regular algebraic data type, 
+but at the same time, 
+constructor field accessors and modifiers. 
+
+\snippetHS{records}{Haskell Record}
+
+Record characteristics bring significant advantages and greatly simplify programming with data structures that have many components. Since the individual components are accessed by name (not by position), the fields' ordering is not crucial~\cite{lw-ext-records}.
+In \refHS{record-values}, for example, 
+the same record value can be written either way.
+
+However, records also introduce some considerable problems; for example, 
+no field name can be used in more than one data type~\cite{lw-ext-records}.
+Another weakness of Haskell record systems is that there is no support for extensibility. 
+There are no operators for adding and removing fields in a record~\cite{poly-ext-records, hlist}. 
+Moreover, labels are not first-class citizens, 
+meaning we cannot reuse labels between different record types, 
+nor can we treat labels as data~\cite{hlist}.
+This missing feature gave rise to many discussions and proposals to support polymorphic extensible records with different approaches, such as \gls{trex} or \gls{h-list} \seeSection{hlist}~\cite{history-of-haskell, poly-ext-records, hlist, basic-tlp}.
 
 \end{frame}
 
