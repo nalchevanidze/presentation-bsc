@@ -1,0 +1,14 @@
+
+\section{Schema Derivation} 
+\begin{frame}\frametitle{Schema Derivation}
+
+GraphQL models the schema as a graph, where nodes are types (objects), and the type consists of fields. These fields have a name and a reference to another type (edges). Technically, the graph starts with a root node that branches to query subscription and mutation nodes and then to API-specific types~\cite{migrating-to-gql}. Accordingly, the deep-first search, starting from the root node, can derive all schema types. Therefore, we have decided to derive the schema only from the root type. However, the simple application of deep-first search leads to a loop if the graph has cycles (in our case, if the type refers directly or indirectly to itself). Therefore we use the deep-first search with cycle checking.
+
+% The cycle check requires a unique key for the identification of each node. 
+% Since two types in different modules can have the same name, we cannot use the type name as the key. However, the type fingerprint provided by the module \axpr{Typeable} is the right candidate for it.    
+% Additionally, one type can derive input and output types. 
+% So we do not want to skip generating the input type if the output type was already generated for the same type since they are not the same for the GraphQL type system.
+% Therefore, we use the product \expr{(Context, Fingerprint)} as the key for each node, where \expr{Context} can be one of the following values: \expr{Input}, \expr{Output}. 
+% As a result, we can define the function \expr{deriveSchema}\srcGithub{src/Data/Morpheus/Server/Deriving/Schema.hs}, which receives the root type and derives a schema from it. \refHS{derive-schema} presents the signature of this function.
+
+\end{frame}
