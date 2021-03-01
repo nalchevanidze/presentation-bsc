@@ -1,0 +1,216 @@
+%!TEX root = ../../main.tex
+
+\section{Mapping Rules}
+
+The underlying entity of every GraphQL schema is a type. 
+Thereby there are six types of named type definitions 
+(Scalar, Object, Interface, Union, Enum, Input) 
+and two wrapping types (List, Non-Null)~\cite{gql-spec}. 
+This section will examine them and introduce mapping rules 
+to represent them in the Haskell type system.
+
+Before we start mapping certain parts, we will make the following assumptions and definitions applicable to all subsequent sections.
+
+\begin{itemize}
+
+  \li{Positional Constructors}
+  GraphQL does not support unnamed products; its type fields must always have names~\cite{gql-spec}. 
+  However, Haskell does. That why we assume that a constructor without field selectors is enumerated like an array in the GraphQL context. 
+  Based on this assumption, fields of \expr{Cons1} and \expr{Cons2} \seeHS{positional-cons} are equal (in GraphQL context) and derive the same representation. 
+  
+  \importHS{morpheus/code}{positional-cons}{
+    Positional Constructors
+  }
+
+  \li{Unit Type}
+  \label{sec:unit-type}
+  Various programming languages support unit types. The unit type indicates the absence of a specific value and serves as a placeholder when no other value exists or is needed~\cite{fsharp-unit}. Haskell introduces it as a type \expr{()} with a single possible value \expr{()}.  GraphQL does not provide it~\cite{gql-spec}. Therefore, we introduce it as an enum type \expr{Unit} containing only an alternative \expr{Unit}. \refGQL{unit-type} provides GraphQL definition of it.
+
+  \importGQL{morpheus/code}{unit-type}{
+    GraphQL Unit Type Definition
+  }
+
+\end{itemize}
+
+\subsection{Wrapping Types}
+
+GraphQL defines two primitive wrapping types: List and Non-Null~\cite{gql-spec}. In the Haskell context, they can be interpreted as a type with a single type parameter.
+
+\subsubsection{Non-Null}
+
+GraphQL types are nullable by default: e.g., a scalar string can return either zero or a string value. Accordingly, the non-null type wraps another type and means that the resulting value will never be null~\cite{gql-spec}.
+In contrast, Haskell types are non-nullable and non-null wrappers will not make sense. Therefore, we will use Maybe types for regular GraphQL types and regular Haskell types for GraphQL non-null types. e.g., to represent the nullable GraphQL type \expr{Int} in Haskell, we use \expr{Maybe Int}; and for the non-null GraphQL type \expr{Int!} we use the Haskell type \expr{Int}.
+
+Although our definition is easier to understand for Haskell developers (since they are familiar with the type Maybe), there is a little problem with types wrapped with multiple Maybes. For example, The expression \expr{Maybe (Maybe (Maybe Int))} is valid in Haskell but makes no sense for GraphQL and is interpreted as a regular type \expr{Int}. However, we tolerate it because it does not affect type safety.
+
+\subsubsection{Lists}
+
+GraphQL List is a collection of homogeneous elements, where the elements are ordered and serialized according to their type~\cite{gql-spec}. Since there is no difference, We can directly represent it with Haskell List.
+
+\subsection{Scalars}
+
+Scalar types represent primitive leaf values in a GraphQL type system. They can be represented as Strings (or other primitive values). GraphQL offers built-in scalar types like Int, Float, String, Boolean, and ID. However, the user can extend the type system with additional scalars with their semantic meaning~\cite{gql-spec}.
+
+Since scalar types have no structural representation, we will impose no restriction and allow any type to represent a scalar type if it has appropriate parse and serialization methods.
+It can be accomplished by providing instances for corresponding type-classes \seeSection{encoders-decoders}.
+
+The built-in scalar types are mapped as follows:
+
+\begin{itemize}
+
+  \li{Int} This scalar type represents a signed numeric 
+    32-bit non-fractional value~\cite{gql-spec}. 
+    Although in Haskell \hackage{Int32}{base-4.14.0.0/docs/Data-Int.html} 
+    it would be an exact candidate\basedOnIssue{117}, we will represent it with the regular type Int for simplicity.
+
+  \li{Float} GraphQL-Float represents signed fractions with 
+    double precision~\cite{gql-spec}, 
+    therefore we represent it in Haskell with the type Double\basedOnIssue{117}.
+
+  \li{String} GraphQL String is a regular UTF-8 string for text data~\cite{gql-spec}. Haskell represents strings through the built-in list type. It allows the programmer to use the polymorphic list combinations for complex string manipulations.
+  However, it is also extremely inefficient. An alternative to String is the type Text, which is an array-based string representation that is faster and more compact than String~\cite{string-vs-text,string-types-alexeyshmalko,string-types-fpcomplete,hackage-data-text}. 
+  Since our requirements include efficiency \seeSection{requirements}, we prefer Text over the String.
+
+  \li{Boolean}
+  Since this represents typical Boolean values (true and false)~\cite{gql-spec}, it is represented as a type Bool.
+
+  \li{ID} The type ID is a unique identifier that should always be serialized as a String (although it is often numeric)~\cite{gql-spec}. Accordingly, we declare a new data type ID with parse and serialization implementations that meet this specification.
+\end{itemize}
+
+\subsection{Enums}
+
+Besides scalar types, enum types are leaf values too, but in contrast, they describe the set of possible independent, unique values~\cite{gql-spec}. In other words, they are disjoint alternatives without inner values, so they correspond to the algebraic data type with empty fields, and so we will represent them as well \seeHS{enum}. Note that the type is only represented as an enum if all its constructors are empty.
+
+\importHS{morpheus/code}{enum}{GraphQL Enum In Haskell}
+\importGQLRep{enum}
+
+\subsection{Input Objects}
+
+A GraphQL input object is a set of input fields, 
+where input fields can be either 
+scalars, enums, or other input objects~\cite{gql-spec}. 
+In terms of Haskell, they resemble single constructor records. 
+Therefore we will use them for representation. 
+For example, the GraphQL input object \expr{Deity} defined in \refGQL{input-object} will be equivalent to the Haskell data type \expr{Deity}  defined in \refHS{input-object}. 
+Note that only the types with a single constructor 
+are represented as input objects.
+
+\importHS{morpheus/code}{input-object}{GraphQL Input Object in Haskell}
+\importGQLRep{input-object}
+
+\subsection{Objects}
+\label{sec:map:objects}
+
+GraphQL objects are a set of named fields, where fields themselves consist of argument and return type~\cite{gql-spec}. Hence before we try to define an object, we will define its components.
+
+\subsubsection{Field Arguments}
+
+Object field arguments are a set of all possible argument names with corresponding input types~\cite{gql-spec}. Since they are structurally no different from input objects, we can also represent them with Haskell records. For example, \refHS{field-arguments} presents GraphQL arguments with required argument mythology and optional argument power. 
+
+\importHS{morpheus/code}{field-arguments}{
+  GraphQL Arguments in Haskell
+}
+\importGQLRep{field-arguments}
+
+\subsubsection{Object Fields}
+
+Object fields are functions which occasionally accept arguments and return corresponding values. An object field without an argument (e.g. \expr{field: Int}) is equivalent to a function with empty arguments (e.g. \expr{field(): Int})~\cite{gql-spec}.
+Accordingly, we represent Haskell functions as object fields with arguments and leftovers as fields without arguments. 
+
+\subsubsection{Represent the Entire Object}
+
+We represent the object types with records. Furthermore, they get the type parameter \expr{m} for modularity \seeSection{param-resolvers}.
+This technique allows types to be defined independently of the resolver operations, and the concrete operations can be passed recursively from parent to child. 
+For example in \refHS{object-type}, type \expr{Query} passes 
+the monad type to its fields. Since the field \expr{idsBy} is a function, it represents a field with arguments, but the field \expr{ids} does not.
+
+\importHS{morpheus/code}{object-type}{
+  GraphQL Object in Haskell
+}
+\importGQLRep{object-type}
+
+Although this approach allows us to write generic resolvers, it comes at a cost, which we discuss in \refSection{flexible-resolver}.
+
+\subsection{Unions}
+\label{sec:mapping:union}
+
+GraphQL unions represent an object, one of the possible alternative object types, but do not provide guaranteed fields between them~\cite {gql-spec}.
+This definition is very similar to the definition of algebraic data types, but Haskell presents it in different ways. While in GraphQL, we only refer to the object type in the list of possible types, in Haskell, we put each of them into a specific constructor. Furthermore, in Haskell, we can create alternative objects only with constructors without defining their types.
+
+Before we move on to the actual representation, we must mention that union types are also resolver types and, therefore, like objects, are also represented with parameterized types. 
+GraphQL unions can be represented in Haskell by algebraic data types with multiple constructors, whereby the compiler generates a new GraphQL object type for each constructor. 
+For example, in \refHS{union}, we can generate GraphQL object types \expr{Cat} and \expr{Dog} for the two constructors of the data type \expr{Animal} and build a GraphQL union type from them. However, it raises difficulties if some member type is already defined.
+
+\importHS{morpheus/code}{union}{Mapping GraphQL Union}
+
+Let us assume one may want to define a union type animal with variants dog and cat, where the type dog is already defined. 
+\refHS{union-mixed} defines the variant dog with a single field positional constructor and the variant cat with a record constructor.
+However, we get the union type with packed variants \expr{UnionDog | Cat} instead of the expected \expr{Dog | Cat}. The approach creates a new object type \expr{UnionDog} for the variant dog instead of referencing it directly. So we must someway unpack type \expr{Dog} from it.
+
+\importHS{morpheus/code}{union-mixed}{Mapping GraphQL Union}
+
+On the one hand, we could unpack single field constructors where a field type is an object, but that does not work because the constructor \expr{Cat} also has a single field \expr{name} with the object type \expr{Name}.  On the other hand, we could unpack single-field constructors with a name prefixed with "Unpack," but that would allow multiple unpacking of the same type in a single union. Therefore, we unpack constructors, where the name is the concatenation of the type constructor name and the referencing type name. That way, the compiler in \refHS{union-unpack} unpacks the type \expr{Dog} but generates a new object type \expr{Cat}.
+
+\importHS{morpheus/code}{union-unpack}{
+Unpacking Union Types from Data Type Constructors
+}
+
+\importGQL{morpheus/code}{union-unpack}{
+  GraphQL Schema Representing \refHS{union-unpack}
+}
+
+So far, we have only covered alternatives 
+with at least one field, but we also have 
+to deal with empty variants. 
+For example, one might want to add support 
+cases of unidentified animals without having 
+information about these species \seeHS{union-empty-cons}. 
+The current derivation approach presents 
+empty constructors as empty object definitions, 
+but GraphQL does not support empty object 
+definitions~\cite{gql-spec}. 
+To represent them as valid object definitions, 
+we can assign them a field \expr{\_} with the 
+type \expr{Unit}, which indicates that 
+the field does not contain any information 
+and reduces confusion \seeSection{unit-type}. 
+As a result, \refHS{union-empty-cons} generates the schema defined in \refGQL{union-empty-cons}. As we can see, the GraphQL object \expr{Cat} represents the constructor \expr{Cat}, and the GraphQL object \expr{Unidentified} with only the field \expr{\_} represents the empty constructor \expr{Unidentified}. 
+
+\importHS{morpheus/code}{union-empty-cons}{
+  Empty Union Constructors
+}
+
+\importGQL{morpheus/code}{union-empty-cons}{
+  GraphQL Schema Representing \refHS{union-empty-cons}.
+}
+
+\subsection{Interfaces}
+\label{sec:mapping:interfaces}
+
+As in object, interfaces represent a list of named fields and their arguments. Therefore the same rules apply to their fields as to object fields. Apart from their similarities, there are two main differences. First, an object can implement interfaces, which requires that the object type defines all fields defined by these interfaces. Second, an interface cannot implement another interface~\cite{gql-spec}.
+
+Haskell has no features like GraphQL interfaces. We can consider type classes as GraphQL interfaces, but they cannot be derived with generics, and we cannot cast them for additional fields in the GraphQL query. Accordingly, our current approach only simulates them and derives them like objects.
+
+
+\subsection*{Determining GraphQL Types in Haskell}
+
+So far, we have only covered the mapping of GraphQL types to corresponding Haskell types. However, we have not yet addressed how the approach decides which GraphQL type to derive from the Haskell data type.  This section presents the following rules that the compiler applies for a given execution order to achieve deterministic derivation.
+
+\begin{enumerate}
+  \li{Scalar, Wrapper, Interface} The structure of these types does not provide sufficient information to determine their kinds.Therefore they must explicitly provide associated kinds that determine their GraphQL type representation. The remaining types can be automatically derived based on their data type structure and place of use.
+  
+  \li{Field Arguments} Derive field arguments if the type is used as an argument of the object field. 
+
+  \li{Enum} Derive enum if all data type constructors are empty.
+
+  \li{Object} Derive object if the type has a single non-empty constructor, and its parent \footnote{Type A is the parent type of type B if it has a field that refers to type B} is Object or Union. 
+  
+  \li{InputObject} Derive input object if the type has a single non-empty constructor, and its parent is InputObject or Field Arguments.
+
+  \li{Union} Derive Union if the type has multiple constructors and its parent is Object or Union.
+
+  \li{Fail} All other types are not supported. The compiler will fail at this point. Note: The real implementation also supports the case of deriving input unions. However, since GraphQL does not support them, they are not mentioned in this work.
+
+\end{enumerate}
+
+This approach infers Haskell data types as GraphQL input object and object types based on the place of use. Thus, if the same data type was used in both places, the compiler infers input object and object types with the same conflicting name, and the schema derivation fails. However, if the user intends to use the same type in both places, he can use the \expr{GQLType} \seeSection{api:GQLType} options to set them different names.
