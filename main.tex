@@ -1,7 +1,37 @@
 %!TEX root = ./main.tex
 
 \documentclass[aspectratio=169,t,xcolor=table]{beamer}
-\input{src/ext/preamble.tex}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs} 
+\usepackage{subcaption}
+\usepackage{src/stylings/main}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{csquotes}
+\usepackage[
+	backend=biber,
+	style=numeric,
+	citestyle=numeric,
+	sorting=none,
+	url=false]{biblatex}
+
+% \setbeamertemplate{bibliography item}[text]
+% \renewcommand*{\bibfont}{\scriptsize}
+\addbibresource{src/bib/cite.bib}
+\addbibresource{src/bib/web.bib}
+
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{lipsum}
+\setcounter{tocdepth}{3}
+
+\usepackage{appendixnumberbeamer}
+\usepackage{listings}
+\usepackage{graphicx}
+\graphicspath{{assets/}}
+
 \input{src/ext/info}
 \begin{document}
 \setLogos{assets/logo/uhh.pdf}{assets/logo/uhh-compact.pdf} 
