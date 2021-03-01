@@ -142,10 +142,6 @@ GraphQL unions represent an object, one of the possible alternative object types
 
 % On the one hand, we could unpack single field constructors where a field type is an object, but that does not work because the constructor \expr{Cat} also has a single field \expr{name} with the object type \expr{Name}.  On the other hand, we could unpack single-field constructors with a name prefixed with "Unpack," but that would allow multiple unpacking of the same type in a single union. Therefore, we unpack constructors, where the name is the concatenation of the type constructor name and the referencing type name. That way, the compiler in \refHS{union-unpack} unpacks the type \expr{Dog} but generates a new object type \expr{Cat}.
 
-
-
-
-
 % So far, we have only covered alternatives 
 % with at least one field, but we also have 
 % to deal with empty variants. 
