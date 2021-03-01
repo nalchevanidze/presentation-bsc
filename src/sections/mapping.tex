@@ -103,31 +103,22 @@ Therefore we will use them for representation.  Note that only the types with a 
 
 \subsection{Objects}
 
+\end{frame}
+
+\begin{frame}\frametitle{Objects}
+
 GraphQL objects are a set of named fields, where fields themselves consist of argument and return type~\cite{gql-spec}. Hence before we try to define an object, we will define its components.
 
-\subsubsection{Object}
-
 Object field arguments are a set of all possible argument names with corresponding input types~\cite{gql-spec}. Since they are structurally no different from input objects, we can also represent them with Haskell records. 
-
-% \importHS{morpheus/code}{field-arguments}{
-%   GraphQL Arguments in Haskell
-% }
-% \importGQLRep{field-arguments}
-
-% \subsubsection{Object Fields}
 
 % Object fields are functions which occasionally accept arguments and return corresponding values. An object field without an argument (e.g. \expr{field: Int}) is equivalent to a function with empty arguments (e.g. \expr{field(): Int})~\cite{gql-spec}.
 % Accordingly, we represent Haskell functions as object fields with arguments and leftovers as fields without arguments. 
 
-% \subsubsection{Represent the Entire Object}
-
 We represent the object types with records. Furthermore, they get the type parameter \expr{m} for modularity.
 This technique allows types to be defined independently of the resolver operations, and the concrete operations can be passed recursively from parent to child. 
 
-% \importHS{morpheus/code}{object-type}{
-%   GraphQL Object in Haskell
-% }
-% \importGQLRep{object-type}
+\importHS{object-type}{GraphQL Object in Haskell}
+\importGQL{object-type}{}
 
 \end{frame}
 
