@@ -64,11 +64,11 @@ algebraic data types also have their limitations. Once a data type is defined an
 The record system provides syntactic sugar for what might 
 otherwise be written using ordinary, positional, 
 algebraic data type declarations~\cite{lw-ext-records}. For example, 
-the data type \expr{Deity} \seeHS{records-def} declares a regular algebraic data type, 
+the data type \expr{Deity} declares a regular algebraic data type, 
 but at the same time, 
 constructor field accessors and modifiers. 
 
-\snippetHS{records}{Haskell Record}
+\importHS{records}{Haskell Record}
 
 Record characteristics bring significant advantages and greatly simplify programming with data structures that have many components. Since the individual components are accessed by name (not by position), the fields' ordering is not crucial~\cite{lw-ext-records}.
 In \refHS{record-values}, for example, 
@@ -81,7 +81,7 @@ There are no operators for adding and removing fields in a record~\cite{poly-ext
 Moreover, labels are not first-class citizens, 
 meaning we cannot reuse labels between different record types, 
 nor can we treat labels as data~\cite{hlist}.
-This missing feature gave rise to many discussions and proposals to support polymorphic extensible records with different approaches, such as \gls{trex} or \gls{h-list} \seeSection{hlist}~\cite{history-of-haskell, poly-ext-records, hlist, basic-tlp}.
+This missing feature gave rise to many discussions and proposals to support polymorphic extensible records with different approaches~\cite{history-of-haskell, poly-ext-records, hlist, basic-tlp}.
 
 \end{frame}
 
