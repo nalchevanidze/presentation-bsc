@@ -1,0 +1,5 @@
+union Animal = Dog | Cat
+
+type Cat {
+  name: Name!
+}

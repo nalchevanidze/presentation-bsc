@@ -83,8 +83,8 @@ Since scalar types have no structural representation, we will impose no restrict
 
 Besides scalar types, enum types are leaf values too, but in contrast, they describe the set of possible independent, unique values~\cite{gql-spec}. they are disjoint alternatives without inner values, so they correspond to the algebraic data type with empty fields. Note that the type is only represented as an enum if all its constructors are empty.
 
-% \importHS{morpheus/code}{enum}{GraphQL Enum In Haskell}
-% \importGQLRep{enum}
+\importHS{enum}{GraphQL Enum}
+\importGQL{enum}{GraphQL Enum}
 
 \end{frame}
 
@@ -98,8 +98,8 @@ scalars, enums, or other input objects~\cite{gql-spec}.
 In terms of Haskell, they resemble single constructor records. 
 Therefore we will use them for representation.  Note that only the types with a single constructor are represented as input objects.
 
-% \importHS{morpheus/code}{input-object}{GraphQL Input Object in Haskell}
-% \importGQLRep{input-object}
+\importHS{input-object}{GraphQL Input Object in Haskell}
+\importGQL{input-object}{}
 
 \subsection{Objects}
 
