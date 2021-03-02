@@ -1,7 +1,6 @@
 enum Power {
   Shapeshifting
   Thunderbolt
-  Invisibility
 }
 
 type Deity {
