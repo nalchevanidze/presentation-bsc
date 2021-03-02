@@ -29,7 +29,7 @@ algebraic data types also have their limitations. Once a data type is defined an
 
 \begin{frame}\frametitle{Records }
     
-This positional notation is cumbersome and error-prone for handling data types with many components, which is quite common in real-world applications. Therefore, later versions of Haskell introduced minimalistic record syntax as a labeled field~\cite{lw-ext-records, history-of-haskell}.
+This positional notation is cumbersome and error-prone for handling data types with many components, which is quite common in real-world applications. Therefore, later versions of Haskell introduced record syntax as a labeled field~\cite{lw-ext-records, history-of-haskell}.
 The record system provides syntactic sugar for what might otherwise be written using ordinary, positional, algebraic data type declarations~\cite{lw-ext-records}. 
 
 Haskell record systems is that there is no support for extensibility. There are no operators for adding and removing fields in a record, we cannot reuse labels between different record types, nor can we treat labels as data~\cite{poly-ext-records, hlist,lw-ext-records}. 
@@ -50,17 +50,11 @@ Record characteristics bring significant advantages and greatly simplify program
 
 \begin{frame}\frametitle{Monads}
 
-Since input and output operations can be painfully complicated without side effects, the Haskell developers have developed a new approach called monadic IO, which is one of Haskell's most important contributions to the world~\cite{history-of-haskell}.
-
-Haskell represents monads with the help of type classes. This states that we can write useful monadic combinators, which work for every monad~\cite{history-of-haskell}. 
-
 Pure languages facilitate changes by making the data visible on which each operation depends. However, a seemingly small change may require more extensive restructuring than impure functions.  Programming with monads solves this inflexibility and brings properties that are characteristic only of impure functions~\cite{essence-of-fp}.
 
-The concept of monads comes from category theory but has come to represent a kind of programming pattern~\cite{essence-of-fp,history-of-haskell}. It  is formed by a type constructor \expr{M} and a pair of functions,\expr{return} and \expr{>>=}~\cite{history-of-haskell,essence-of-fp}.
+monads are formed by a type constructor \expr{M} and a pair of functions,\expr{return} and \expr{>>=}~\cite{history-of-haskell,essence-of-fp}. The type \expr{M a} is a computation that returns a value of type \expr{a} and possibly performs some side effects~\cite{history-of-haskell}. The purpose of \expr{return} and \expr{>>=} is to push a value into computation and to evaluate a computation, yielding a value~\cite{essence-of-fp}.
 
-The type \expr{M a} is a computation that returns a value of type \expr{a} and possibly performs some side effects~\cite{history-of-haskell}. The purpose of \expr{return} and \expr{>>=} is to push a value into computation and to evaluate a computation, yielding a value~\cite{essence-of-fp}.
-
-In some languages, types do not indicate the presence of the side effects. Therefore it is impossible to determine from the signature if the function has side effects. Consequently, language uses a single built-in notion of computation and sequencing. In contrast, the monads leave quite a lot of freedom to define the operations and their order of execution~\cite{history-of-haskell}.
+Since the monad allows the compiler to determine impure and pure operations, the Haskell language can use specific optimizations. However, the developer still has the freedom to define their execution order~\cite{history-of-haskell}.
 
 \end{frame}
 
