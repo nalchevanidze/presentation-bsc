@@ -60,14 +60,10 @@ Since the monad allows the compiler to determine impure and pure operations, the
 
 \begin{frame}\frametitle{Datatype-Generic Programming}
     
-Datatype-generic programming enables writing single (called generic or polytypic) functions that address various cases and types. The standard examples are parsing,  serialization, or comparing of data types~\cite{derivable-type-classes}.
- 
-It increases the reliability of programs by reducing code duplication and improving reusability and modularity~\cite{optimizing-generics}. The core concept is that it makes programming languages flexible while still guaranteeing safety~\cite{datatype-generic-programming}.
+Datatype-generic programming enables writing single functions that address various cases and types. The standard examples are parsing,  serialization, or comparing of data types~\cite{derivable-type-classes}. It increases the reliability of programs by reducing code duplication and improving reusability and modularity. it makes programming languages flexible while still guaranteeing safety~\cite{datatype-generic-programming,optimizing-generics}.
   
 \importHS{generics}{Generic Deriving}. 
-% To define the equality instance for this data type, we must first check whether both values have the same constructor. In the second step, we must check whether each field of the constructors is equal, which requires an equality instance for its type variable \expr{a}. Since the equality check is programmable, Haskell provides a so-called "deriving" clause that instructs the compiler to generate the "boilerplate" for equality~\cite{derivable-type-classes, meta-hs}. 
     
-The basic idea behind it is to represent all types and values by a small set of data types, which are also called generic representation types. They are the building blocks of the structural representation of all other types~\cite{optimizing-generics}.
-Using the \expr{from} and \expr{to} functions, the user can convert arbitrary types to their generic representation, operate on them, and convert them back to their original types~\cite{optimizing-generics,history-of-haskell, ghc-generics}.
+The basic idea behind it is to represent all types and values by a small set of data types, which are also called generic representation types. They are the building blocks of the structural representation of all other types~\cite{optimizing-generics}. the user can convert arbitrary types to their generic representation, operate on them, and convert them back to their original types~\cite{optimizing-generics,history-of-haskell, ghc-generics}.
 
 \end{frame}
