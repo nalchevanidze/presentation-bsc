@@ -124,11 +124,12 @@ GraphQL unions represent an object, one of the possible alternative object types
 \begin{frame}\frametitle{Determining GraphQL Types in Haskell}
 \subsection{Determining GraphQL Types in Haskell}
 
-So far, we have only covered the mapping of GraphQL types to corresponding Haskell types. However, we have not yet addressed how the approach decides which GraphQL type to derive from the Haskell data type.  This section presents the following rules that the compiler applies for a given execution order to achieve deterministic derivation.
+Compiler applies the following rules with a given execution order to achieve deterministic derivation.
 
 \begin{enumerate}
-  \li{Scalar, Wrapper, Interface} The structure of these types does not provide sufficient information to determine their kinds.Therefore they must explicitly provide associated kinds that determine their GraphQL type representation. The remaining types can be automatically derived based on their data type structure and place of use.
-  
+
+  \li{Scalar, Wrapper, Interface} Derive scalar, wrapper, interface if the type has explicitly specified associated kinds. 
+
   \li{Field Arguments} Derive field arguments if the type is used as an argument of the object field. 
 
   \li{Enum} Derive enum if all data type constructors are empty.
@@ -139,7 +140,7 @@ So far, we have only covered the mapping of GraphQL types to corresponding Haske
 
   \li{Union} Derive Union if the type has multiple constructors and its parent is Object or Union.
 
-  \li{Fail} All other types are not supported. The compiler will fail at this point. Note: The real implementation also supports the case of deriving input unions. However, since GraphQL does not support them, they are not mentioned in this work.
+  \li{Fail} All other types are not supported.
 
 \end{enumerate}
 
