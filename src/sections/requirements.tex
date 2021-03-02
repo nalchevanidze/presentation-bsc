@@ -3,16 +3,15 @@
 
 \begin{alertblock}{Maintainability}  
 
-more than sixty percent  of the cost is spent on maintenance~\cite{maintainability-metrics,role-of-readability,maintainability-current-trends, readability-props}.
-
-Software development is a dynamic process where many requirements change during the development of a software project~\cite{requirements-change-1,sof-sus-institute-maintainability}.
-Maintainable software can adapt to these changes. It allows developers to quickly: fix bugs, add a new feature or increase performance without introducing new bugs~\cite{view-of-web, sof-sus-institute-maintainability}.
+Software development is a dynamic process where many requirements change~\cite{requirements-change-1,sof-sus-institute-maintainability}. Maintainable software can adapt to these changes. It allows developers to quickly: fix bugs, add a new feature or increase performance without introducing new bugs~\cite{view-of-web, sof-sus-institute-maintainability}.
 
 \begin{itemize}
-    \item Low boilerplate: High maintenance costs are associated with the difficulty of reading and understanding programming code~\cite{role-of-readability,readability-props}. Readability can be affected by boilerplate code. Boilerplate code is tedious to write and easy to get wrong. It is also vulnerable to change. For example, if the scheme changes, any algorithm based on it must also change. This is not a big problem for small programs, but for large programs with dozens of data types, the maintenance cost can be increased~\cite{scrap-your-boilerplate}.
-    Therefore, we require redundancy eliminations. In other words, the compiler must automatically derive and generate trivial parts that do not rely on additional user interaction.
-    \item Familiarity: Maintainability depends a lot on who maintains it.  A team with much experience with a particular system will be able to maintain it more easily~\cite{contr-reduce-maintainability}. However, our goal is to enable both an experienced developer and a novice who does not have much experience maintaining the API seamlessly. Therefore, we want to avoid using new symbols and high-level concepts that the user needs to acquire to build, read or modify API.
-    \item Modularity: Modularity, apart from scoping rules and separate compilation, also means breaking a problem into parts and composing solutions~\cite{history-of-haskell}. Therefore, we require modularity in two contexts: the library architecture and the API definition approach. 
+
+    \li{Low boilerplate} Boilerplate code is tedious to write and easy to get wrong. It is also vulnerable to change. This is not a big problem for small programs, but for large programs with dozens of data types, the maintenance cost can be increased~\cite{scrap-your-boilerplate}.
+
+    \li{Familiarity} Maintainability depends a lot on who maintains it~\cite{contr-reduce-maintainability}. To allow developers with no less Haskell experience to maintain the API seamlessly, we want to avoid using new symbols and high-level concepts.
+
+    \li{Modularity} Modularity, apart from scoping rules and separate compilation, also means breaking a problem into parts and composing solutions~\cite{history-of-haskell}. Therefore, we require modularity in two contexts: the library architecture and the API definition approach. 
     First, the modularity of the software architecture significantly influences maintainability. The loose coupling between modules and the high cohesion within a module lead to improved maintainability.  Furthermore, too many modules are just as undesirable as too few since it increases integration effort~\cite{arc-modularity}. 
     Second, the API definition approach must provide writing modular code to reuse type and resolver definitions between mutations, subscriptions, and queries. 
     
