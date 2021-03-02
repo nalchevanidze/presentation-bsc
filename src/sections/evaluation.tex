@@ -20,8 +20,6 @@
 
 \begin{block}{Reliability}
 
-The reliability requirement considers the following two factors: type safety and GraphQL specification compliance.
-
 \begin{itemize}
 
   \li{Type Safety} 
@@ -35,14 +33,13 @@ The reliability requirement considers the following two factors: type safety and
     
     \end{enumerate}
 
-  \li{Complience with GraphQL Specifications} The library meets all the critical parts of the specifications. However, there are also small deviations in favor of flexibility, e.g., the use of \expr{Int} instead of \expr{Int32}. Moreover, interfaces and directives are still not fully implemented. Since Haskell does not have a similar concept to GraphQL interfaces, the library does not fully implement the interfaces but provides a workaround. The library implements standard directives but does not support custom directives because we have not found a type-safe solution for them.
+  \li{Complience with GraphQL Specifications} The library meets all the critical parts of the specifications. However, there are also small deviations in favor of flexibility, e.g., the use of \expr{Int} instead of \expr{Int32}. Moreover, interfaces and directives are still not fully implemented. 
 
 \end{itemize}
 
 \end{block}
 
-\begin{block}{Efficiency} We avoid bad patterns that could reduce performance, e.g., we used the type \expr{Text} instead of \expr{String}. 
-With the help of parameterized object types, the resolver monad, and the lazy nature of Haskell, the library only executes the resolvers necessary for the query. The library is extensible with Haxl, which allows efficient reuse of resolvers without running into the n+1 selects problem.
+\begin{block}{Efficiency} we used the type \expr{Text} instead of \expr{String}. the library only executes the resolvers necessary for the query. The library is extensible with Haxl, which allows efficient reuse of resolvers without running into the n+1 selects problem.
 
 \end{block}
 
