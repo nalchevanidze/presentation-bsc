@@ -63,7 +63,7 @@ The concept of monads comes from category theory but has come to represent a kin
 
 The type \expr{M a} is a computation that returns a value of type \expr{a} and possibly performs some side effects~\cite{history-of-haskell}. The purpose of \expr{return} and \expr{>>=} is to push a value into computation and to evaluate a computation, yielding a value~\cite{essence-of-fp}.
 
-In some languages, types do not indicate the presence of the side effects: there, \expr{comp1} is of type \expr{a} instead of \expr{M a} and \expr{comp2} is of type \expr{b} instead of \expr{M b}. Therefore it is impossible to determine from the signature if the function has side effects. Consequently, language uses a single built-in notion of computation and sequencing. In contrast, the monads leave quite a lot of freedom to define the operations and their order of execution~\cite{history-of-haskell}.
+In some languages, types do not indicate the presence of the side effects. Therefore it is impossible to determine from the signature if the function has side effects. Consequently, language uses a single built-in notion of computation and sequencing. In contrast, the monads leave quite a lot of freedom to define the operations and their order of execution~\cite{history-of-haskell}.
 
 \end{frame}
 
