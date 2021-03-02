@@ -1,9 +1,0 @@
-union Animal = Cat | Unidentified
-
-type Cat {
-  name: String!
-}
-
-type Unidentified {
-  _: Unit!
-}
