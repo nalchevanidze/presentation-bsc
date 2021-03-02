@@ -1,15 +1,27 @@
 \section{Conclusions}
 
-\begin{frame}\frametitle{Conclusions}
+\begin{frame}[allowframebreaks]\frametitle{Conclusions}
 
-In this work, we presented Morpheus GraphQL, an EDSL for building GraphQL APIs in Haskell. The presented approach provides an easy-to-use interface based on a datatype-generic programming technique and successfully implements the requirements. We chose intuitive design (like Aeson) over extensibility provided by the type-level encoding. 
+The presented approach provides an easy-to-use interface based on a datatype-generic programming technique and successfully implements the requirements. 
+
+We chose intuitive design (like Aeson) over extensibility provided by the type-level encoding. 
+
 This gives beginners the ability to quickly learn and implement GraphQL APIs in Haskell while preserving type safety.
-The library automatically derives APis from data types, which guarantees type-safe resolver values. We also provide two Template Haskell tools, one of which guarantees schema validity at compile time. The second one imports schemas from GraphQL SDL to facilitate quick start and migration from other languages.
-The data resolvers are regular monadic Haskell functions. These resolvers can be extended by arbitrary monads to solve specific problems.  The architecture is divided into small independent packages. Besides, one of the packages, the Morpheus GraphQL client, enables type-safe queries by rejecting invalid queries at compile-time and automatically generating the request and response types.
 
-Our prototype meets our predefined requirements, with an acceptable tradeoff between flexibility and compliance. We provide a straightforward approach to GraphQL API definitions while still guaranteeing type safety. Besides, users can achieve efficiency in the combination of Morpheus GraphQL and Haxl, as GraphQL solves over-fetching and under-fetching problems for a client and  Haxl for the backend.
+The library automatically derives APis from data types, which guarantees type-safe resolver values. 
+
+We also provide two Template Haskell tools, one of which guarantees schema validity at compile time. The second one imports schemas from GraphQL SDL to facilitate quick start and migration from other languages.
+
+The data resolvers are regular monadic Haskell functions. These resolvers can be extended by arbitrary monads to solve specific problems.  The architecture is divided into small independent packages. Besides, one of the packages, the Morpheus GraphQL client, enables type-safe queries by rejecting invalid queries at compile-time and automatically generating the request and response types.
     
-Nevertheless, we run into some limitations: First, Haskell permits different naming of values and types than GraphQL. Second, sets and non-empty collections cannot be modeled in GraphQL because it provides only list types for collections. Therefore, sets and non-empty collections are represented to GraphQL clients with regular lists, and the client cannot check the validity of input values at compile time. Third, since Haskell makes no distinction between input and output types, mapping Haskell types requires support for input unions, which is not supported by GraphQL. Fourth, Haskell does not provide interfaces, so we do not yet have a satisfying way to support them. 
+Limitations
+
+\begin{itemize}
+    \item Haskell permits different naming of values and types than GraphQL. 
+    \item sets and non-empty collections cannot be modeled in GraphQL because it provides only list types for collections. 
+    \item mapping Haskell types requires support for input unions, which is not supported by GraphQL. 
+    \item Haskell does not provide interfaces, so we do not yet have a satisfying way to support them. 
+\end{itemize}
 
 \end{frame}
 
