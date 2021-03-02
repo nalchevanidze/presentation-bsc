@@ -3,29 +3,21 @@
 \begin{frame}\frametitle{Architecture Overview}
 
 \begin{enumerate} 
-  \li{morpheus-graphql-core} low level language functionalities and common types and operations, such as  parsing, pretty-printing, and validation of GraphQL queries and schema documents, AST for the GraphQL type system and query language.
 
-  \li{morpheus-graphql-client} The client application enables type-safe client queries. If the query is valid, it generates the corresponding query and response types using Template Haskell. However, it will throw a compilation error with a   descriptive message on the invalid query.
-
-  \li{morpheus-graphql-app} this package provides utilities for creating executable GraphQL applications for servers.  Its primary task is to execute the 
-  GraphQL document representation parsed by the core package. 
-  Therefore it defines internal resolver value interpretations, resolver monads for GraphQL servers, and event action types for GraphQL 
-  subscriptions. One can use it to build a schema-first GraphQL server 
-  with dynamic typing, where the core package parses 
-  the GraphQL document and the app package executes it. 
-  That is, the server package is not necessary for this. 
-  Although without it, the type-safety is not guaranteed. 
+  \footnotesize
   
-  \li{morpheus-graphql-subscriptions} This package provides GraphQL subscriptions based on the WebSockets library. 
-  It uses the core package and builds a WebSocket server 
-  with an \expr{App e m} argument provided by the app package. 
-  In other words, it is independent of the server package and 
-  accepts any \expr{App e m} derived from an arbitrary server 
-  (even from a third-party library). Therefore, it is not relevant to our thesis topic, and we skip the implementation details.
+  \li{morpheus-graphql-core} low level functionalities and common types, such as  parsing, pretty-printing, validation, ast AST for the GraphQL schema and query language.
 
-  \item morpheus-graphql: This package depends on the core and app packages and derives \expr{App e m} with native Haskell types by mapping them to GraphQL representations. As a result, the final derived application can be executed by app and subscriptions packages.
-  This package also leverages Template Haskell and enables importing type definitions from the GraphQL schema. In particular, the \expr{importGQLDocument} function defines corresponding native Haskell types for each GraphQL type. Users can then provide resolver values for these types, from which the Morpheus compiler derives a server application. 
-  This package also provides the function \expr{compileTimeSchemaValidation} for compile-time schema validation, which checks if the API definition represents a valid GraphQL schema.
+  \li{morpheus-graphql-client} Enables type-safe client queries. It generates the query and response types on valid queries but throws a compilation error on the invalid query.
+
+  \li{morpheus-graphql-app} utilities for creating executable GraphQL applications. primary task is to execute the GraphQL document representations. 
+  
+  \li{morpheus-graphql-subscriptions} Takes argument \expr{App} and generates  WebSockets server based on it. It is independent of the server package and accepts any \expr{App} derived from an arbitrary server.
+
+  \li{morpheus-graphql} derives executable \expr{App} with native Haskell types by mapping them to GraphQL representations. derived application can be executed by app and subscriptions packages.
+
+  % This package also leverages Template Haskell and enables importing type definitions from the GraphQL schema. In particular, the \expr{importGQLDocument} function defines corresponding native Haskell types for each GraphQL type. Users can then provide resolver values for these types, from which the Morpheus compiler derives a server application. 
+  % This package also provides the function \expr{compileTimeSchemaValidation} for compile-time schema validation, which checks if the API definition represents a valid GraphQL schema.
 
 \end{enumerate}
 
