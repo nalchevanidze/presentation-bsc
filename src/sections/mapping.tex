@@ -109,16 +109,6 @@ Haskell has no features like GraphQL interfaces. We can consider type classes as
 
 GraphQL unions represent an object, one of the possible alternative object types, but do not provide guaranteed fields between them~\cite{gql-spec}. While in GraphQL, we only refer to the object type in the list of possible types, in Haskell, we put each of them into a specific constructor. Furthermore, in Haskell, we can create alternative objects only with constructors without defining their types.
 
-% we can generate GraphQL object types \expr{Cat} and \expr{Dog} for the two constructors of the data type \expr{Animal} and build a GraphQL union type from them. However, it raises difficulties if some member type is already defined.
-
-% \importHS{morpheus/code}{union}{Mapping GraphQL Union}
-
-% Let us assume one may want to define a union type animal with variants dog and cat, where the type dog is already defined. 
-% \refHS{union-mixed} defines the variant dog with a single field positional constructor and the variant cat with a record constructor.
-% However, we get the union type with packed variants \expr{UnionDog | Cat} instead of the expected \expr{Dog | Cat}. The approach creates a new object type \expr{UnionDog} for the variant dog instead of referencing it directly. So we must someway unpack type \expr{Dog} from it.
-
-% \importHS{morpheus/code}{union-mixed}{Mapping GraphQL Union}
-
 \importHS{union}{Union Types}
 \importGQL{union}{Union Types}
 
