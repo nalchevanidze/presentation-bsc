@@ -72,7 +72,7 @@ Since scalar types have no structural representation, we will impose no restrict
 
 \begin{frame}\frametitle{Enums}
 
-Besides scalar types, enum types are leaf values too, but in contrast, they describe the set of possible independent, unique values~\cite{gql-spec}. they are disjoint alternatives without inner values, so they correspond to the algebraic data type with empty fields. Note that the type is only represented as an enum if all its constructors are empty.
+enum types describe the set of possible independent, unique values~\cite{gql-spec}. They are disjoint alternatives without inner values, so they correspond to the algebraic data type with empty fields. The type is only represented as an enum if all its constructors are empty.
 
 \importHS{enum}{GraphQL Enum}
 \importGQL{enum}{GraphQL Enum}
