@@ -29,7 +29,7 @@ Moreover, resolver monad will be a monad transformer.
 
 \begin{alertblock}{Parameterized Resolver Types}
 
-One of our requirements the modularity, states that type definitions must be independent of GraphQL operations. i.e., the same GraphQL resolver type definition can be used for mutation and query operations. However, the data type must allow query operations only for query resolvers and mutation operations only for mutation resolvers. This can be achieved by parametric polymorphism, where the type parameter determines the allowed operations. For example,  data type \expr{data Type m = Type \{ resolver :: m Value\}} with parameter \expr{m} can construct query and mutation resolvers, where the type \expr{Type Q} constructs resolver \expr{resolver :: Q Value} with query operations. on the other hand, the type \expr{Type M} constructs resolver \expr{resolver :: M Value} with mutation operations.
+parametric polymorphism enablefinition of resolver types independent of their operations, where the type parameter determines the allowed operations. For example,  data type \expr{data Type m = Type \{ resolver :: m Value\}} with parameter \expr{m} can construct query and mutation resolvers, where the type \expr{Type Q} constructs resolver \expr{resolver :: Q Value} with query operations. on the other hand, the type \expr{Type M} constructs resolver \expr{resolver :: M Value} with mutation operations.
 
 \end{alertblock}
 \end{frame}
