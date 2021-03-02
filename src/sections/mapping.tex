@@ -26,18 +26,17 @@
 \end{frame}
 
 \subsection{Wrapping Types}
-\begin{frame}
+\begin{frame}\frametitle{Wrapping Types}
 
-GraphQL defines two primitive wrapping types: List and Non-Null~\cite{gql-spec}. In the Haskell context, they can be interpreted as a type with a single type parameter.
+GraphQL defines two primitive wrapping types: List and Non-Null~\cite{gql-spec}.
+
 \begin{itemize}
 
-  \item Non-Null: Maybe
-    %  GraphQL types are nullable by default: e.g., a scalar string can return either zero or a string value. Accordingly, the non-null type wraps another type and means that the resulting value will never be null~\cite{gql-spec}.
+  \li{Non-Null} GraphQL types are nullable by default: e.g., a scalar string can return either zero or a string value. The non-null type wraps another type and means that the resulting value will never be null~\cite{gql-spec}.
 
-    to represent the nullable GraphQL type \expr{Int} in Haskell, we use \expr{Maybe Int}; and for the non-null GraphQL type \expr{Int!} we use the Haskell type \expr{Int}.
+    type \expr{Maybe Int} for nullable GraphQL type \expr{Int} and type \expr{Int} for the non-null GraphQL type \expr{Int!}
 
-  \item List: List
-  % GraphQL List is a collection of homogeneous elements, where the elements are ordered and serialized according to their type~\cite{gql-spec}. Since there is no difference, We can directly represent it with Haskell List.
+  \li{List} GraphQL List is a collection of homogeneous elements, where the elements are ordered and serialized according to their type~\cite{gql-spec}. 
 \end{itemize}
 
 \end{frame}
@@ -45,13 +44,13 @@ GraphQL defines two primitive wrapping types: List and Non-Null~\cite{gql-spec}.
 \subsection{Scalars}
 \begin{frame}\frametitle{Scalars}
 
-Scalar types represent primitive leaf values in a GraphQL type system. They can be represented as Strings (or other primitive values). GraphQL offers built-in scalar types like Int, Float, String, Boolean, and ID. However, the user can extend the type system with additional scalars with their semantic meaning~\cite{gql-spec}.
+Scalar types represent primitive leaf values in a GraphQL type system. They can be represented as strings. GraphQL offers built-in scalar and enables users to extend the type system with additional scalars with their semantic meaning~\cite{gql-spec}.
 
 Since scalar types have no structural representation, we will impose no restriction and allow any type to represent a scalar type if it has appropriate parse and serialization methods.
 
 \begin{itemize}
 
-  \item Int:
+  \item Int: Int
   %  This scalar type represents a signed numeric 
     32-bit non-fractional value~\cite{gql-spec}. 
 
@@ -63,7 +62,7 @@ Since scalar types have no structural representation, we will impose no restrict
   % However, it is also extremely inefficient. An alternative to String is the type Text, which is an array-based string representation that is faster and more compact than String~\cite{string-vs-text,string-types-alexeyshmalko,string-types-fpcomplete,hackage-data-text}. 
   \item Boolean: Bool
   % Since this represents typical Boolean values (true and false)~\cite{gql-spec}, it is represented as a type Bool.
-  \item ID:  ID 
+  \item ID:  defined custom data type ID 
   % is a unique identifier that should always be serialized as a String (although it is often numeric)~\cite{gql-spec}. Accordingly, we declare a new data type ID with parse and serialization implementations that meet this specification.
 \end{itemize}
 
