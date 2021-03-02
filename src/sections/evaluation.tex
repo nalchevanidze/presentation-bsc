@@ -24,18 +24,15 @@ The reliability requirement considers the following two factors: type safety and
 
 \begin{itemize}
 
-  \li{Type Safety} To ensure type safety, we have formulated several criteria with specific questions. The following statements show how our library meets these.
-    
+  \li{Type Safety} 
     \begin{enumerate}
 
-      \li{Deterministic deriving} The mapping rules cover all Haskell algebraic data types and assign them specific types, encoder, and decoder, depending on the case. Unsupported cases are reported at compile time. Therefore, the same Haskell code will always derive the same GraphQL API. 
+      \li{Deterministic deriving} The mapping rules cover all Haskell algebraic data types.
 
-      \li{Resolver validity} Since we define schema based on native data types, the Haskell compiler reports any value mismatch at compile time. In this way, the Haskell compiler guarantees the validity of the resolver types.
+      \li{Resolver validity} The Haskell compiler reports any value mismatch at compile time.
       
       \li{Schema validity} Haskell and GraphQL adopt different types of type systems. That why the Haskell compiler cannot check the validity of all GraphQL-specific rules. Therefore, to ensure schema validity, we provide the function \expr{compileTimeSchemaValidation}, which takes the \expr{RootResolver} type signature and fails if the schema is invalid.
     
-      \li{Type-safe subscriptions} As We know, the communication between subscription and mutation is based on the resolver monad, which uses the type parameter \expr{event} to ensure that the user subscription receives the same event type that the mutation publishes.   As a result, type-safe subscriptions are achieved.
-
     \end{enumerate}
 
   \li{Complience with GraphQL Specifications} The library meets all the critical parts of the specifications. However, there are also small deviations in favor of flexibility, e.g., the use of \expr{Int} instead of \expr{Int32}. Moreover, interfaces and directives are still not fully implemented. Since Haskell does not have a similar concept to GraphQL interfaces, the library does not fully implement the interfaces but provides a workaround. The library implements standard directives but does not support custom directives because we have not found a type-safe solution for them.
