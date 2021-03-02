@@ -5,10 +5,9 @@
 \begin{enumerate} 
   \li{morpheus-graphql-core} low level language functionalities and common types and operations, such as  parsing, pretty-printing, and validation of GraphQL queries and schema documents, AST for the GraphQL type system and query language.
 
-  \item morpheus-graphql-client: The client application enables type-safe client queries. It uses the core package to parse and validate the GraphQL query based on the target server's schema. 
-  If the query is valid, it generates the corresponding query and response types using Template Haskell. However, it will throw a compilation error with a   descriptive message on the invalid query.
-    
-  \item morpheus-graphql-app: this package provides utilities for creating executable GraphQL applications for servers.  Its primary task is to execute the 
+  \li{morpheus-graphql-client} The client application enables type-safe client queries. If the query is valid, it generates the corresponding query and response types using Template Haskell. However, it will throw a compilation error with a   descriptive message on the invalid query.
+
+  \li{morpheus-graphql-app} this package provides utilities for creating executable GraphQL applications for servers.  Its primary task is to execute the 
   GraphQL document representation parsed by the core package. 
   Therefore it defines internal resolver value interpretations, resolver monads for GraphQL servers, and event action types for GraphQL 
   subscriptions. One can use it to build a schema-first GraphQL server 
@@ -17,7 +16,7 @@
   That is, the server package is not necessary for this. 
   Although without it, the type-safety is not guaranteed. 
   
-  \item morpheus-graphql-subscriptions: This package provides GraphQL subscriptions based on the WebSockets library. 
+  \li{morpheus-graphql-subscriptions} This package provides GraphQL subscriptions based on the WebSockets library. 
   It uses the core package and builds a WebSocket server 
   with an \expr{App e m} argument provided by the app package. 
   In other words, it is independent of the server package and 
