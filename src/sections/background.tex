@@ -69,29 +69,15 @@ In some languages, types do not indicate the presence of the side effects. There
 
 \begin{frame}\frametitle{Datatype-Generic Programming}
     
- For some domains, such as encoding and decoding, most of the procedures are the same. However, the data types differ, requiring the complete functionalities to be rewritten. Datatype-generic programming is a technique for tackling this issue by automatically generating programs depending on these data types~\cite{comparing-generic-approaches, datatype-generic-programming}. 
-    It enables writing single (called generic or polytypic) functions that address various cases and types. The standard examples are parsing,  serialization, or comparing of data types~\cite{derivable-type-classes}.
+Datatype-generic programming enables writing single (called generic or polytypic) functions that address various cases and types. The standard examples are parsing,  serialization, or comparing of data types~\cite{derivable-type-classes}.
+ 
+It increases the reliability of programs by reducing code duplication and improving reusability and modularity~\cite{optimizing-generics}. The core concept is that it makes programming languages flexible while still guaranteeing safety~\cite{datatype-generic-programming}.
+  
+\importHS{generics}{Generic Deriving}. 
+% To define the equality instance for this data type, we must first check whether both values have the same constructor. In the second step, we must check whether each field of the constructors is equal, which requires an equality instance for its type variable \expr{a}. Since the equality check is programmable, Haskell provides a so-called "deriving" clause that instructs the compiler to generate the "boilerplate" for equality~\cite{derivable-type-classes, meta-hs}. 
     
-    The term "generic" is an overused adjective in computer science. 
-    Various programming languages provide generic packages 
-    representing different ideas. 
-    Usually, it indicates that a concept allows abstractions over a larger class of entities. 
-    However, most often, "generic" refers to parametric polymorphism, 
-    ad hoc polymorphism, inheritance, or meta-programming~\cite{optimizing-generics,datatype-generic-programming}.  
-    For this work, the term "generic programming" means a form of programming in which a function takes a type as an argument and performs appropriate behavior depending on its structure. 
-    This kind of generic programming is also called datatype-generic programming~\cite{comparing-generic-approaches, datatype-generic-programming}.
-    It increases the reliability of programs by reducing code duplication and improving reusability and modularity~\cite{optimizing-generics}.
-    The core concept is that it makes programming languages flexible while still guaranteeing safety~\cite{datatype-generic-programming}.
-    There are many datatype-generic programming approaches that vary in sophistication and target audience~\cite{comparing-generic-approaches, optimizing-generics}.
-    In this section, we will discuss the standard Haskell approach.
-    
-    Let us examine the data type  \expr{Computation} in \refHS{deriving-node}. 
-    To define the equality instance for this data type, we must first check whether both values have the same constructor. In the second step, we must check whether each field of the constructors is equal, which requires an equality instance for its type variable \expr{a}. Since the equality check is programmable, Haskell provides a so-called "deriving" clause that instructs the compiler to generate the "boilerplate" for equality~\cite{derivable-type-classes, meta-hs}. 
-    
-    \importHS{generics}{Generic Deriving}
-    
-    However, if we want to define our derivable programs like encoders or decoders for arbitrary types, we can use the Haskell package GHC.Generics~\cite{ghc-generics}. The basic idea behind it is to represent all types and values by a small set of data types, which are also called generic representation types. They are the building blocks of the structural representation of all other types~\cite{optimizing-generics}.
-    Using the \expr{from} and \expr{to} functions, the user can convert arbitrary types to their generic representation, operate on them, and convert them back to their original types~\cite{optimizing-generics,history-of-haskell, ghc-generics}.
+The basic idea behind it is to represent all types and values by a small set of data types, which are also called generic representation types. They are the building blocks of the structural representation of all other types~\cite{optimizing-generics}.
+Using the \expr{from} and \expr{to} functions, the user can convert arbitrary types to their generic representation, operate on them, and convert them back to their original types~\cite{optimizing-generics,history-of-haskell, ghc-generics}.
 
 \end{frame}
 
