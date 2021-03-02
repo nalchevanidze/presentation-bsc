@@ -87,38 +87,27 @@ A GraphQL input objects and arguments are is a sets of labeled input values~\cit
 \importHS{input-object}{GraphQL Input Object in Haskell}
 \importGQL{input-object}{Input Object Deity}
 
-\subsection{Objects}
+\subsection{Objects and Interfaces}
 
 \end{frame}
+\begin{frame}[allowframebreaks]\frametitle{Objects and Interfaces}
 
-\begin{frame}\frametitle{Objects}
+GraphQL objects are a set of named fields, where fields themselves consist of argument and return type~\cite{gql-spec}. Object fields are functions which occasionally accept arguments and return corresponding values~\cite{gql-spec}.
 
-% \subsection{Interfaces}
-% \label{sec:mapping:interfaces}
+We represent the object types with parametrized records. This technique allows types to be defined independently of the resolver operations, and the concrete operations can be passed recursively from parent to child. 
 
-% As in object, interfaces represent a list of named fields and their arguments. Therefore the same rules apply to their fields as to object fields. Apart from their similarities, there are two main differences. First, an object can implement interfaces, which requires that the object type defines all fields defined by these interfaces. Second, an interface cannot implement another interface~\cite{gql-spec}.
-
-% Haskell has no features like GraphQL interfaces. We can consider type classes as GraphQL interfaces, but they cannot be derived with generics, and we cannot cast them for additional fields in the GraphQL query. Accordingly, our current approach only simulates them and derives them like objects.
-
-GraphQL objects are a set of named fields, where fields themselves consist of argument and return type~\cite{gql-spec}. Hence before we try to define an object, we will define its components.
-
-Object field arguments are a set of all possible argument names with corresponding input types~\cite{gql-spec}. Since they are structurally no different from input objects, we can also represent them with Haskell records. 
-
-% Object fields are functions which occasionally accept arguments and return corresponding values. An object field without an argument (e.g. \expr{field: Int}) is equivalent to a function with empty arguments (e.g. \expr{field(): Int})~\cite{gql-spec}.
-% Accordingly, we represent Haskell functions as object fields with arguments and leftovers as fields without arguments. 
-
-We represent the object types with records. Furthermore, they get the type parameter \expr{m} for modularity.
-This technique allows types to be defined independently of the resolver operations, and the concrete operations can be passed recursively from parent to child. 
+Haskell has no features like GraphQL interfaces. We can consider type classes as GraphQL interfaces, but they cannot be derived with generics, and we cannot cast them for additional fields in the GraphQL query. Accordingly, our current approach only simulates them and derives them like objects.
 
 \importHS{object-type}{GraphQL Object in Haskell}
-\importGQL{object-type}{}
+
+\importGQL{object-type}{GraphQL Object in Haskell}
 
 \end{frame}
 
 \subsection{Unions}
-\begin{frame}\frametitle{Unions}
+\begin{frame}[allowframebreaks]\frametitle{Unions}
 
-GraphQL unions represent an object, one of the possible alternative object types, but do not provide guaranteed fields between them~\cite{gql-spec}. This definition is very similar to the definition of algebraic data types, but Haskell presents it in different ways. While in GraphQL, we only refer to the object type in the list of possible types, in Haskell, we put each of them into a specific constructor. Furthermore, in Haskell, we can create alternative objects only with constructors without defining their types.
+GraphQL unions represent an object, one of the possible alternative object types, but do not provide guaranteed fields between them~\cite{gql-spec}. While in GraphQL, we only refer to the object type in the list of possible types, in Haskell, we put each of them into a specific constructor. Furthermore, in Haskell, we can create alternative objects only with constructors without defining their types.
 
 % we can generate GraphQL object types \expr{Cat} and \expr{Dog} for the two constructors of the data type \expr{Animal} and build a GraphQL union type from them. However, it raises difficulties if some member type is already defined.
 
@@ -130,8 +119,8 @@ GraphQL unions represent an object, one of the possible alternative object types
 
 % \importHS{morpheus/code}{union-mixed}{Mapping GraphQL Union}
 
-\importHS{union-unpack}{Union Types}
-\importGQL{union-unpack}{Union Types}
+\importHS{union}{Union Types}
+\importGQL{union}{Union Types}
 
 % On the one hand, we could unpack single field constructors where a field type is an object, but that does not work because the constructor \expr{Cat} also has a single field \expr{name} with the object type \expr{Name}.  On the other hand, we could unpack single-field constructors with a name prefixed with "Unpack," but that would allow multiple unpacking of the same type in a single union. Therefore, we unpack constructors, where the name is the concatenation of the type constructor name and the referencing type name. That way, the compiler in \refHS{union-unpack} unpacks the type \expr{Dog} but generates a new object type \expr{Cat}.
 
