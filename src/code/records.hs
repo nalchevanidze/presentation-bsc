@@ -5,12 +5,6 @@ data Deity = Deity {
 
 deities :: [Deity]
 deities = [
-  Deity {
-    name = "Morpheus",
-    age = 25351124
-  },
-  Deity {
-    age = 3223413352
-    name = "Zeus",
-  }
-]
+    Deity { name = "Morpheus", age  = 12000 },
+    Deity { age  = 12000     , name = "Zeus"}
+  ]

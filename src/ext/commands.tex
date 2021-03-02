@@ -13,6 +13,17 @@
     ]{src/code/#1.hs}   
 }
 
+\newcommand{\importHSFragment}[4]{
+    \lstinputlisting[
+        language={haskell},
+        caption={#4},
+        firstline=#2, 
+        lastline=#3,
+        label={ls:hs:#1}
+    ]{src/code/#1.hs}   
+}
+
+
 \newcommand{\importJSON}[2]{
     \lstinputlisting[
         language={haskell},

@@ -30,18 +30,24 @@ algebraic data types also have their limitations. Once a data type is defined an
 
 \end{frame}
 
-\begin{frame}\frametitle{Records}
+\begin{frame}\frametitle{Records Values}
     
-    Early versions of Haskell provided only positional notation and pattern matching to build and decompose user-defined data types. This positional notation is cumbersome and error-prone for handling data types with many components, which is quite common in real-world applications. Therefore, later versions of Haskell introduced minimalistic record syntax as a labeled field~\cite{lw-ext-records, history-of-haskell}.
+This positional notation is cumbersome and error-prone for handling data types with many components, which is quite common in real-world applications. Therefore, later versions of Haskell introduced minimalistic record syntax as a labeled field~\cite{lw-ext-records, history-of-haskell}.
 The record system provides syntactic sugar for what might otherwise be written using ordinary, positional, algebraic data type declarations~\cite{lw-ext-records}. 
 
-\importHS{records}{Haskell Record}
-% For example, 
-% the data type Deity declares a regular algebraic data type, but at the same time, constructor field accessors and modifiers. 
+Haskell record systems is that there is no support for extensibility. There are no operators for adding and removing fields in a record, we cannot reuse labels between different record types, nor can we treat labels as data~\cite{poly-ext-records, hlist,lw-ext-records}. 
+
+\importHSFragment{records}{0}{4}{Haskell Record}
+
+\end{frame}
+
+\begin{frame}\frametitle{Records}
 
 Record characteristics bring significant advantages and greatly simplify programming with data structures that have many components. Since the individual components are accessed by name (not by position), the fields' ordering is not crucial~\cite{lw-ext-records}.
 
-Haskell record systems is that there is no support for extensibility. There are no operators for adding and removing fields in a record, we cannot reuse labels between different record types, nor can we treat labels as data~\cite{poly-ext-records, hlist,lw-ext-records}. 
+\importHSFragment{records}{6}{10}{Haskell Record Values}
+% For example, 
+% the data type Deity declares a regular algebraic data type, but at the same time, constructor field accessors and modifiers. 
 
 \end{frame}
 
