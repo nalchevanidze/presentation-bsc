@@ -51,25 +51,25 @@ GraphQL requires less effort to implement requirements than REST~\cite{rest-vs-g
 
 % Using GraphQL with Haskell has the following advantages: First, the languages are typed and support union types. Second, GraphQL fields are lazy, concurrent, resolvable functions that fit Haskell's non-strict and concurrent nature~\cite{gql-spec,haskell-homepage}. This way, the developer does not worry about laziness and concurrency and focuses on business logic.
 
-
 \end{frame}
 
-\begin{frame}\frametitle{Language}
+\begin{frame}\frametitle{GraphQL Language Components}
 
-\begin{block}{GraphQL Schema}
+\begin{block}{Schema Language}
 
 GraphQL allows the client to query a domain-specific database represented by a schema. The schema can be defined with a domain-specific language called Schema Definition Language (SDL)~\cite{migrating-to-gql,gql-on-graph-db}.
 
+\end{block}
+
+\begin{block}{Query Language}
+
+GraphQL provides a query language syntactically similar to JSON but follows the server's specific schema instead of arbitrary JSON objects~\cite{gql-on-graph-db,initial-analysis-of-gql}. 
 
 \end{block}
 
-\begin{block}{GraphQL Queries}
+\begin{block}{Resolver Functions}
 
-GraphQL provides a query language that is used by clients. Every GraphQL query is defined in this language and sent to the single GraphQL endpoint as a simple string~\cite{migrating-to-gql,real-time-sys-arc-based-on-gql}.
-The query is syntactically similar to JSON but follows the server's specific schema instead of arbitrary JSON objects~\cite{gql-on-graph-db,initial-analysis-of-gql}. 
-
-To respond to queries, the developer of a GraphQL server must implement a function for each field of type resolver. These functions return query values from an underlying data structure.  The GraphQL engine calls them during the query and returns their value as a JSON document~\cite{migrating-to-gql,real-time-sys-arc-based-on-gql}. 
-
+Queries are processed by resolver functions which return query values from an underlying data structure  ~\cite{migrating-to-gql,real-time-sys-arc-based-on-gql}.
 
 \end{block}
 
