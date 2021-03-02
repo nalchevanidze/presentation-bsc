@@ -20,13 +20,10 @@ Due to laziness, the evaluation sequence is demand-oriented, a function call can
 
 \begin{frame}\frametitle{Algebraic Data Types}
 
-An algebraic data type is the sum of one or more alternatives, where each alternative is a product of zero or more fields (Haskell also allows a sum of zero alternatives, the so-called empty type)~\cite{history-of-haskell}. 
-
 Algebraic data types and pattern matching are fundamental to most modern functional languages~\cite{trees-that-grow}. Using pattern matching against algebraic data types improves readability significantly~\cite{history-of-haskell}.
-    
 
-Listing  declares \expr{Maybe} as data type, with two data constructors, \expr{Nothing} and \expr{Just}. The values of type \expr{Maybe} take one of two forms: either \expr{Nothing} or \expr{Just x}. Constructors can be used in pattern matching to decompose both a value of type and an expression~\cite{history-of-haskell}. 
-    
+An algebraic data type is the sum of one or more alternatives, where each alternative is a product of zero or more fields (Haskell also allows a sum of zero alternatives, the so-called empty type)~\cite{history-of-haskell}. 
+        
 \importHS{maybe}{Algebraic Data Types~\cite{history-of-haskell}}
 
 algebraic data types also have their limitations. Once a data type is defined and compiled, its definition cannot be extended by adding new data constructors (or new fields)~\cite{trees-that-grow}.
@@ -36,14 +33,12 @@ algebraic data types also have their limitations. Once a data type is defined an
 \begin{frame}\frametitle{Records}
     
     Early versions of Haskell provided only positional notation and pattern matching to build and decompose user-defined data types. This positional notation is cumbersome and error-prone for handling data types with many components, which is quite common in real-world applications. Therefore, later versions of Haskell introduced minimalistic record syntax as a labeled field~\cite{lw-ext-records, history-of-haskell}.
-The record system provides syntactic sugar for what might 
-otherwise be written using ordinary, positional, 
-algebraic data type declarations~\cite{lw-ext-records}. For example, 
-the data type \expr{Deity} declares a regular algebraic data type, 
-but at the same time, 
-constructor field accessors and modifiers. 
+The record system provides syntactic sugar for what might otherwise be written using ordinary, positional, algebraic data type declarations~\cite{lw-ext-records}. 
 
 \importHS{records}{Haskell Record}
+% For example, 
+% the data type Deity declares a regular algebraic data type, but at the same time, constructor field accessors and modifiers. 
+
 
 Record characteristics bring significant advantages and greatly simplify programming with data structures that have many components. Since the individual components are accessed by name (not by position), the fields' ordering is not crucial~\cite{lw-ext-records}.
 In \refHS{record-values}, for example, 
