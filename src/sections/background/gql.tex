@@ -58,8 +58,7 @@ GraphQL requires less effort to implement requirements than REST~\cite{rest-vs-g
 
 \begin{block}{GraphQL Schema}
 
-GraphQL allows the client to query a domain-specific database represented by a schema. 
-The schema can be defined with a domain-specific language called Domain Specific Language(DSL)~\cite{migrating-to-gql,gql-on-graph-db}, which consists of the input object, enum, object, union, scalar, interface, and wrapper types Using these components, we can define the schema.
+GraphQL allows the client to query a domain-specific database represented by a schema. The schema can be defined with a domain-specific language called Schema Definition Language (SDL)~\cite{migrating-to-gql,gql-on-graph-db}.
 
 \importGQL{schema}{Schema}
 
@@ -67,10 +66,7 @@ The schema can be defined with a domain-specific language called Domain Specific
 
 \begin{block}{GraphQL Queries}
 
-
-GraphQL provides a query language that is used by clients. 
-Every GraphQL query is defined in this language and sent to 
-the single GraphQL endpoint as a simple string~\cite{migrating-to-gql,real-time-sys-arc-based-on-gql}.
+GraphQL provides a query language that is used by clients. Every GraphQL query is defined in this language and sent to the single GraphQL endpoint as a simple string~\cite{migrating-to-gql,real-time-sys-arc-based-on-gql}.
 The query is syntactically similar to JSON but follows the server's specific schema instead of arbitrary JSON objects~\cite{gql-on-graph-db,initial-analysis-of-gql}. 
 
 \importGQL{query}{Sample GraphQL Query Using the Mythology }
