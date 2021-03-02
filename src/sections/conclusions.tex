@@ -6,16 +6,23 @@ In this work, we presented Morpheus GraphQL, an EDSL for building GraphQL APIs i
 This gives beginners the ability to quickly learn and implement GraphQL APIs in Haskell while preserving type safety.
 The library automatically derives APis from data types, which guarantees type-safe resolver values. We also provide two Template Haskell tools, one of which guarantees schema validity at compile time. The second one imports schemas from GraphQL SDL to facilitate quick start and migration from other languages.
 The data resolvers are regular monadic Haskell functions. These resolvers can be extended by arbitrary monads to solve specific problems.  The architecture is divided into small independent packages. Besides, one of the packages, the Morpheus GraphQL client, enables type-safe queries by rejecting invalid queries at compile-time and automatically generating the request and response types.
+
+Our prototype meets our predefined requirements, with an acceptable tradeoff between flexibility and compliance. We provide a straightforward approach to GraphQL API definitions while still guaranteeing type safety. Besides, users can achieve efficiency in the combination of Morpheus GraphQL and Haxl, as GraphQL solves over-fetching and under-fetching problems for a client and  Haxl for the backend.
+    
+Nevertheless, we run into some limitations: First, Haskell permits different naming of values and types than GraphQL. Second, sets and non-empty collections cannot be modeled in GraphQL because it provides only list types for collections. Therefore, sets and non-empty collections are represented to GraphQL clients with regular lists, and the client cannot check the validity of input values at compile time. Third, since Haskell makes no distinction between input and output types, mapping Haskell types requires support for input unions, which is not supported by GraphQL. Fourth, Haskell does not provide interfaces, so we do not yet have a satisfying way to support them. 
+
 \end{frame}
 
+
+
+  
 
 \subsection{Outlook}
 \begin{frame}\frametitle{Outlook}
 
 \begin{block}{Support Interfaces}
 
-Our approach only provides a workaround for GraphQL interfaces that simulates it but does not provide the specified behavior. 
-A promising alternative is the representation of interfaces with "type guards" on unions. This approach proposes that we take a union type and guard its fields with an interface, where the interface is a Haskell record. The compiler will fail if a variant of union type does not provide all the fields required for the interface.
+Our approach only provides a workaround for GraphQL interfaces that simulates it but does not provide the specified behavior. A promising alternative is the representation of interfaces with "type guards" on unions. 
 
 \end{block}
 
@@ -41,7 +48,7 @@ Our current approach does not provide a solution for this feature (neither do ot
 
 \begin{block}{Support Input Unions} 
 
-Since we aim to provide a schema-first API based on datatype-generic programming, we have to map all possible data types into GraphQL. This requires the representation of Haskell data types with multiple variants used as input values into GraphQL input unions. Currently, GraphQL does not support input unions. While this function's value is essentially understood, its implementation is not cleared and has been debated by the GraphQL community for many years, leading to several proposals~\cite{gql-spec-input-unions}. Our current library preliminarily represents it as an input object with excluding fields (so-called "One Of (Tagged Union)" proposal). However, GraphQL clients cannot recognize them and validate input values based on them. 
+Since we aim to provide a schema-first API based on datatype-generic programming, we have to map all possible data types into GraphQL. This requires the representation of Haskell data types with multiple variants used as input values into GraphQL input unions. Currently, GraphQL does not support input unions. While this function's value is essentially understood, its implementation is not cleared and has been debated by the GraphQL community for many years, leading to several proposals~\cite{gql-spec-input-unions}. 
 
 \end{block}
 

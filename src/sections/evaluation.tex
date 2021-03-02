@@ -44,10 +44,3 @@
 \end{block}
 
 \end{frame}
-
-\begin{frame}\frametitle{General Overview}
-
-Our prototype meets our predefined requirements, with an acceptable tradeoff between flexibility and compliance. We provide a straightforward approach to GraphQL API definitions while still guaranteeing type safety. Besides, users can achieve efficiency in the combination of Morpheus GraphQL and Haxl, as GraphQL solves over-fetching and under-fetching problems for a client and  Haxl for the backend.
-
-Nevertheless, we run into some limitations: First, Haskell permits different naming of values and types than GraphQL. Second, sets and non-empty collections cannot be modeled in GraphQL because it provides only list types for collections. Therefore, sets and non-empty collections are represented to GraphQL clients with regular lists, and the client cannot check the validity of input values at compile time. Third, since Haskell makes no distinction between input and output types, mapping Haskell types requires support for input unions, which is not supported by GraphQL. Fourth, Haskell does not provide interfaces, so we do not yet have a satisfying way to support them. 
-\end{frame}
