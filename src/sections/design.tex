@@ -9,17 +9,19 @@ This approach generates the schema and validates the resolver types simultaneous
 
 \end{alertblock}
 
-\begin{alertblock}{EDSL Based on Datatype-Generic Programming}  
+\begin{alertblock}{Embeded Domain Specific Language Based on Datatype-Generic Programming}  
 
-The library will represent EDSL based on datatype-generic programming, with the approach inspired by Aeson. This decision targets the maintainability requirement. On the first hand, since the edsl is hosted in another language and uses its syntax but provides domain-specific semantics, users can focus on domain-specific problems and reduces maintenance costs~\cite{edsl-modeling}. On the other hand, datatype-generic programming eliminates boilerplate code by encouraging the programmer to avoid implementing tedious and high-maintenance boilerplate code that is typically required to deal with complex data structures~\cite{scrap-your-boilerplate}.
-Furthermore, deriving the schema directly from data types provides a familiar abstraction.
+native language syntax with domain-specific semantics, users can focus on domain-specific problems~\cite{edsl-modeling}. futhermore increases familiarity.
+
+datatype-generic programming eliminates boilerplate code by encouraging the programmer to avoid implementing tedious and high-maintenance boilerplate code~\cite{scrap-your-boilerplate}.
+
 
 \end{alertblock}
 
 \begin{alertblock}{Monadic Resolvers} 
 
-
-Since all side effects (e.g., reading data from the database) and behavioral extensions in Haskell are performed with monads, field resolvers will be monadic functions. Moreover, resolver monad will be a monad transformer  that will allow Haxl or similar libraries to solve n+1 selects problem  and other efficiency problems. As a result, the library can create efficient APIS.  Note that the final build APIs efficiency depends primarily on the particular developer skills. However, with this approach, we provide a tool to facilitate it. 
+Since all side effects and behavioral extensions in Haskell are performed with monads, field resolvers will be monadic functions. 
+Moreover, resolver monad will be a monad transformer. 
 
 \end{alertblock}
 
