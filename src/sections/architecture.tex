@@ -3,7 +3,7 @@
 \begin{frame}\frametitle{Architecture Overview}
 
 \begin{enumerate} 
-  \item morpheus-graphql-core: The package provides basic language features such as parsing, pretty-printing, and validation of GraphQL queries and schema documents. This package also defines common types and operations used by other packages, such as AST for the GraphQL type system and query language. All other packages depend on this package.
+  \li{morpheus-graphql-core} low level language functionalities and common types and operations, such as  parsing, pretty-printing, and validation of GraphQL queries and schema documents, AST for the GraphQL type system and query language.
 
   \item morpheus-graphql-client: The client application enables type-safe client queries. It uses the core package to parse and validate the GraphQL query based on the target server's schema. 
   If the query is valid, it generates the corresponding query and response types using Template Haskell. However, it will throw a compilation error with a   descriptive message on the invalid query.
