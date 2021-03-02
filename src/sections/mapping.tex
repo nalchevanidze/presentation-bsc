@@ -79,18 +79,13 @@ enum types describe the set of possible independent, unique values~\cite{gql-spe
 
 \end{frame}
 
-\begin{frame}\frametitle{Objects, Input Object, Interfaces}
+\subsection{Input Object And Field Arguments}
+\begin{frame}\frametitle{Input Object And Field Arguments}
 
-\subsection{Input Objects}
-
-A GraphQL input object is a set of input fields, 
-where input fields can be either 
-scalars, enums, or other input objects~\cite{gql-spec}. 
-In terms of Haskell, they resemble single constructor records. 
-Therefore we will use them for representation.  Note that only the types with a single constructor are represented as input objects.
+A GraphQL input objects and arguments are is a sets of labeled input values~\cite{gql-spec}. They resemble single constructor Haskell records. 
 
 \importHS{input-object}{GraphQL Input Object in Haskell}
-\importGQL{input-object}{}
+\importGQL{input-object}{Input Object Deity}
 
 \subsection{Objects}
 
