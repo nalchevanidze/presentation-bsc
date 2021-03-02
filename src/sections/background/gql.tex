@@ -68,8 +68,6 @@ GraphQL allows the client to query a domain-specific database represented by a s
 GraphQL provides a query language that is used by clients. Every GraphQL query is defined in this language and sent to the single GraphQL endpoint as a simple string~\cite{migrating-to-gql,real-time-sys-arc-based-on-gql}.
 The query is syntactically similar to JSON but follows the server's specific schema instead of arbitrary JSON objects~\cite{gql-on-graph-db,initial-analysis-of-gql}. 
 
-
-
 To respond to queries, the developer of a GraphQL server must implement a function for each field of type resolver. These functions return query values from an underlying data structure.  The GraphQL engine calls them during the query and returns their value as a JSON document~\cite{migrating-to-gql,real-time-sys-arc-based-on-gql}. 
 
 
