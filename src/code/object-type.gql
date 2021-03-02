@@ -1,0 +1,4 @@
+type Query {
+  idsBy(mythology: String!, power: Power): [ID!]!
+  ids: [ID!]!
+}

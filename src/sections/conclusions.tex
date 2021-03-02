@@ -1,0 +1,66 @@
+\section{Conclusions}
+
+\begin{frame}[allowframebreaks]\frametitle{Conclusions}
+
+The presented approach provides an easy-to-use interface based on a datatype-generic programming technique and successfully implements the requirements. 
+
+We chose intuitive design (like Aeson) over extensibility provided by the type-level encoding. 
+
+This gives beginners the ability to quickly learn and implement GraphQL APIs in Haskell while preserving type safety.
+
+The library automatically derives APis from data types, which guarantees type-safe resolver values. 
+
+We also provide two Template Haskell tools, one of which guarantees schema validity at compile time. The second one imports schemas from GraphQL SDL to facilitate quick start and migration from other languages.
+
+The data resolvers are regular monadic Haskell functions. These resolvers can be extended by arbitrary monads to solve specific problems.  The architecture is divided into small independent packages. Besides, one of the packages, the Morpheus GraphQL client, enables type-safe queries by rejecting invalid queries at compile-time and automatically generating the request and response types.
+    
+Limitations
+
+\begin{itemize}
+    \item Haskell permits different naming of values and types than GraphQL. 
+    \item sets and non-empty collections cannot be modeled in GraphQL because it provides only list types for collections. 
+    \item mapping Haskell types requires support for input unions, which is not supported by GraphQL. 
+    \item Haskell does not provide interfaces, so we do not yet have a satisfying way to support them. 
+\end{itemize}
+
+\end{frame}
+
+
+
+  
+
+\subsection{Outlook}
+\begin{frame}\frametitle{Outlook}
+
+\begin{block}{Support Interfaces}
+
+    representation of interfaces with "type guards" on unions. 
+
+\end{block}
+
+% \begin{block}{Type-Level Curried Arguments}
+
+% straightforward argument definitions for a small number of arguments than our current approach since the user does not have to define a new data type for each field. 
+
+% \end{block}
+
+\begin{block}{Custom Collections}
+
+the problem of custom collections. Since GraphQL has only one type (List) for collections, we cannot represent collections with certain constraints. 
+
+\end{block}
+
+\begin{block}{Support Directives} 
+
+directives are used to annotate different parts of a GraphQL document to indicate that they should be evaluated differently~\cite{gql-spec}. 
+% Since the GraphQL specification does not specify a particular implementation strategy for directives, it is up to each server library to provide a suitable API~\cite{schema-directives}.
+
+\end{block}
+
+\begin{block}{Support Input Unions} 
+
+GraphQL does not support input unions. While this function's value is essentially understood, its implementation is not cleared and has been debated by the GraphQL community for many years, leading to several proposals~\cite{gql-spec-input-unions}. 
+
+\end{block}
+
+\end{frame}

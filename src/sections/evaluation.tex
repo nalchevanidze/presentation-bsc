@@ -1,0 +1,46 @@
+\section{Evaluation}
+
+\begin{frame}[allowframebreaks]\frametitle{Evaluation}
+
+\begin{block}{Maintainability}
+
+  \begin{itemize}
+  
+    \li{Low Boilerplate and Familiarity} The library follows a code-first approach and and derives api from native Haskell types based on data-type-generic programming. the approach is familiar reduces boilerplate and improves maintainability.
+
+    \li{Modularity}
+      The library architecture divides functionalities into separate, coherent packages. 
+    
+      The modularity of the API definition is achieved by introducing parameterized resolver types. They decouple the types from the accessible operations, and thus one can use one data type for different operations.
+
+  \end{itemize}
+
+\end{block}
+
+
+\begin{block}{Reliability}
+
+\begin{itemize}
+
+  \li{Type Safety} 
+    \begin{enumerate}
+
+      \li{Deterministic deriving} The mapping rules cover all Haskell algebraic data types.
+
+      \li{Resolver validity} The Haskell compiler reports any value mismatch at compile time.
+      
+      \li{Schema validity} Haskell and GraphQL adopt different types of type systems. That why the Haskell compiler cannot check the validity of all GraphQL-specific rules. Therefore, to ensure schema validity, we provide the function \expr{compileTimeSchemaValidation}, which takes the \expr{RootResolver} type signature and fails if the schema is invalid.
+    
+    \end{enumerate}
+
+  \li{Complience with GraphQL Specifications} The library meets all the critical parts of the specifications. However, there are also small deviations in favor of flexibility, e.g., the use of \expr{Int} instead of \expr{Int32}. Moreover, interfaces and directives are still not fully implemented. 
+
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Efficiency} we used the type \expr{Text} instead of \expr{String}. the library only executes the resolvers necessary for the query. The library is extensible with Haxl, which allows efficient reuse of resolvers without running into the n+1 selects problem.
+
+\end{block}
+
+\end{frame}

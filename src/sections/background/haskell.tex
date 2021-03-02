@@ -1,0 +1,69 @@
+\subsection{Haskell}
+\begin{frame}\frametitle{Haskell}
+
+Haskell is a non-strict, purely functional language with static typing and algebraic data types. Many developers think that Haskell programs look nice~\cite{history-of-haskell}.
+
+\footnotesize
+
+\begin{block}{Haskell is lazy}
+    Laziness is a primary concern in Haskell's design. Technically, Haskell is a non-strict semantic language; lazy evaluation is merely an implementation technique for a non-strict language~\cite{history-of-haskell}.
+\end{block}
+
+\begin{block}{Haskell is pure}
+Due to laziness, the evaluation sequence is demand-oriented, a function call can no longer guarantee reliable performance of side effects. Consequently, the pure design is inevitable~\cite{history-of-haskell}.
+\end{block}
+
+\end{frame}
+
+\begin{frame}\frametitle{Algebraic Data Types}
+
+Algebraic data types and pattern matching are fundamental to most modern functional languages~\cite{trees-that-grow}. Using pattern matching against algebraic data types improves readability significantly~\cite{history-of-haskell}.
+
+An algebraic data type is the sum of one or more alternatives, where each alternative is a product of zero or more fields (Haskell also allows a sum of zero alternatives, the so-called empty type)~\cite{history-of-haskell}. 
+        
+\importHS{maybe}{Algebraic Data Types~\cite{history-of-haskell}}
+
+algebraic data types also have their limitations. Once a data type is defined and compiled, its definition cannot be extended by adding new data constructors (or new fields)~\cite{trees-that-grow}.
+
+\end{frame}
+
+\begin{frame}\frametitle{Records }
+    
+This positional notation is cumbersome and error-prone for handling data types with many components, which is quite common in real-world applications. Therefore, later versions of Haskell introduced record syntax as a labeled field~\cite{lw-ext-records, history-of-haskell}.
+The record system provides syntactic sugar for what might otherwise be written using ordinary, positional, algebraic data type declarations~\cite{lw-ext-records}. 
+
+Haskell record systems is that there is no support for extensibility. There are no operators for adding and removing fields in a record, we cannot reuse labels between different record types, nor can we treat labels as data~\cite{poly-ext-records, hlist,lw-ext-records}. 
+
+\importHSFragment{records}{0}{4}{Haskell Record}
+
+\end{frame}
+
+\begin{frame}\frametitle{Record Values}
+
+Record characteristics bring significant advantages and greatly simplify programming with data structures that have many components. Since the individual components are accessed by name (not by position), the fields' ordering is not crucial~\cite{lw-ext-records}.
+
+\importHSFragment{records}{6}{10}{Haskell Record Values}
+% For example, 
+% the data type Deity declares a regular algebraic data type, but at the same time, constructor field accessors and modifiers. 
+
+\end{frame}
+
+\begin{frame}\frametitle{Monads}
+
+Pure languages facilitate changes by making the data visible on which each operation depends. However, a seemingly small change may require more extensive restructuring than impure functions.  Programming with monads solves this inflexibility and brings properties that are characteristic only of impure functions~\cite{essence-of-fp}.
+
+monads are formed by a type constructor \expr{M} and a pair of functions,\expr{return} and \expr{>>=}~\cite{history-of-haskell,essence-of-fp}. The type \expr{M a} is a computation that returns a value of type \expr{a} and possibly performs some side effects~\cite{history-of-haskell}. The purpose of \expr{return} and \expr{>>=} is to push a value into computation and to evaluate a computation, yielding a value~\cite{essence-of-fp}.
+
+Since the monad allows the compiler to determine impure and pure operations, the Haskell language can use specific optimizations. However, the developer still has the freedom to define their execution order~\cite{history-of-haskell}.
+
+\end{frame}
+
+\begin{frame}\frametitle{Datatype-Generic Programming}
+    
+Datatype-generic programming enables writing single functions that address various cases and types. The standard examples are parsing,  serialization, or comparing of data types~\cite{derivable-type-classes}. It increases the reliability of programs by reducing code duplication and improving reusability and modularity. it makes programming languages flexible while still guaranteeing safety~\cite{datatype-generic-programming,optimizing-generics}.
+  
+\importHS{generics}{Generic Deriving}. 
+    
+The basic idea behind it is to represent all types and values by a small set of data types, which are also called generic representation types. They are the building blocks of the structural representation of all other types~\cite{optimizing-generics}. the user can convert arbitrary types to their generic representation, operate on them, and convert them back to their original types~\cite{optimizing-generics,history-of-haskell, ghc-generics}.
+
+\end{frame}

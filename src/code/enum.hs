@@ -1,0 +1,3 @@
+data Power
+  = Shapeshifting
+  | Thunderbolt

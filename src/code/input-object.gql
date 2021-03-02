@@ -1,0 +1,4 @@
+input Deity {
+  name: String!
+  power: Power!
+}

@@ -1,0 +1,94 @@
+\subsection{GraphQL}
+
+\begin{frame}\frametitle{GraphQL}
+
+  \footnotesize
+  \begin{block}{What is GraphQL?}
+  GraphQL is an application layer framework for solving the efficiency problems of web communication~\cite{gql-iot}. It was developed internally at  Facebook for three years and published in 2016~\cite{initial-analysis-of-gql}. 
+  \end{block}
+
+  \begin{block}{GraphQL as current trend}
+  Since its first appearance, it has gained a rich open-source ecosystem~\cite{gql-healthcare}, and the trust of companies from various sectors. e.g. (GitHub), entertainment (Netflix), finance (PayPal), travel (KLM), and others~\cite{morph-gql-1}.
+  \end{block}
+
+\begin{block}{Typed Query Language}
+  GraphQL is a hierarchically structured language with a strongly typed schema~\cite{gql-healthcare}, where the type system (as a public schema) provides a solid contract between client and server and the possibility of errors caused by a part of the invalid request on the client~\cite{real-time-sys-arc-based-on-gql}.
+\end{block}
+
+\end{frame}
+
+\begin{frame}\frametitle{Advantages and Disadvantages of GraphQL}
+
+\footnotesize
+
+\begin{block}{Performance and efficiency improvement}
+reduces unnecessary transmission costs.~\cite{migrating-to-gql,real-time-sys-arc-based-on-gql,gql-iot}.
+% which interesting for mobile applications, often faced with limited bandwidth and speed
+\begin{enumerate}
+  \item Under-Fetching: reduces  numbers of API calls~\cite{migrating-to-gql,gql-healthcare}.
+  \item Over-Fetching : reduction in response size
+\end{enumerate}
+
+\end{block}
+
+\begin{block}{API Versioning}
+
+a stable and consistent contract between two systems for information exchange while remaining flexible for future changes~\cite{gql-healthcare}. 
+
+\begin{enumerate}
+  \item new fields added to a type do not result in client changes~\cite{migrating-to-gql}. 
+  \item provides an \expr{@deprecated} annotation for unsupported fields~\cite{migrating-to-gql}. 
+\end{enumerate}
+
+\end{block}
+
+\begin{block}{Facilitates Rapid Product Development}
+
+% GraphQL requires less effort to implement requirements than REST~\cite{rest-vs-gql-controlled-experiment}.
+
+\begin{enumerate}
+  \item  Familiar syntax and semantics, similar to common programming languages~\cite{rest-vs-gql-controlled-experiment}.
+  \item GraphQL-IDEs enables real-time query validation and auto-completion~\cite{rest-vs-gql-controlled-experiment,migrating-to-gql}.
+  \item Introspection enables clients to explore the REST instantly~\cite{migrating-to-gql}. 
+\end{enumerate}
+
+\end{block}
+
+% Using GraphQL with Haskell has the following advantages: First, the languages are typed and support union types. Second, GraphQL fields are lazy, concurrent, resolvable functions that fit Haskell's non-strict and concurrent nature~\cite{gql-spec,haskell-homepage}. This way, the developer does not worry about laziness and concurrency and focuses on business logic.
+
+\end{frame}
+
+\begin{frame}\frametitle{GraphQL Language Components}
+
+\begin{block}{Schema Language}
+
+GraphQL allows the client to query a domain-specific database represented by a schema. The schema can be defined with a domain-specific language called Schema Definition Language (SDL)~\cite{migrating-to-gql,gql-on-graph-db}.
+
+\end{block}
+
+\begin{block}{Query Language}
+
+GraphQL provides a query language syntactically similar to JSON but follows the server's specific schema instead of arbitrary JSON objects~\cite{gql-on-graph-db,initial-analysis-of-gql}. 
+
+\end{block}
+
+\begin{block}{Resolver Functions}
+
+Queries are processed by resolver functions which return query values from an underlying data structure  ~\cite{migrating-to-gql,real-time-sys-arc-based-on-gql}.
+
+\end{block}
+
+
+\end{frame}
+
+\begin{frame}
+\importGQL{schema}{Schema}
+\end{frame}
+
+\begin{frame}
+
+\importGQL{query}{Sample GraphQL Query Using the Mythology }
+
+\importJSON{response}{GraphQL Response of the Query}
+
+\end{frame}

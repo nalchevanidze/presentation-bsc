@@ -1,0 +1,5 @@
+query {
+  deities(power: Shapeshifting) {
+    name
+  }
+}
