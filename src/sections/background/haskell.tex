@@ -56,10 +56,13 @@ Since the monad allows the compiler to determine impure and pure operations, the
 
 \begin{frame}\frametitle{Datatype-Generic Programming}
     
-Datatype-generic programming enables writing single functions that address various cases and types. The standard examples are parsing,  serialization, or comparing of data types~\cite{derivable-type-classes}. It increases the reliability of programs by reducing code duplication and improving reusability and modularity. it makes programming languages flexible while still guaranteeing safety~\cite{datatype-generic-programming,optimizing-generics}.
-  
-\importHS{generics}{Generic Deriving}. 
+Datatype-generic programming enables writing single functions that address various cases and types.~\cite{derivable-type-classes}. 
+It increases program reliability, reduces code duplication, and improves modularity while guaranteeing safety~\cite{datatype-generic-programming,optimizing-generics}.
+
+% The standard examples are parsing,  serialization, or comparing of data types
+
+\importHS{generics}{Generic Deriving}
     
-The basic idea behind it is to represent all types and values by a small set of data types, which are also called generic representation types. They are the building blocks of the structural representation of all other types~\cite{optimizing-generics}. the user can convert arbitrary types to their generic representation, operate on them, and convert them back to their original types~\cite{optimizing-generics,history-of-haskell, ghc-generics}.
+The generic derivation represents all types and values by generic representation types. The user can convert any types to their generic representation, operate on them, and convert them back to their original types~\cite{optimizing-generics, ghc-generics}.
 
 \end{frame}
