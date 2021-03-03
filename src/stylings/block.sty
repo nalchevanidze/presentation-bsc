@@ -1,13 +1,13 @@
 %!TEX root = ../../main.tex
 
-\ProvidesPackage{scr/stylings/block}
+\ProvidesPackage{src/stylings/block}
 
 \newcommand\openBlock[1]
  {
     \vspace{\fill}
     \begin{adjustbox}{max width=0.98\textwidth, trim=0 2ex 0 0,clip}
     \begin{tabular}{!{
-        \color{#1}{\vrule width 2pt}}>{
+        \color{#1}{\vrule width 1pt}}>{
         \columncolor[gray]{1}
         }
         m{\textwidth}
@@ -33,7 +33,7 @@
 % WORKING ON BLOCKS
 \setbeamertemplate{navigation symbols}{}
 
-\setbeamertemplate{block begin}{\openBlock{UHHRed}}
+\setbeamertemplate{block begin}{\openBlock{LightGreen}}
 \setbeamertemplate{block end}{\closeBlock}
 
 \setbeamertemplate{block alerted begin}{\openBlock{DarkOrange}}
