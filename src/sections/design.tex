@@ -4,25 +4,23 @@
 
 \begin{frame}[allowframebreaks]\frametitle{Design Decisions}
 \begin{block}{Code-First Approach}  
-
-This approach generates the schema and validates the resolver types simultaneously, whereby a single type change automatically updates the resolver types and the GraphQL schema, making API maintenance easier.
-
+A single type change automatically updates the resolver types and GraphQL schema, simplifying maintenance. 
 \end{block}
 
-\begin{block}{Embeded Domain Specific Language Based on Datatype-Generic Programming}  
+\begin{block}{Embeded Domain Specific Language}
+native language syntax with domain-specific semantics, users can focus on domain-specific problems~\cite{edsl-modeling}.
+\end{block}
 
-native language syntax with domain-specific semantics, users can focus on domain-specific problems~\cite{edsl-modeling}. futhermore increases familiarity. datatype-generic programming eliminates boilerplate code by encouraging the programmer to avoid implementing tedious and high-maintenance boilerplate code~\cite{scrap-your-boilerplate}.
-
+\begin{block}{Datatype-Generic Programming}  
+datatype-generic programming eliminates boilerplate code by encouraging the programmer to avoid implementing tedious and high-maintenance boilerplate code~\cite{scrap-your-boilerplate}.
 \end{block}
 
 \begin{block}{Monadic Resolvers} 
-
 Since all side effects and behavioral extensions in Haskell are performed with monads, field resolvers will be monadic functions. 
 \end{block}
 
 
 \begin{block}{Parameterized Resolver Types}
-
 parametric polymorphism enablefinition of resolver types independent of their operations, where the type parameter determines the allowed operations.  
 
 \expr{data Type m = Type \{ resolver :: m Value\}}
