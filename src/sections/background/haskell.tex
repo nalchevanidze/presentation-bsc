@@ -10,11 +10,12 @@ Haskell is a non-strict, purely functional language with static typing and algeb
 
 \begin{block}{Haskell is pure}
 The lazy evaluation requires a pure design since a function call can no longer guarantee the reliable execution of the side-effects~\cite{history-of-haskell}.
+Haskell abstracts side effects with monads, which allowes compiler to determine impure and pure operations, the Haskell language can use specific optimizations, but developer can specify computation execution order~\cite{history-of-haskell}.
 \end{block}
 
 \end{frame}
 
-\begin{frame}\frametitle{Algebraic Data Types}
+\begin{frame}\frametitle{Algebraic Data Types and Records}
 
 % Algebraic data types and pattern matching are fundamental to most modern functional languages~\cite{trees-that-grow}. Using pattern matching against algebraic data types improves readability significantly~\cite{history-of-haskell}.
 
@@ -22,27 +23,20 @@ An algebraic data type is the sum of one or more alternatives, where each altern
         
 \importHS{maybe}{Algebraic Data Types~\cite{history-of-haskell}}
 
-Once a data type is defined and compiled, its definition cannot be extended by adding new data constructors or new fields~\cite{trees-that-grow}.
-
-\end{frame}
-
-\begin{frame}\frametitle{Records }
 
 The record system provides syntactic sugar for what might otherwise be written using ordinary, positional, algebraic data type declarations~\cite{lw-ext-records}. 
 
 \importHSFragment{records}{0}{4}{Haskell Record}
 
-Haskell record are not extensible. There are no operators for adding and removing fields in a record, we cannot reuse labels between different record types~\cite{poly-ext-records, hlist,lw-ext-records}. 
-
 \end{frame}
 
 \begin{frame}\frametitle{Record Values}
 
-Records bring significant advantages and greatly simplify programming with data structures that have many components. Since the individual components are accessed by name (not by position), the fields' ordering is not crucial~\cite{lw-ext-records}.
+Records greatly simplify programming with data structures that have many components. Since the individual components are accessed by name, the order of the fields is not critical~\cite{lw-ext-records}.
 
 \importHSFragment{records}{6}{10}{Haskell Record Values}
-% For example, 
-% the data type Deity declares a regular algebraic data type, but at the same time, constructor field accessors and modifiers. 
+
+Algebraic data types and records and are not extensible. Once a data type is declared, its declaration cannot be extended by adding or removing data constructors or fields~\cite{hlist,lw-ext-records,trees-that-grow}. 
 
 \end{frame}
 
