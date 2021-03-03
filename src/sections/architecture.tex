@@ -6,18 +6,15 @@
 
   \footnotesize
   
-  \li{morpheus-graphql-core} low level functionalities and common types, such as  parsing, pretty-printing, validation, ast AST for the GraphQL schema and query language.
+  \li{morpheus-graphql-core} low level functionalities and common types, such as  parsing, pretty-printing, validation.
 
-  \li{morpheus-graphql-client} Enables type-safe client queries. It generates the query and response types on valid queries but throws a compilation error on the invalid query.
+  \li{morpheus-graphql-client} enables type-safe client queries. It generates the query and response types on valid queries but throws a compilation error on the invalid query.
 
-  \li{morpheus-graphql-app} utilities for creating executable GraphQL applications. primary task is to execute the GraphQL document representations. 
+  \li{morpheus-graphql-app} creates and executes GraphQL applications (called \expr{Apps}) based on schema and query documents.
   
-  \li{morpheus-graphql-subscriptions} Takes argument \expr{App} and generates  WebSockets server based on it. It is independent of the server package and accepts any \expr{App} derived from an arbitrary server.
+  \li{morpheus-graphql-subscriptions}  creates WebSockets servers based on \expr{Apps}. It is independent of the server package and accepts any \expr{App} derived from an arbitrary server.
 
-  \li{morpheus-graphql} derives executable \expr{App} with native Haskell types by mapping them to GraphQL representations. derived application can be executed by app and subscriptions packages.
-
-  % This package also leverages Template Haskell and enables importing type definitions from the GraphQL schema. In particular, the \expr{importGQLDocument} function defines corresponding native Haskell types for each GraphQL type. Users can then provide resolver values for these types, from which the Morpheus compiler derives a server application. 
-  % This package also provides the function \expr{compileTimeSchemaValidation} for compile-time schema validation, which checks if the API definition represents a valid GraphQL schema.
+  \li{morpheus-graphql} derives executable apps from native Haskell types by mapping them to GraphQL representations. 
 
 \end{enumerate}
 
