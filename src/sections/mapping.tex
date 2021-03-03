@@ -22,17 +22,14 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}\frametitle{Wrapping Types}
-
-GraphQL defines two primitive wrapping types: List and Non-Null~\cite{gql-spec}.
+\begin{frame}\frametitle{Mapping Wrapping Types}
 
 \begin{itemize}
 
   \li{Non-Null} GraphQL types are nullable by default: e.g., a scalar string can return either zero or a string value. The non-null type wraps another type and means that the resulting value will never be null~\cite{gql-spec}.
 
-    type \expr{Maybe Int} for nullable GraphQL type \expr{Int} and type \expr{Int} for the non-null GraphQL type \expr{Int!}
-
   \li{List} GraphQL List is a collection of homogeneous elements, where the elements are ordered and serialized according to their type~\cite{gql-spec}. 
+
 \end{itemize}
 
 \end{frame}
