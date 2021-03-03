@@ -22,15 +22,14 @@
 \begin{block}{Reliability}
 
 \begin{itemize}
-    \li{Type safety} deterministic derivation, resolver Validity, and schema validity.
-    % successfully compiled typed programs do not fail at runtime~\cite{milner-well-typed,wadler-well-typed}.      
-    \li{Complience with GraphQL specifications} a GraphQL server that is not specification compliant will cause runtime errors for third-party applications.
+    \li{Type safety} deterministic derivation, resolver validity, and schema validity.    
+    \li{Complience with GraphQL specifications} a GraphQL server that is not specification compliant can break client applications.
 \end{itemize}
 
 \end{block}
 
 \begin{block}{Efficiency}
-The library must be lazy and avoid known Haskell functions, libraries, or types that can be a significant performance problem.
+The library must be lazy and avoid known Haskell features that can cause  performance problem.
 \end{block}
 
 \end{frame}
