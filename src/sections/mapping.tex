@@ -79,9 +79,7 @@ A GraphQL input objects and arguments are is a sets of labeled input values~\cit
 \end{frame}
 \begin{frame}[allowframebreaks]\frametitle{Mapping Objects}
 
-GraphQL objects are a set of named fields, where fields themselves consist of argument and return type~\cite{gql-spec}. Object fields are functions which occasionally accept arguments and return corresponding values~\cite{gql-spec}.
-
-We represent the object types with parametrized records. This technique allows types to be defined independently of the resolver operations, and the concrete operations can be passed recursively from parent to child. 
+GraphQL objects are a set of named fields, where fields themselves consist of argument and return type~\cite{gql-spec}. We represent the object types with parameterized records, where the record fields can take function types. This technique allows types to be defined independently of the resolver operations, and the concrete operations can be passed recursively from parent to child. 
 
 \importHS{object-type}{GraphQL Object in Haskell}
 
