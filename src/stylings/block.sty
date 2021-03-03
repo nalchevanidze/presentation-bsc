@@ -5,6 +5,9 @@
 \newcommand\openBlock[1]
  {
     \vspace{\fill}
+    \textbf{\insertblocktitle}
+    \vspace{4pt}
+    \vbox{}
     \begin{adjustbox}{max width=0.98\textwidth, trim=0 2ex 0 0,clip}
     \begin{tabular}{!{
         \color{#1}{\vrule width 1pt}}>{
@@ -12,14 +15,12 @@
         }
         m{\textwidth}
     }
+       %\begin{beamercolorbox}{block title} 
 
         % Title
-        \vspace{2pt}
-        \begin{beamercolorbox}{block title} 
-        \vbox{}
-        \textbf{\insertblocktitle}
+     
         % Content
-        \end{beamercolorbox}
+        % \end{beamercolorbox}
         \vspace{5pt}
         \hspace{2pt}
  }
@@ -32,7 +33,7 @@
 % WORKING ON BLOCKS
 \setbeamertemplate{navigation symbols}{}
 
-\setbeamertemplate{block begin}{\openBlock{black!10!white}}
+\setbeamertemplate{block begin}{\openBlock{black!5!white}}
 \setbeamertemplate{block end}{\closeBlock}
 
 \setbeamertemplate{block alerted begin}{\openBlock{DarkOrange}}
