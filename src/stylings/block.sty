@@ -1,28 +1,20 @@
 %!TEX root = ../../main.tex
 
-\ProvidesPackage{scr/stylings/block}
+\ProvidesPackage{src/stylings/block}
 
 \newcommand\openBlock[1]
  {
     \vspace{\fill}
+    \textbf{\insertblocktitle}
+    \vspace{4pt}
+    \vbox{}
     \begin{adjustbox}{max width=0.98\textwidth, trim=0 2ex 0 0,clip}
     \begin{tabular}{!{
-        \color{#1}{\vrule width 2pt}}>{
+        \color{#1}{\vrule width 1pt}}>{
         \columncolor[gray]{1}
         }
         m{\textwidth}
     }
-
-        % Title
-        \vspace{2pt}
-        \begin{beamercolorbox}{block title} 
-        \vbox{}
-        \vskip 0.2pt 
-        \insertblocktitle 
-
-        % Content
-        \vspace{4pt}
-        \end{beamercolorbox}
  }
 
 \newcommand\closeBlock
@@ -33,7 +25,7 @@
 % WORKING ON BLOCKS
 \setbeamertemplate{navigation symbols}{}
 
-\setbeamertemplate{block begin}{\openBlock{UHHRed}}
+\setbeamertemplate{block begin}{\openBlock{black!5!white}}
 \setbeamertemplate{block end}{\closeBlock}
 
 \setbeamertemplate{block alerted begin}{\openBlock{DarkOrange}}
