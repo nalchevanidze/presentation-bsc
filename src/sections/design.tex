@@ -1,33 +1,27 @@
-%!TEX root = ../../../../main.tex
+%!TEX root = ../../main.tex
 
 \section{Design Decisions} 
 
-\begin{frame}\frametitle{Design Decisions}
-\begin{alertblock}{Code-First Approach}  
+\begin{frame}[allowframebreaks]\frametitle{Design Decisions}
+\begin{block}{Code-First Approach}  
 
 This approach generates the schema and validates the resolver types simultaneously, whereby a single type change automatically updates the resolver types and the GraphQL schema, making API maintenance easier.
 
-\end{alertblock}
+\end{block}
 
-\begin{alertblock}{Embeded Domain Specific Language Based on Datatype-Generic Programming}  
+\begin{block}{Embeded Domain Specific Language Based on Datatype-Generic Programming}  
 
 native language syntax with domain-specific semantics, users can focus on domain-specific problems~\cite{edsl-modeling}. futhermore increases familiarity. datatype-generic programming eliminates boilerplate code by encouraging the programmer to avoid implementing tedious and high-maintenance boilerplate code~\cite{scrap-your-boilerplate}.
 
-\end{alertblock}
+\end{block}
 
-\end{frame}
-
-\begin{frame}\frametitle{Design Decisions}
-
-\begin{alertblock}{Monadic Resolvers} 
+\begin{block}{Monadic Resolvers} 
 
 Since all side effects and behavioral extensions in Haskell are performed with monads, field resolvers will be monadic functions. 
-Moreover, resolver monad will be a monad transformer. 
-
-\end{alertblock}
+\end{block}
 
 
-\begin{alertblock}{Parameterized Resolver Types}
+\begin{block}{Parameterized Resolver Types}
 
 parametric polymorphism enablefinition of resolver types independent of their operations, where the type parameter determines the allowed operations.  
 
@@ -37,5 +31,5 @@ the type \expr{Type Q} constructs resolver \expr{resolver :: Q Value} with query
  
 the type \expr{Type M} constructs resolver \expr{resolver :: M Value} with mutation operations.
 
-\end{alertblock}
+\end{block}
 \end{frame}
