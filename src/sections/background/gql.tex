@@ -18,26 +18,20 @@
 
 \begin{frame}\frametitle{Advantages and Disadvantages of GraphQL}
 
-\footnotesize
-
+% reduces unnecessary transmission costs.which interesting for mobile applications, often faced with limited bandwidth and speed~\cite{migrating-to-gql,real-time-sys-arc-based-on-gql,gql-iot}
 \begin{block}{Performance and efficiency improvement}
-reduces unnecessary transmission costs.~\cite{migrating-to-gql,real-time-sys-arc-based-on-gql,gql-iot}.
-% which interesting for mobile applications, often faced with limited bandwidth and speed
-\begin{enumerate}
-  \item Under-Fetching: reduces  numbers of API calls~\cite{migrating-to-gql,gql-healthcare}.
-  \item Over-Fetching : reduction in response size
-\end{enumerate}
-
+\begin{itemize}
+  \item Under-Fetching: reduces  numbers of API calls~\cite{migrating-to-gql}.
+  \item Over-Fetching : reduction in response size~\cite{migrating-to-gql}.
+\end{itemize}
 \end{block}
 
 \begin{block}{API Versioning}
-
-a stable and consistent contract between two systems for information exchange while remaining flexible for future changes~\cite{gql-healthcare}. 
-
-\begin{enumerate}
+% a stable and consistent contract between two systems for information exchange while remaining flexible for future changes~\cite{gql-healthcare}. 
+\begin{itemize}
   \item new fields added to a type do not result in client changes~\cite{migrating-to-gql}. 
   \item provides an \expr{@deprecated} annotation for unsupported fields~\cite{migrating-to-gql}. 
-\end{enumerate}
+\end{itemize}
 
 \end{block}
 
@@ -45,11 +39,11 @@ a stable and consistent contract between two systems for information exchange wh
 
 % GraphQL requires less effort to implement requirements than REST~\cite{rest-vs-gql-controlled-experiment}.
 
-\begin{enumerate}
-  \item  Familiar syntax and semantics, similar to common programming languages~\cite{rest-vs-gql-controlled-experiment}.
+\begin{itemize}
+  \item  Familiar syntax and semantics~\cite{rest-vs-gql-controlled-experiment}.
   \item GraphQL-IDEs enables real-time query validation and auto-completion~\cite{rest-vs-gql-controlled-experiment,migrating-to-gql}.
   \item Introspection enables clients to explore the REST instantly~\cite{migrating-to-gql}. 
-\end{enumerate}
+\end{itemize}
 
 \end{block}
 
