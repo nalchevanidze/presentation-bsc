@@ -25,7 +25,6 @@
 \end{itemize}
 \end{frame}
 
-\subsection{Wrapping Types}
 \begin{frame}\frametitle{Wrapping Types}
 
 GraphQL defines two primitive wrapping types: List and Non-Null~\cite{gql-spec}.
@@ -41,7 +40,6 @@ GraphQL defines two primitive wrapping types: List and Non-Null~\cite{gql-spec}.
 
 \end{frame}
 
-\subsection{Scalars}
 \begin{frame}\frametitle{Scalars}
 
 Scalar types represent primitive leaf values in a GraphQL type system. They can be represented as strings. GraphQL offers built-in scalar and enables users to extend the type system with additional scalars with their semantic meaning~\cite{gql-spec}.
@@ -68,8 +66,6 @@ Since scalar types have no structural representation, we will impose no restrict
 
 \end{frame}
 
-\subsection{Enums}
-
 \begin{frame}\frametitle{Enums}
 
 enum types describe the set of possible independent, unique values~\cite{gql-spec}. They correspond to the algebraic data type with empty fields. The type is only represented as an enum if all its constructors are empty.
@@ -79,15 +75,12 @@ enum types describe the set of possible independent, unique values~\cite{gql-spe
 
 \end{frame}
 
-\subsection{Input Object And Field Arguments}
 \begin{frame}\frametitle{Input Object And Field Arguments}
 
 A GraphQL input objects and arguments are is a sets of labeled input values~\cite{gql-spec}. They resemble single constructor Haskell records. 
 
 \importHS{input-object}{GraphQL Input Object in Haskell}
 \importGQL{input-object}{Input Object Deity}
-
-\subsection{Objects and Interfaces}
 
 \end{frame}
 \begin{frame}[allowframebreaks]\frametitle{Objects and Interfaces}
@@ -104,7 +97,6 @@ Haskell has no features like GraphQL interfaces. We can consider type classes as
 
 \end{frame}
 
-\subsection{Unions}
 \begin{frame}[allowframebreaks]\frametitle{Unions}
 
 GraphQL unions represent an object, one of the possible alternative object types, but do not provide guaranteed fields between them~\cite{gql-spec}. 
@@ -122,7 +114,6 @@ GraphQL unions represent an object, one of the possible alternative object types
 \end{frame}
 
 \begin{frame}\frametitle{Determining GraphQL Types in Haskell}
-\subsection{Determining GraphQL Types in Haskell}
 
 Compiler applies the following rules with a given execution order to achieve deterministic derivation.
 

@@ -1,41 +1,15 @@
-%!TEX root = ../../../../main.tex
+%!TEX root = ../../main.tex
 
 \section{Design Decisions} 
 
 \begin{frame}\frametitle{Design Decisions}
-\begin{alertblock}{Code-First Approach}  
 
-This approach generates the schema and validates the resolver types simultaneously, whereby a single type change automatically updates the resolver types and the GraphQL schema, making API maintenance easier.
-
-\end{alertblock}
-
-\begin{alertblock}{Embeded Domain Specific Language Based on Datatype-Generic Programming}  
-
-native language syntax with domain-specific semantics, users can focus on domain-specific problems~\cite{edsl-modeling}. futhermore increases familiarity. datatype-generic programming eliminates boilerplate code by encouraging the programmer to avoid implementing tedious and high-maintenance boilerplate code~\cite{scrap-your-boilerplate}.
-
-\end{alertblock}
-
-\end{frame}
-
-\begin{frame}\frametitle{Design Decisions}
-
-\begin{alertblock}{Monadic Resolvers} 
-
-Since all side effects and behavioral extensions in Haskell are performed with monads, field resolvers will be monadic functions. 
-Moreover, resolver monad will be a monad transformer. 
-
-\end{alertblock}
-
-
-\begin{alertblock}{Parameterized Resolver Types}
-
-parametric polymorphism enablefinition of resolver types independent of their operations, where the type parameter determines the allowed operations.  
-
-\expr{data Type m = Type \{ resolver :: m Value\}}
-
-the type \expr{Type Q} constructs resolver \expr{resolver :: Q Value} with query operations. 
- 
-the type \expr{Type M} constructs resolver \expr{resolver :: M Value} with mutation operations.
-
-\end{alertblock}
+\begin{itemize}
+    \li{Code-First Approach} A single type change automatically updates the resolver types and GraphQL schema, simplifying maintenance. 
+    \li{Embeded Domain Specific Language} By using the familiar syntax of the native language, users can focus on domain-specific problems~\cite{edsl-modeling}.
+    \li{Datatype-Generic Programming}datatype-generic programming eliminates boilerplate code~\cite{scrap-your-boilerplate}.
+    \li{Monadic Resolvers} Since all side effects in Haskell are performed with monads, field resolvers will be monadic functions. 
+    \li{Parameterized Resolver Types} Parametric polymorphism allows the modular definition of resolver types, where the type parameter determines the allowed operations.  
+    \expr{data Type m = Type \{ resolverField :: m Value\}}
+\end{itemize}
 \end{frame}
