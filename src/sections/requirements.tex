@@ -1,37 +1,31 @@
 \section{Requirements}
 
-\begin{frame}\frametitle{Requirements}  
+\begin{frame}[allowframebreaks]\frametitle{Requirements}  
 
-\begin{alertblock}{Maintainability}
+\begin{block}{Maintainability}
 
-Maintainable software can adapt to the many changes occurring during software development.~\cite{requirements-change-1,view-of-web, sof-sus-institute-maintainability}
+Maintainable software can adapt to continuous changes~\cite{requirements-change-1,view-of-web, sof-sus-institute-maintainability}.
 
 % It allows developers to quickly: fix bugs, add a new feature or increase performance without introducing new bugs
 
 \begin{itemize}
 
-    \li{Low boilerplate} Boilerplate code is tedious to write, easy to get wrong, and prone to change, increasing maintenance costs for large programs with dozens of data types~\cite{scrap-your-boilerplate}.
+    \li{Low boilerplate} Boilerplate code increases maintenance costs for large programs~\cite{scrap-your-boilerplate}.
 
-    \li{Familiarity} Maintainability depends a lot on who maintains it~\cite{contr-reduce-maintainability}. The library must be easy to use for newcomers.
+    \li{Familiarity} Maintainability depends on who maintains it~\cite{contr-reduce-maintainability}. Even newcomers have to be considered.
 
     \li{Modularity} 
-    The loose coupling between modules and the high cohesion within a module lead to improved maintainability~\cite{arc-modularity}.
-    The reusable type and resolver definitions. 
+    The loose coupling between modules and the high cohesion within a module improves maintainability~\cite{arc-modularity}. The reusable type and resolver definitions. 
     
 \end{itemize}
-\end{alertblock}
-\end{frame}
-
-\begin{frame}\frametitle{Requirements}  
+\end{block}
 
 \begin{block}{Reliability}
 
-Reliability describes the probability that a product will operate trouble-free for a specified period under specified conditions~\cite{optimal-release-time}.
-
 \begin{itemize}
-    \li{Type Safety}: successfully compiled typed programs do not fail at runtime~\cite{milner-well-typed,wadler-well-typed}.  \textbf{deterministic derivation}, \textbf{Resolver Validity}, \textbf{Schema Validity}
+    \li{Type safety} successfully compiled typed programs do not fail at runtime~\cite{milner-well-typed,wadler-well-typed}.  \textbf{deterministic derivation}, \textbf{resolver Validity}, \textbf{schema Validity}
     
-    \li{Complience with GraphQL Specifications} a GraphQL server that is not specification compliant will cause runtime errors for third-party applications.
+    \li{Complience with GraphQL specifications} a GraphQL server that is not specification compliant will cause runtime errors for third-party applications.
 \end{itemize}
 
 \end{block}
