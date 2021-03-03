@@ -4,23 +4,23 @@
 
 \section{Mapping Rules}
 
-\begin{frame}\frametitle{Mapping Rules}
+% \begin{frame}\frametitle{Mapping Rules}
 
-% The underlying entity of every GraphQL schema is a type. Thereby there are six types of named type definitions and two wrapping types~\cite{gql-spec}. 
-\footnotesize
-\begin{itemize}
+% % The underlying entity of every GraphQL schema is a type. Thereby there are six types of named type definitions and two wrapping types~\cite{gql-spec}. 
+% \footnotesize
+% \begin{itemize}
 
-  \li{Positional Constructors} GraphQL fields must always have names~\cite{gql-spec}. 
-  That why we assume that a constructor without field selectors is enumerated like an array.
+%   \li{Positional Constructors} GraphQL fields must always have names~\cite{gql-spec}. 
+%   That why we assume that a constructor without field selectors is enumerated like an array.
   
-  \importHS{positional-cons}{Positional Constructors}
+%   \importHS{positional-cons}{Positional Constructors}
 
-  \li{Unit Type} The unit type indicates the absence of a specific value and serves as a placeholder when no other value exists or is needed~\cite{fsharp-unit}. GraphQL does not provide it~\cite{gql-spec}. 
+%   \li{Unit Type} The unit type indicates the absence of a specific value and serves as a placeholder when no other value exists or is needed~\cite{fsharp-unit}. GraphQL does not provide it~\cite{gql-spec}. 
 
-  \importGQL{unit-type}{GraphQL Unit Type Definition}
+%   \importGQL{unit-type}{GraphQL Unit Type Definition}
 
-\end{itemize}
-\end{frame}
+% \end{itemize}
+% \end{frame}
 
 \begin{frame}\frametitle{Mapping Wrapping Types}
 
@@ -34,7 +34,7 @@
 
 \end{frame}
 
-\begin{frame}\frametitle{Scalars}
+\begin{frame}\frametitle{Mapping Scalars}
 
 Scalar types represent primitive leaf values in a GraphQL type system. They can be represented as strings. GraphQL offers built-in scalar and enables users to extend the type system with additional scalars with their semantic meaning~\cite{gql-spec}.
 
@@ -60,7 +60,7 @@ Since scalar types have no structural representation, we will impose no restrict
 
 \end{frame}
 
-\begin{frame}\frametitle{Enums}
+\begin{frame}\frametitle{Mapping Enums}
 
 enum types describe the set of possible independent, unique values~\cite{gql-spec}. They correspond to the algebraic data type with empty fields. The type is only represented as an enum if all its constructors are empty.
 
@@ -69,7 +69,7 @@ enum types describe the set of possible independent, unique values~\cite{gql-spe
 
 \end{frame}
 
-\begin{frame}\frametitle{Input Object And Field Arguments}
+\begin{frame}\frametitle{Mapping Input Object And Field Arguments}
 
 A GraphQL input objects and arguments are is a sets of labeled input values~\cite{gql-spec}. They resemble single constructor Haskell records. 
 
@@ -77,13 +77,11 @@ A GraphQL input objects and arguments are is a sets of labeled input values~\cit
 \importGQL{input-object}{Input Object Deity}
 
 \end{frame}
-\begin{frame}[allowframebreaks]\frametitle{Objects and Interfaces}
+\begin{frame}[allowframebreaks]\frametitle{Mapping Objects}
 
 GraphQL objects are a set of named fields, where fields themselves consist of argument and return type~\cite{gql-spec}. Object fields are functions which occasionally accept arguments and return corresponding values~\cite{gql-spec}.
 
 We represent the object types with parametrized records. This technique allows types to be defined independently of the resolver operations, and the concrete operations can be passed recursively from parent to child. 
-
-Haskell has no features like GraphQL interfaces. We can consider type classes as GraphQL interfaces, but they cannot be derived with generics, and we cannot cast them for additional fields in the GraphQL query. Accordingly, our current approach only simulates them and derives them like objects.
 
 \importHS{object-type}{GraphQL Object in Haskell}
 
