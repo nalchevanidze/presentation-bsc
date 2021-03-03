@@ -2,8 +2,6 @@
 \section{Schema Derivation} 
 \begin{frame}\frametitle{Schema Derivation}
 
-GraphQL models the schema as a graph, where nodes are types (objects), and the type consists of fields. These fields have a name and a reference to another type (edges). Technically, the graph starts with a root node that branches to query subscription and mutation nodes and then to API-specific types~\cite{migrating-to-gql}. 
-
-we the deep-first search, starting from the root node, can derive all schema types. Therefore, we have decided to derive the schema only from the root type. However, the simple application of deep-first search leads to a loop if the graph has cycles (in our case, if the type refers directly or indirectly to itself). Therefore we use the deep-first search with cycle checking.
+GraphQL models the schema as a graph, where nodes are types and fields are edges. The graph starts with a root node that branches to API-specific types~\cite{migrating-to-gql}.  We use deep-first search and derive all schema types from the root node. We also use cycle checking to avoid looping on cycles.
 
 \end{frame}
