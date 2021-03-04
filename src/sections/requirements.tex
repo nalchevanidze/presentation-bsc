@@ -1,35 +1,20 @@
 \section{Requirements}
 
-\begin{frame}[allowframebreaks]\frametitle{Requirements}  
-
-\begin{block}{Maintainability}
-
-% Maintainable software can adapt to continuous changes~\cite{requirements-change-1,view-of-web, sof-sus-institute-maintainability}.
-
-% It allows developers to quickly: fix bugs, add a new feature or increase performance without introducing new bugs
+\begin{frame}\frametitle{Requirements}  
 
 \begin{itemize}
-
-    \li{Low boilerplate} Boilerplate code increases maintenance costs for large programs~\cite{scrap-your-boilerplate}.
-
-    \li{Familiarity} Maintainability depends on who maintains it~\cite{contr-reduce-maintainability}. Even newcomers have to be considered.
-
-    \li{Modularity} The loose coupling and high cohesion improves maintainability~\cite{arc-modularity}. The reusable type and resolver definitions. 
-    
+    \li{Maintainable} a Maintainable software can adapt to continuous changes.
+    \begin{itemize}
+        \item Low boilerplate
+        \item Familiarity
+        \item Modularity
+    \end{itemize}
+    \li{Reliability}: We aim to avoid runtime failures. 
+    \begin{itemize}
+        \item Type safety: deterministic derivation, resolver validity, and schema validity.    
+        \item Compliance with GraphQL specifications
+    \end{itemize}
+    \li{Efficiency} The library must be lazy and avoid known Haskell features causing poor performance.
 \end{itemize}
-\end{block}
-
-\begin{block}{Reliability}
-
-\begin{itemize}
-    \li{Type safety} deterministic derivation, resolver validity, and schema validity.    
-    \li{Complience with GraphQL specifications} a GraphQL server that is not specification compliant can break client applications.
-\end{itemize}
-
-\end{block}
-
-\begin{block}{Efficiency}
-The library must be lazy and avoid known Haskell features that can cause  performance problem.
-\end{block}
 
 \end{frame}
