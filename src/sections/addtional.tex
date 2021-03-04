@@ -49,3 +49,11 @@
   
   \end{frame}
 
+\begin{frame}\frametitle{Monads}
+
+Haskell abstracts side effects with monads. monads are formed by a type constructor \expr{M} and a pair of functions, \expr{return} and \expr{>>=}~\cite{history-of-haskell,essence-of-fp}. The type \expr{M a} is a computation that returns a value of type \expr{a} and possibly performs some side effects~\cite{history-of-haskell}. The purpose of \expr{return} and \expr{>>=} is to push a value into computation and to evaluate a computation, yielding a value~\cite{essence-of-fp}.
+
+Since the monad allows the compiler to determine impure and pure operations, the Haskell language can use specific optimizations. However, the developer still has the freedom to define their execution order~\cite{history-of-haskell}.
+
+\end{frame}
+
