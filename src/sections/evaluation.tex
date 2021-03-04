@@ -2,8 +2,9 @@
 
 \begin{frame}[allowframebreaks]\frametitle{Evaluation}
 
-\begin{block}{Maintainability}
 
+\begin{itemize}
+  \li{Maintainability}
   \begin{itemize}
   
     \li{Low Boilerplate and Familiarity} We use a code-first approach and derive the API from native Haskell types based on data-generic programming. The approach is familiar and reduces boilerplate.
@@ -12,34 +13,26 @@
     The library architecture divides the functionalities into separate, coherent packages. Parameterized resolver types facilitate modular API definitions.
 
   \end{itemize}
-
-\end{block}
-
-
-\begin{block}{Reliability}
-
-\begin{itemize}
-
-  \li{Type Safety} 
-    \begin{enumerate}
-
-      \li{Deterministic deriving} The mapping rules cover all Haskell algebraic data types.
-
-      \li{Resolver validity} The Haskell compiler reports any value mismatch at compile time.
+  \li{Reliability}
+  \begin{itemize}
+    \li{Type Safety} 
+      \begin{enumerate}
+  
+        \li{Deterministic deriving} The mapping rules cover all Haskell algebraic data types.
+  
+        \li{Resolver validity} The Haskell compiler reports any value mismatch at compile time.
+        
+        \li{Schema validity} We ensure compile-time validity of the schema based on Template Haskell. 
       
-      \li{Schema validity} We ensure compile-time validity of the schema based on Template Haskell. 
-    
-    \end{enumerate}
+      \end{enumerate}
+  
+    \li{Complience with GraphQL Specifications} The library meets all the critical parts of the specifications. However, we use of \expr{Int} instead of \expr{Int32}. Moreover, interfaces and directives are still not fully implemented. 
+  
+  \end{itemize}
 
-  \li{Complience with GraphQL Specifications} The library meets all the critical parts of the specifications. However, there are also small deviations in favor of flexibility, e.g., the use of \expr{Int} instead of \expr{Int32}. Moreover, interfaces and directives are still not fully implemented. 
+  \li{Efficiency} we used the type \expr{Text} instead of \expr{String}. The library is lazy and only executes the resolvers necessary for the query. 
 
 \end{itemize}
-
-\end{block}
-
-\begin{block}{Efficiency} we used the type \expr{Text} instead of \expr{String}. the library only executes the resolvers necessary for the query. The library is extensible with Haxl, which allows efficient reuse of resolvers without running into the n+1 selects problem.
-
-\end{block}
 \end{frame}
 
 \begin{frame}\frametitle{Comparison}
