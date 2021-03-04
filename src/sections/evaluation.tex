@@ -27,7 +27,7 @@
 
       \li{Resolver validity} The Haskell compiler reports any value mismatch at compile time.
       
-      \li{Schema validity} Haskell and GraphQL adopt different types of type systems. That why the Haskell compiler cannot check the validity of all GraphQL-specific rules. Therefore, to ensure schema validity, we provide the function \expr{compileTimeSchemaValidation}, which takes the \expr{RootResolver} type signature and fails if the schema is invalid.
+      \li{Schema validity} We ensure compile-time validity of the schema based on Template Haskell. 
     
     \end{enumerate}
 
@@ -41,8 +41,6 @@
 
 \end{block}
 
-
-TODO: arguzment chain,
-
+% TODO: arguzment chain,
 
 \end{frame}
