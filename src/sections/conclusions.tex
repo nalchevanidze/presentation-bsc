@@ -2,18 +2,17 @@
 
 \begin{frame}[allowframebreaks]\frametitle{Conclusions}
 
-The presented approach provides an easy-to-use interface and successfully implements the requirements. 
+The presented approach successfully implements the requirements and provides:
 
-We chose intuitive design over extensibility provided by the type-level encoding. 
+\begin{itemize}
+    \item easy-to-use interface while ensuring type safety.
+    \item We preferred intuitive design over extensibility.
+    \item The library can be learned quickly by beginners.
+    \item Importing schemas from SDL facilitates quick starts and migration from other languages.
+    \item A type-safe client package allows developers to implement entire applications in one language or even query data for resolvers from other GraphQL servers.
+    \item \expr{Apps} are members of the type class semigroup and can be composed.
+\end{itemize}
 
-This gives beginners the ability to quickly learn and implement GraphQL APIs in Haskell while preserving type safety.
-
-The library automatically derives APis from data types, which guarantees type-safe resolver values. 
-
-We also provide two Template Haskell tools, one of which guarantees schema validity at compile time. The second one imports schemas from GraphQL SDL to facilitate quick start and migration from other languages.
-
-The data resolvers are regular monadic Haskell functions. These resolvers can be extended by arbitrary monads to solve specific problems.  The architecture is divided into small independent packages. Besides, one of the packages, the Morpheus GraphQL client, enables type-safe queries by rejecting invalid queries at compile-time and automatically generating the request and response types.
-    
 Limitations
 
 \begin{itemize}
