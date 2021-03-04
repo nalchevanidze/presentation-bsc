@@ -1,22 +1,6 @@
 \subsection{Architecture Overview}
 
-\begin{frame}[allowframebreaks]\frametitle{Architecture Overview}
-
-\begin{enumerate} 
-
-  \footnotesize
-  
-  \li{morpheus-graphql-core} low level functionalities and common types, such as  parsing, pretty-printing, validation.
-
-  \li{morpheus-graphql-client} enables type-safe client queries. It generates the query and response types on valid queries but throws a compilation error on the invalid query.
-
-  \li{morpheus-graphql-app} creates and executes GraphQL applications (called \expr{Apps}) based on schema and query documents.
-  
-  \li{morpheus-graphql-subscriptions}  creates WebSockets servers based on \expr{Apps}. It is independent of the server package and accepts any \expr{App} derived from an arbitrary server.
-
-  \li{morpheus-graphql} derives executable \expr{Apps} from native Haskell types by mapping them to GraphQL representations. 
-
-\end{enumerate}
+\begin{frame}\frametitle{Architecture Overview}
 
 \input{src/figures/dependency-graph}
 \end{frame}
