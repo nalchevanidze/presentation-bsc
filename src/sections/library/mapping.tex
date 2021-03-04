@@ -20,37 +20,19 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}\frametitle{Mapping Enums}
-
-enum types describe the set of possible independent, unique values~\cite{gql-spec}.
-
-
-
-\end{frame}
-
-\begin{frame}\frametitle{Mapping Input Object And Field Arguments}
-
-A GraphQL input objects and arguments are is a sets of labeled input values~\cite{gql-spec}. They resemble single constructor Haskell records. 
-
-
-
-\end{frame}
-\begin{frame}[allowframebreaks]\frametitle{Mapping Objects}
-
-GraphQL objects are a set of named fields, where fields themselves consist of argument and return type~\cite{gql-spec}. We represent the object types with parameterized records, where the record fields can take function types. This technique allows types to be defined independently of the resolver operations, and the concrete operations can be passed recursively from parent to child. 
-
-
-\end{frame}
-
-\begin{frame}\frametitle{Unions}
-
-GraphQL unions represent an object, one of the possible alternative object types, but do not provide guaranteed fields between them~\cite{gql-spec}. 
+\begin{frame}\frametitle{Mapping Type Definitions}
 
 \begin{itemize}
-  \item we unpack constructors, where the name is the concatenation of the type constructor name and the referencing type name. for rest we generate new constructors object.
-  \item since GraphQL does not supports empty objects we add every empty object unit field.
+  \li{Enums} data types with empty alternatives.
+  \li{Input object and field arguments} data types with non-empty single constructors (records). 
+  \li{Objects} We represent the object types with parameterized records, where the record fields can take function types. With this technique, types can be defined independently of the resolution operations, and the concrete operations can be passed recursively from parent to child. 
+  \li{Unions} data type with multiple alternatives, where at least one alternative is non-empty.
+  \begin{itemize}
+    \item we create a new object for each alternative.
+    \item we unpack constructors, where the name is the concatenation of the type constructor name and the referencing type name. 
+    \item we assign to each empty alternate unit field.
+  \end{itemize}
 \end{itemize}
-
 
 \end{frame}
 
