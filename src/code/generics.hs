@@ -1,4 +1,2 @@
-   data Computation a 
-      = Success a 
-      | Failure  
-      deriving (Eq)
+data Maybe a = Nothing | Just a
+  deriving (Eq)

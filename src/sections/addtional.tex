@@ -36,3 +36,16 @@
 
   % \input{src/figures/dependency-graph}  
 \end{frame}
+
+
+\begin{frame}\frametitle{Datatype-Generic Programming}
+    
+  Datatype-generic programming enables writing single functions that address various cases and types.~\cite{derivable-type-classes}. 
+  It increases program reliability, reduces code duplication, while guaranteeing safety~\cite{datatype-generic-programming,optimizing-generics}.
+  
+  \importHS{generics}{Generic Deriving}
+      
+  The generic derivation represents all types and values by generic representation types. The user can convert any types to their generic representation, operate on them, and convert them back to their original types~\cite{optimizing-generics, ghc-generics}.
+  
+  \end{frame}
+
