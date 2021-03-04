@@ -2,61 +2,29 @@
 
 \subsection{Mapping Rules}
 
-% \begin{frame}\frametitle{Mapping Rules}
 
-% % The underlying entity of every GraphQL schema is a type. Thereby there are six types of named type definitions and two wrapping types~\cite{gql-spec}. 
-% \footnotesize
-% \begin{itemize}
 
-%   \li{Positional Constructors} GraphQL fields must always have names~\cite{gql-spec}. 
-%   That why we assume that a constructor without field selectors is enumerated like an array.
-  
-%   \importHS{positional-cons}{Positional Constructors}
+\begin{frame}\frametitle{Mapping Built-in Types}
 
-%   \li{Unit Type} The unit type indicates the absence of a specific value and serves as a placeholder when no other value exists or is needed~\cite{fsharp-unit}. GraphQL does not provide it~\cite{gql-spec}. 
+\begin{block}{Types}
+  \begin{itemize}
+    \li{Non-Null}: Maybe
+    \li{List} List
+  \end{itemize}
+\end{block}
 
-%   \importGQL{unit-type}{GraphQL Unit Type Definition}
-
-% \end{itemize}
-% \end{frame}
-
-\begin{frame}\frametitle{Mapping Wrapping Types}
-
+\begin{block}\frametitle{Scalars}
 \begin{itemize}
-
-  \li{Non-Null} GraphQL types are nullable by default: e.g., a scalar string can return either zero or a string value. The non-null type wraps another type and means that the resulting value will never be null~\cite{gql-spec}.
-
-
-  \li{List} GraphQL List is a collection of homogeneous elements, where the elements are ordered and serialized according to their type~\cite{gql-spec}. 
+  \li{Int} Int
+  \li{Float} Double
+  \li{String} Text
+  \li{Boolean} Bool
+  \li{ID}  defined custom data type ID 
 \end{itemize}
+\end{block}
 
 \end{frame}
 
-\begin{frame}\frametitle{Mapping Scalars}
-
-Scalar types represent primitive leaf values in a GraphQL type system. They can be represented as strings. GraphQL offers built-in scalar and enables users to extend the type system with additional scalars with their semantic meaning~\cite{gql-spec}.
-
-Since scalar types have no structural representation, we will impose no restriction and allow any type to represent a scalar type if it has appropriate parse and serialization methods.
-
-\begin{itemize}
-
-  \item Int: Int
-  %  This scalar type represents a signed numeric 
-    32-bit non-fractional value~\cite{gql-spec}. 
-
-  \item Float: Double
-  %  GraphQL-Float represents signed fractions with double precision~\cite{gql-spec}
-
-  \item String: Text
-  %  GraphQL String is a regular UTF-8 string for text data~\cite{gql-spec}. Haskell represents strings through the built-in list type. It allows the programmer to use the polymorphic list combinations for complex string manipulations.
-  % However, it is also extremely inefficient. An alternative to String is the type Text, which is an array-based string representation that is faster and more compact than String~\cite{string-vs-text,string-types-alexeyshmalko,string-types-fpcomplete,hackage-data-text}. 
-  \item Boolean: Bool
-  % Since this represents typical Boolean values (true and false)~\cite{gql-spec}, it is represented as a type Bool.
-  \item ID:  defined custom data type ID 
-  % is a unique identifier that should always be serialized as a String (although it is often numeric)~\cite{gql-spec}. Accordingly, we declare a new data type ID with parse and serialization implementations that meet this specification.
-\end{itemize}
-
-\end{frame}
 
 \begin{frame}\frametitle{Mapping Enums}
 

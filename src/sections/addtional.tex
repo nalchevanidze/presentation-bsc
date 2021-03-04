@@ -1,0 +1,17 @@
+\begin{frame}\frametitle{Mapping Rules}
+
+% The underlying entity of every GraphQL schema is a type. Thereby there are six types of named type definitions and two wrapping types~\cite{gql-spec}. 
+\footnotesize
+\begin{itemize}
+
+  \li{Positional Constructors} GraphQL fields must always have names~\cite{gql-spec}. 
+  That why we assume that a constructor without field selectors is enumerated like an array.
+  
+  \importHS{positional-cons}{Positional Constructors}
+
+  \li{Unit Type} The unit type indicates the absence of a specific value and serves as a placeholder when no other value exists or is needed~\cite{fsharp-unit}. GraphQL does not provide it~\cite{gql-spec}. 
+
+  \importGQL{unit-type}{GraphQL Unit Type Definition}
+
+\end{itemize}
+\end{frame}
