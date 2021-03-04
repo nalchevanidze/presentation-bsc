@@ -57,3 +57,15 @@ Since the monad allows the compiler to determine impure and pure operations, the
 
 \end{frame}
 
+\begin{frame}\frametitle{Determining GraphQL Types in Haskell}
+Compiler applies the following rules with a given execution order to achieve deterministic derivation.
+\begin{enumerate}
+  \li{Scalar, Wrapper, Interface} Derive scalar, wrapper, interface if the type has explicitly specified associated kinds. 
+  \li{Field Arguments} Derive field arguments if the type is used as an argument of the object field. 
+  \li{Enum} Derive enum if all data type constructors are empty.
+  \li{Object} Derive object if the type has a single non-empty constructor, and its parent \footnote{Type A is the parent type of type B if it has a field that refers to type B} is Object or Union. 
+  \li{InputObject} Derive input object if the type has a single non-empty constructor, and its parent is InputObject or Field Arguments.
+  \li{Union} Derive Union if the type has multiple constructors and its parent is Object or Union.
+  \li{Fail} All other types are not supported.
+\end{enumerate}
+\end{frame}
