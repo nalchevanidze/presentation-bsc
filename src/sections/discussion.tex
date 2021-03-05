@@ -14,8 +14,8 @@ The presented approach successfully implements the requirements and provides:
 
 \begin{itemize}
     \item easy-to-use interface while ensuring type safety.
-    \item We preferred intuitive design over extensibility.
-    \item The library can be learned quickly by beginners.
+    \item We preferred intuitive design .
+    \item The library uses an intuitive design that can be quickly learned even by beginners.
     \item Importing schemas from SDL facilitates quick starts and migration from other languages.
     \item A type-safe client package allows developers to implement entire applications in one language or even query data for resolvers from other GraphQL servers.
 \end{itemize}
@@ -25,10 +25,8 @@ The presented approach successfully implements the requirements and provides:
 \begin{frame}\frametitle{Limitations}
 
 \begin{itemize}
-    \item Haskell permits different naming of values and types than GraphQL. 
-    \item sets and non-empty collections cannot be modeled in GraphQL because it provides only list types for collections. 
-    \item mapping Haskell types requires support for input unions, which is not supported by GraphQL. 
-    \item Haskell does not provide interfaces, so we do not yet have a satisfying way to support them. 
+    \item Not all GrapHQL names can be represented with Haskell types and values.
+    \item Since we use algebraic data types and records, we lose extensibility.
 \end{itemize}
 
 \end{frame}
@@ -36,12 +34,12 @@ The presented approach successfully implements the requirements and provides:
 \begin{frame}\frametitle{Outlook}
 
 \begin{itemize}
-    \li{Support Interfaces} representation of interfaces with "type guards" on unions. 
-    \li{Type-Level Curried Arguments} flexible argument definitions for a small number of arguments than our current approach since the user does not have to define a new data type for each field. 
-    \li{Custom Collections} Since GraphQL has only one type (List) for collections, we cannot represent collections with certain constraints. 
-    \li{Support Directives}Since the GraphQL specification does not specify a particular implementation strategy for directives, it is up to each server library to provide a suitable API~\cite{schema-directives}.
-    \li{Support Input Unions} GraphQL does not support input unions. While this function's value is essentially understood, its implementation is not cleared~\cite{gql-spec-input-unions}. 
+    \li{Support interfaces}  Haskell does not provide interfaces, so we do not yet fully support them. One possible way is to support them with "type guards." 
+    \li{Support custom collections} sets and non-empty collections cannot be modeled in GraphQL because it provides only list types for collections.  
+    \li{Support directives} Since the GraphQL specification does not specify a particular implementation strategy for directives, it is up to each server library to provide a suitable API~\cite{schema-directives}.
+    \li{Support input unions} GraphQL does not support input unions. While this function's value is essentially understood, its implementation is not cleared~\cite{gql-spec-input-unions}. 
 
+    % \li{Type-Level Curried Arguments} flexible argument definitions for a small number of arguments than our current approach since the user does not have to define a new data type for each field. 
 \end{itemize}
 
 \end{frame}
