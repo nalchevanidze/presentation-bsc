@@ -1,7 +1,6 @@
 \section{Evaluation}
 
-\begin{frame}[allowframebreaks]\frametitle{Evaluation}
-
+\begin{frame}\frametitle{Evaluation}
 
 \begin{itemize}
   \li{Maintainability} We use a code-first approach and derive the API from native Haskell types based on data-generic programming. The approach is familiar and reduces boilerplate. The library architecture divides the functionalities into separate, coherent packages. Parameterized resolver types facilitate modular API definitions.
@@ -12,10 +11,3 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}\frametitle{Comparison}
-
-Other Haskell libraries provide more extensibility in schema definition than our approach. Besides, the argument chain definitions of the GraphQL API are more flexible than Haskell records for small sets of arguments. However, implementing resolvers for these schemas in our library is simpler because users receive more meaningful error messages, and field values are irrelevant. Besides, our approach is more intuitive and requires less experience than the type-level approach.
-
-There are other libraries in various languages that also have datatype-generic programming to derive GraphQL APIs. However, since we are using Haskell, we have automatically obtained Haskell's lazy and pure nature, which matches the lazy resolvable nature of GraphQL fields. This way, Haskell developers do not need to explicitly consider concurrency and laziness and focus on business logic. 
-
-\end{frame}
