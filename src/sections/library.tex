@@ -50,9 +50,9 @@ GraphQL models the schema as a graph, where nodes are types and fields are edges
 \begin{frame}\frametitle{Mapping Type Definitions}
 
 \begin{itemize}
-  \li{Enums} data types with empty alternatives.
+  \li{Enums} data types with only empty alternatives.
   \li{Input object and field arguments} data types with non-empty single constructors (records). 
-  \li{Objects} We represent the object types with parameterized records, where the record fields can take function types. With this technique, types can be defined independently of the resolution operations, and the concrete operations can be passed recursively from parent to child. 
+  \li{Objects} We represent the object types with single constructor parameterized records, where fields can take monadic function types, with the monadic type bound to the type parameter. 
   \li{Unions} data type with multiple alternatives, where at least one alternative is non-empty.
   \begin{itemize}
     \item we create a new object for each alternative.
