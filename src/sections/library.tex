@@ -42,7 +42,7 @@ GraphQL models the schema as a graph, where nodes are types and fields are edges
     \li{Float} Double
     \li{String} Text
     \li{Boolean} Bool
-    \li{ID}  defined custom data type ID 
+    \li{ID} custom data type ID 
   \end{itemize}
 \end{itemize}
 \end{frame}
@@ -50,14 +50,14 @@ GraphQL models the schema as a graph, where nodes are types and fields are edges
 \begin{frame}\frametitle{Mapping Type Definitions}
 
 \begin{itemize}
-  \li{Enums} data types with only empty alternatives.
+  \li{Enums} data types with only empty constructors.
   \li{Input object and field arguments} data types with non-empty single constructors (records). 
-  \li{Objects} We represent the object types with single constructor parameterized records, where fields can take monadic function types, with the monadic type bound to the type parameter. 
-  \li{Unions} data type with multiple alternatives, where at least one alternative is non-empty.
+  \li{Objects} We represent objects with single constructor parameterized data types (records), where fields can take monadic functions, with the monadic type bound to the type parameter. 
+  \li{Unions} data types with multiple constructors, where at least one alternative is non-empty.
   \begin{itemize}
-    \item we create a new object for each alternative.
+    \item we create a new object for each constructor.
     \item we unpack constructors, where the name is the concatenation of the type constructor name and the referencing type name. 
-    \item we assign to each empty alternate unit field.
+    \item we assign to each empty constructor unit field.
   \end{itemize}
 \end{itemize}
 
