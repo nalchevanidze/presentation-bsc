@@ -50,28 +50,16 @@
 
 \begin{frame}\frametitle{GraphQL Language Components}
 
-\begin{block}{Schema Language}
-a GraphQL schema can be defined with a domain-specific language called Schema Definition Language (SDL)~\cite{migrating-to-gql,gql-on-graph-db}.
+\begin{block}{Schema Definition Language (SDL)}
+a domain-specific language used by the server to define the schema.~\cite{migrating-to-gql}.
 \end{block}
 
 \begin{block}{Query Language}
-GraphQL provides a query language syntactically similar to JSON~\cite{gql-on-graph-db,initial-analysis-of-gql}. 
+a domain-specific language used by the client to retrieve data from the server~\cite{initial-analysis-of-gql}. 
 \end{block}
 
 \begin{block}{Resolver Functions}
-Queries are processed by resolver functions which return query values from an underlying data structure  ~\cite{migrating-to-gql,real-time-sys-arc-based-on-gql}.
+Queries are processed by resolver functions which return query values from an underlying data structure  ~\cite{migrating-to-gql}.
 \end{block}
 
 \end{frame}
-
-% \begin{frame}
-% \importGQL{schema}{GraphQL Schema}
-% \end{frame}
-
-% \begin{frame}
-
-% \importGQL{query}{GraphQL Query }
-
-% \importJSON{response}{GraphQL Response}
-
-% \end{frame}
