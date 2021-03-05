@@ -1,11 +1,11 @@
 data Deity = Deity
   { name :: String,
-    age :: Int
+    power :: String
   }
 
 deity :: Deity
 deity =
   Deity
-    { age = 12000,
+    { power = "Shapeshifting",
       name = "Morpheus"
     }
