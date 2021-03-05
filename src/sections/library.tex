@@ -55,9 +55,9 @@ GraphQL models the schema as a graph, where nodes are types and fields are edges
   \li{Objects} We represent objects with single constructor parameterized data types (records), where fields can take monadic functions, with the monadic type bound to the type parameter. 
   \li{Unions} data types with multiple constructors, where at least one alternative is non-empty.
   \begin{itemize}
-    \item we create a new object for each constructor.
-    \item we unpack constructors, where the name is the concatenation of the type constructor name and the referencing type name. 
-    \item we assign to each empty constructor unit field.
+    \item We create a new object for each constructor.
+    \item We unpack constructors, where the name is the concatenation of the type constructor name and the referencing type name. 
+    \item We assign a field with unit type to each empty constructor.
   \end{itemize}
 \end{itemize}
 
@@ -67,11 +67,11 @@ GraphQL models the schema as a graph, where nodes are types and fields are edges
 
 \begin{itemize} 
   
-    \li{@Pygmalion} initial name and inspirations
+    \li{@Pygmalion} library name and first inspirations.
 
-    \li{@krisajenkins} Parser optimization, parameterized resolver types
+    \li{@krisajenkins} parser optimization and parameterized resolver types.
     
-    \li{@theobat} custom wrapping types and the library Massalia
+    \li{@theobat} custom wrapping types and the library Massalia.
 
 \end{itemize}
 
