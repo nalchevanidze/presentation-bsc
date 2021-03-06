@@ -1,31 +1,28 @@
 \section{Discussion}
 
     
-\begin{frame}\frametitle{Advantages}
+\begin{frame}[allowframebreaks]\frametitle{Discussion}
 
+\begin{block}{Advantages}
 \begin{itemize}
     \item easy-to-use interface while ensuring type safety.
     \item The library uses an intuitive design that can be quickly learned even by beginners.
     \item Importing schemas from SDL facilitates migration from other languages.
-    \item A type-safe client package allows developers to implement entire applications in one language or even query data for resolvers from other GraphQL servers.
 \end{itemize}
+\end{block}
 
-\end{frame}
-
-\begin{frame}\frametitle{Disadvantages}
-
+\begin{block}{Disadvantages}
 \begin{itemize}
     \item Not all GrapHQL names can be represented with Haskell types and values.
     \item Since we use algebraic data types and records, we lose extensibility.
 \end{itemize}
+\end{block}
 
-\end{frame}
+\vspace{40pt}
 
-\begin{frame}\frametitle{Conclusions}
-    
-    Since we use Haskell, we automatically gain laziness and purity that match the GraphQL specifications. This way, developers do not have to explicitly deal with concurrency and laziness and focus on business logic. 
+Since we use Haskell, we automatically gain laziness and purity that match the GraphQL specifications. This way, developers do not have to explicitly deal with concurrency and laziness and focus on business logic. 
 
-    Alternative GraphQL Haskell libraries provide a more extensible schema definition than our approach. However, implementing resolvers for these schemas in our library is more convenient because the records' field order is irrelevant. Besides, our approach is more intuitive and requires less experience.
+Alternative GraphQL Haskell libraries provide a more extensible schema definition than our approach. However, implementing resolvers for these schemas in our library is more convenient because the records' field order is irrelevant. Besides, our approach is more intuitive and requires less experience.
     
 \end{frame}
 
