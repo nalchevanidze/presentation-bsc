@@ -3,8 +3,8 @@
 \begin{frame}\frametitle{Results}
 
 \begin{itemize}
-  \li{Maintainability} We use a code-first approach and derive the API from native Haskell types based on data-generic programming. The approach is familiar and reduces boilerplate. The library architecture divides the functionalities into separate, coherent packages. Parameterized resolver types facilitate modular API definitions.
-  \li{Reliability} The Haskell compiler primarily achieves type safety. Furthermore we used Template Haskell for schema validity checking. The library meets all the critical parts of the specifications. However, interfaces and directives are still not fully implemented. 
+  \li{Maintainability} We use a code-first approach and derive the API from native Haskell types based on data-generic programming. The approach is familiar and reduces boilerplate. The library architecture and parameterized resolver types enable modular API definitions.
+  \li{Reliability} The Haskell compiler primarily achieves type safety. Furthermore, we used Template Haskell for schema validity checking. The library meets all the critical parts of the specifications. However, interfaces and directives are still not fully implemented. 
 
   \li{Efficiency} we used the type \expr{Text} instead of \expr{String}. The library is lazy and only executes the resolvers necessary for the query. 
 
