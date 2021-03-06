@@ -1,10 +1,11 @@
-data Deity = Deity { 
-  name :: Text,
-  age :: Int
-}
+data Deity = Deity
+  { name :: String,
+    power :: String
+  }
 
-deities :: [Deity]
-deities = [
-    Deity { name = "Morpheus", age  = 12000 },
-    Deity { age  = 12000     , name = "Zeus"}
-  ]
+deity :: Deity
+deity =
+  Deity
+    { power = "Shapeshifting",
+      name = "Morpheus"
+    }

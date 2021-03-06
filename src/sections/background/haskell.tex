@@ -4,43 +4,28 @@
 Haskell is a non-strict, purely functional language with static typing and algebraic data types. Many developers think that Haskell programs look nice~\cite{history-of-haskell}.
 
 \begin{block}{Haskell is lazy}
-    % Laziness is a primary concern in Haskell's design. 
-    Haskell is a non-strict semantic language; lazy evaluation is just a technique to implement it~\cite{history-of-haskell}.
+    Laziness is a primary concern in the design of Haskell~\cite{history-of-haskell}.
+    % Haskell is a non-strict semantic language; lazy evaluation is just a technique to implement it.
 \end{block}
 
 \begin{block}{Haskell is pure}
-The lazy evaluation requires a pure design since a function call can no longer guarantee the reliable execution of the side-effects. Haskell abstracts side effects with monads, which also allows the compiler to determine impure and pure operations~\cite{history-of-haskell}.
+The lazy evaluation requires a pure design since a function call can no longer guarantee the reliable execution of the side-effects. However, Haskell permits side effects with monads~\cite{history-of-haskell}.
 \end{block}
 
 \end{frame}
 
-\begin{frame}\frametitle{Algebraic Data Types and Records}
+\begin{frame}[allowframebreaks]\frametitle{Algebraic Data Types and Records}
 
 An algebraic data type is the sum of one or more alternatives, where each alternative is a product of zero or more fields~\cite{history-of-haskell}. 
         
 \importHS{maybe}{Algebraic Data Types~\cite{history-of-haskell}}
 
-The record system provides syntactic sugar for what might otherwise be written using ordinary algebraic data type declarations~\cite{lw-ext-records}. 
+Records simplify programming with data structures because fields are accessed by name rather than position~\cite{lw-ext-records}.
 
-\importHSFragment{records}{0}{4}{Haskell Record}
+\importHSFragment{records}{0}{4}{Haskell Records}
 
-\end{frame}
-
-\begin{frame}\frametitle{Record Values}
-
-Records simplify programming with data structures since the individual components are accessed by name~\cite{lw-ext-records}.
-
-\importHSFragment{records}{6}{10}{Haskell Record Values}
+\importHSFragment{records}{6}{11}{Haskell Record Values}
 
 Algebraic data types and records and are not extensible~\cite{lw-ext-records,trees-that-grow}. 
-
-\end{frame}
-
-\begin{frame}\frametitle{Datatype-Generic Programming}
-    
-Datatype-generic programming enables writing single functions that address various cases and types.~\cite{derivable-type-classes}. 
-It reduces code duplication, while guaranteeing safety~\cite{datatype-generic-programming}.
-
-\importHS{generics}{Generic Deriving}
 
 \end{frame}

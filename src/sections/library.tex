@@ -14,7 +14,8 @@
 \begin{itemize}
     \li{Code-First Approach} A single type change automatically updates the resolver types and GraphQL schema. 
     \li{Embeded Domain Specific Language} By using the familiar syntax of the native language, users can focus on domain-specific problems~\cite{edsl-modeling}.
-    \li{Datatype-Generic Programming} eliminates boilerplate code~\cite{scrap-your-boilerplate}.
+    \li{Datatype-Generic Programming} eliminates boilerplate code, while guaranteeing safety~\cite{datatype-generic-programming, scrap-your-boilerplate}.
+    
     \li{Monadic Resolvers} all side effects in Haskell are performed with monads. 
     \li{Parameterized Resolver Types} Parametric polymorphism allows the modular definition of resolver types, where the type parameter determines the allowed operations.
 \end{itemize}
@@ -42,7 +43,7 @@ GraphQL models the schema as a graph, where nodes are types and fields are edges
     \li{Float} Double
     \li{String} Text
     \li{Boolean} Bool
-    \li{ID}  defined custom data type ID 
+    \li{ID} custom data type ID 
   \end{itemize}
 \end{itemize}
 \end{frame}
@@ -50,30 +51,28 @@ GraphQL models the schema as a graph, where nodes are types and fields are edges
 \begin{frame}\frametitle{Mapping Type Definitions}
 
 \begin{itemize}
-  \li{Enums} data types with only empty alternatives.
+  \li{Enums} data types with only empty constructors.
   \li{Input object and field arguments} data types with non-empty single constructors (records). 
-  \li{Objects} We represent the object types with single constructor parameterized records, where fields can take monadic function types, with the monadic type bound to the type parameter. 
-  \li{Unions} data type with multiple alternatives, where at least one alternative is non-empty.
+  \li{Objects} We represent objects with single constructor parameterized data types (records), where fields can take monadic functions, with the monadic type bound to the type parameter. 
+  \li{Unions} data types with multiple constructors, where at least one alternative is non-empty.
   \begin{itemize}
-    \item we create a new object for each alternative.
-    \item we unpack constructors, where the name is the concatenation of the type constructor name and the referencing type name. 
-    \item we assign to each empty alternate unit field.
+    \item We create a new object for each constructor.
+    \item We unpack constructors, where the name is the concatenation of the type constructor name and the referencing type name. 
+    \item We assign a field with unit type to each empty constructor.
   \end{itemize}
 \end{itemize}
 
 \end{frame}
 
-\section{Contributions}
-
 \begin{frame}\frametitle{Contributions}
 
 \begin{itemize} 
   
-    \li{@Pygmalion} initial name and inspirations
+    \li{@Pygmalion} library name and first inspirations.
 
-    \li{@krisajenkins} Parser optimization, parameterized resolver types
+    \li{@krisajenkins} parser optimization and parameterized resolver types.
     
-    \li{@theobat} custom wrapping types and the library Massalia
+    \li{@theobat} custom wrapping types and the library Massalia.
 
 \end{itemize}
 
