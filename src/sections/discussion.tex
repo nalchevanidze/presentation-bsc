@@ -28,13 +28,10 @@ Alternative GraphQL Haskell libraries provide a more extensible schema definitio
 \begin{frame}\frametitle{Outlook}
 
 \begin{itemize}
-    \li{Support interfaces}  Haskell does not provide interfaces, so we do not yet fully support them. One possible way is to support them with "type guards." 
+    \li{Support interfaces}  Haskell does not provide interfaces, so we do not yet fully support them.
     \li{Support custom collections} Sets and non-empty collections cannot be modeled in GraphQL because it provides only list types for collections.
     \li{Support directives} GraphQL specification does not specify a particular implementation strategy for directives.~\cite{schema-directives}.
     \li{Support input unions} GraphQL does not support input unions ~\cite{gql-spec-input-unions}.
-    % While this function's value is essentially understood, its implementation is not cleared~\cite{gql-spec-input-unions}. 
-
-    % \li{Type-Level Curried Arguments} flexible argument definitions for a small number of arguments than our current approach since the user does not have to define a new data type for each field. 
 \end{itemize}
 
 \end{frame}
