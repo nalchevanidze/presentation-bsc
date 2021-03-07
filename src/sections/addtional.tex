@@ -1,43 +1,12 @@
-\begin{frame}\frametitle{Mapping Rules}
+\begin{frame}[noframenumbering]\frametitle{Mapping Positional Constructors}
 
-% The underlying entity of every GraphQL schema is a type. Thereby there are six types of named type definitions and two wrapping types~\cite{gql-spec}. 
-\footnotesize
-\begin{itemize}
-
-  \li{Positional Constructors} GraphQL fields must always have names~\cite{gql-spec}. That why we assume that a constructor without field selectors is enumerated like an array.
+GraphQL fields must always have names~\cite{gql-spec}. That why we assume that a constructor without field selectors is enumerated like an array.
   
-  \importHS{positional-cons}{Positional Constructors}
+\importHS{positional-cons}{Positional Constructors}
 
-  \li{Unit Type} The unit type indicates the absence of a specific value and serves as a placeholder when no other value exists or is needed~\cite{fsharp-unit}. GraphQL does not provide it~\cite{gql-spec}. 
-
-  \importGQL{unit-type}{GraphQL Unit Type Definition}
-
-\end{itemize}
 \end{frame}
 
-
-\begin{frame}\frametitle{Architecture Overview}
-  \begin{enumerate} 
-  
-    \footnotesize
-
-    \li{morpheus-graphql-core} low level functionalities and common types, such as  parsing, pretty-printing, validation.
-  
-    \li{morpheus-graphql-client} enables type-safe client queries. It generates the query and response types on valid queries but throws a compilation error on the invalid query.
-  
-    \li{morpheus-graphql-app} creates and executes GraphQL applications (called \expr{Apps}) based on schema and query documents.
-    
-    \li{morpheus-graphql-subscriptions}  creates WebSockets servers based on \expr{Apps}. It is independent of the server package and accepts any \expr{App} derived from an arbitrary server.
-  
-    \li{morpheus-graphql} derives executable \expr{Apps} from native Haskell types by mapping them to GraphQL representations. 
-  
-  \end{enumerate}
-
-  % \input{src/figures/dependency-graph}  
-\end{frame}
-
-
-\begin{frame}\frametitle{Datatype-Generic Programming}
+\begin{frame}[noframenumbering]\frametitle{Datatype-Generic Programming}
     
   Datatype-generic programming enables writing single functions that address various cases and types.~\cite{derivable-type-classes}. 
   It increases program reliability, reduces code duplication while guaranteeing safety~\cite{datatype-generic-programming,optimizing-generics}.
@@ -48,7 +17,7 @@
   
   \end{frame}
 
-\begin{frame}\frametitle{Monads}
+\begin{frame}[noframenumbering]\frametitle{Monads}
 
 Haskell abstracts side effects with monads. monads are formed by a type constructor \expr{M} and a pair of functions, \expr{return} and \expr{>>=}~\cite{history-of-haskell,essence-of-fp}. The type \expr{M a} is a computation that returns a value of type \expr{a} and possibly performs some side effects~\cite{history-of-haskell}. The purpose of \expr{return} and \expr{>>=} is to push a value into computation and to evaluate a computation, yielding a value~\cite{essence-of-fp}.
 
@@ -56,7 +25,7 @@ Since the monad allows the compiler to determine impure and pure operations, the
 
 \end{frame}
 
-\begin{frame}\frametitle{Determining GraphQL Types in Haskell}
+\begin{frame}[noframenumbering]\frametitle{Determining GraphQL Types in Haskell}
 Compiler applies the following rules with a given execution order to achieve deterministic derivation.
 \begin{enumerate}
   \li{Scalar, Wrapper, Interface} Derive scalar, wrapper, interface if the type has explicitly specified associated kinds. 
