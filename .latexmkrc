@@ -6,4 +6,4 @@ $out_dir = '.build';
 
 # @default_files = ('main.tex');
 
-$success_cmd = "cp \".build/main.pdf\" \"out/Presentation of Bachelor thesis Daviti Nalchevanidze.pdf\"";
+$success_cmd = "cp \".build/main.pdf\" \"out/presentation-bsc-daviti-nalchevanidze.pdf\"";

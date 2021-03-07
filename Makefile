@@ -12,7 +12,7 @@ compile:
 	latexmk -pdf
 
 view:
-	open out/bachelor-thesis-daviti-nalchevanidze.pdf
+	open out/presentation-bsc-daviti-nalchevanidze.pdf
 
 live:
 	latexmk -pdf --pvc
